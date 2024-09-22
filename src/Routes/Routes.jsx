@@ -4,6 +4,8 @@ import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import UpdatedUser from "../Pages/UpdateUser/UpdateUser";
+import Home from "../components/Home/Home";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +15,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         // need to redirect home page, for now I redirect it to register page!
-        element: <Registration></Registration>,
+        element: <Home></Home>,
       },
       {
         path: "/registration",
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <UpdatedUser></UpdatedUser>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/about-us",
+        element: (
+          <PrivateRoute>
+            <About></About>
           </PrivateRoute>
         ),
       },
