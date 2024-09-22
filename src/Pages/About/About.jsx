@@ -9,27 +9,26 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
 import "../../App.css";
-import img from "/Screenshot.png";
+import img from "../../../src/assets/images/podcast.jpg";
 import { useRef } from "react";
-import MeetOurHost from "../Host/MeetOurHost";
-import LatestPodcast from "../Latest/LatestPodcast";
+import MeetOurHost from "./MeetOurHost";
+import LatestPodcast from "./LatestPodcast";
+
 export default function About() {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
+    progressCircle.current?.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <div className="py-10">
       <div>
-        <h1 className="text-6xl text-center md:text-2xl font-black">
-          Podastify
-        </h1>
+        <h1 className="text-8xl text-center md:text-2xl font-black">About</h1>
         <div className="w-3/4 mx-auto pt-5">
           <h1 className="animate__animated animate__backInUp text-center">
-            Elevate your podcast to new heights with Podbean AI’s cutting-edge
+            Elevate your podcast to new heights with podcast cutting-edge
             features such as Noise Reduction, Intelligent Leveler, Cut Filler
             Words and Silence, Filtering & AutoEQ, Automated Title and Show
             Notes, AI Enhanced Transcripts, and Precisely Crafted Chapter
@@ -38,7 +37,7 @@ export default function About() {
           </h1>
           <div className="flex items-center justify-center gap-2 border group mt-5">
             <button className="group-hover:text-[#94C62A] group-hover:font-semi-bold transition-colors p-4 font-semibold">
-              Learn more about Podastify AI
+              Learn more about Podcastify
             </button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +45,8 @@ export default function About() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 transition-all group-hover:translate-x-1">
+              className="size-6 transition-all group-hover:translate-x-1"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -108,7 +108,8 @@ export default function About() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1000 100"
-          fill="#fff">
+          fill="#fff"
+        >
           <path d="M0 0v84l500 16 500-16V0H0z" opacity=".2"></path>
           <path d="M0 0v64l500 36 500-36V0H0z" opacity=".4"></path>
           <path d="M0 0v44l500 56 500-56V0H0z" opacity=".4"></path>
@@ -140,7 +141,8 @@ export default function About() {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
             onAutoplayTimeLeft={onAutoplayTimeLeft}
-            className="mySwiper">
+            className="mySwiper"
+          >
             <SwiperSlide>
               <img src={img} alt="" />
             </SwiperSlide>
@@ -167,9 +169,9 @@ export default function About() {
             </SwiperSlide>
 
             <div className="autoplay-progress" slot="container-end">
-              <svg viewBox="0 0 48 48" ref={progressCircle}>
+              {/* <svg viewBox="0 0 48 48" ref={progressCircle}>
                 <circle cx="24" cy="24" r="20"></circle>
-              </svg>
+              </svg> */}
               <span ref={progressContent}></span>
             </div>
           </Swiper>

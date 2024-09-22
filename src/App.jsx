@@ -1,7 +1,11 @@
-import "./App.css";
-import About from "./components/About/About";
+
+
+import './App.css'
 
 function App() {
+  
+
+
   return (
     <div className="overflow-hidden">
       <About />
