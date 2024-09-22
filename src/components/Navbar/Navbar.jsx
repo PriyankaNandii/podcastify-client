@@ -12,8 +12,7 @@ const Navbar = () => {
             isActive
               ? "text-blue-800 text-xl font-bold"
               : "text-blue-800 text-xl font-bold"
-          }
-        >
+          }>
           Home
         </NavLink>
       </li>
@@ -24,8 +23,7 @@ const Navbar = () => {
             isActive
               ? "text-blue-800 text-xl font-bold"
               : "text-blue-800 text-xl font-bold"
-          }
-        >
+          }>
           About
         </NavLink>
       </li>
@@ -47,8 +45,7 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -59,13 +56,15 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               {navLinks}
             </ul>
           </div>
           <a className="btn btn-ghost text-red-700 italic font-bold text-2xl">
-            Podcastifyy
+            Podcastify
+          </a>
+          <a className="btn btn-ghost text-red-700 italic font-bold text-2xl">
+            Podcastify
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
