@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdatedUser from "../Pages/UpdateUser/UpdateUser";
 import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
+import AddPodCast from "../Pages/Podcast/AddPodCast";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             <About></About>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/addpodcast",
+        element: <AddPodCast />,
       },
     ],
   },
