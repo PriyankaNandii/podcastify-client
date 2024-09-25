@@ -1,8 +1,8 @@
-import mike from "/public/music.jpg";
+import mike from "/music.jpg";
 
 export default function Music() {
   return (
-    <div>
+    <div className="space-y-4">
       <section className="flex justify-between">
         <div className="flex items-center justify-center gap-4">
           <img src={mike} alt="" className="w-20 h-20 block rounded-full" />
@@ -11,7 +11,7 @@ export default function Music() {
             <h1 className="text-[#67676C]">By Monir Kahan</h1>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 font-black">
           <h1 className="text-[#67676C]">4:20</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export default function Music() {
             <h1 className="text-[#67676C]">By Monir Kahan</h1>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 font-black">
           <h1 className="text-[#67676C]">4:20</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import mike from "/public/music.jpg";
+import mike from "/music.jpg";
 export default function Cards() {
   return (
     <div className="flex items-center justify-center gap-4 flex-wrap">

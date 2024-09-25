@@ -8,7 +8,7 @@ export default function MiddleNavbar() {
       <section className="flex items-center justify-between text-white">
         <h1 className="lg:text-2xl font-semibold">Discover</h1>
         <div className="flex items-center justify-center gap-3">
-          <div className="relative bg-[#616166]">
+          <div className="relative bg-[#616166] rounded-lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -37,7 +37,7 @@ export default function MiddleNavbar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6">
+            className="size-10 bg-[#23232A] p-2 rounded-md text-white cursor-pointer">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
