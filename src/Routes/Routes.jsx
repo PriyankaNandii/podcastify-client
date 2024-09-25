@@ -7,6 +7,7 @@ import UpdatedUser from "../Pages/UpdateUser/UpdateUser";
 import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddPodCast from "../Pages/Podcast/AddPodCast";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        // need to redirect home page, for now I redirect it to register page!
         element: <Home></Home>,
       },
       {
@@ -46,6 +46,8 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+        path: "/addpodcast",
+        element: <AddPodCast />,
       },
     ],
   },

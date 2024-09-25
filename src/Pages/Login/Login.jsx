@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { FaMusic } from "react-icons/fa6";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, signInWithGithub } = useAuth();
@@ -10,9 +11,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
 
-  // Location
   const location = useLocation();
-
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -20,162 +19,134 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     setLoginError("");
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
         toast.success("User logged in Successfully!");
         e.target.reset();
-        navigate(location?.state ? location?.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         setLoginError("Please check your Email or Password again!");
       });
   };
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         toast.success("Google Login Successful!");
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleGithubSignIn = () => {
     signInWithGithub()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         toast.success("Github Login Successful!");
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   return (
-    <div className="h-full w-full flex justify-center items-center dark:bg-gray-900">
-      <div className="grid gap-8">
-        <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4">
-          <div className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2">
-            <h1 className="mb-4 pb-2 italic font-semibold text-gray-700 text-3xl text-center cursor-default">
-              Login to your Account! <br></br>{" "}
-            </h1>
-            {/* Social logins */}
-            <div className="flex items-center justify-around flex-wrap">
-              <button
-                onClick={handleGoogleSignIn}
-                className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-              >
-                <img
-                  className="max-w-[45px]"
-                  src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                  alt="Google"
-                />
-              </button>
+    <div className="flex items-center justify-center min-h-screen bg-[#253259]">
+      <div className="w-full max-w-sm p-6 bg-gray-800 text-white rounded-lg shadow-lg">
+        {/* Gradient and Icon Section */}
+        <div className="flex flex-col items-center justify-center mb-6 bg-gradient-to-b from-blue-700 to-black p-5 rounded-t-lg">
+          <FaMusic className="text-5xl text-gray-900 mb-3"></FaMusic>
+          <h2 className="text-center text-gray-300 text-3xl font-bold mb-2">
+            Listen on!
+          </h2>
+          <p className="text-center text-sm text-gray-400 mb-8 italic">
+            Anywhere, anytime.
+          </p>
+        </div>
 
-              <button
-                onClick={handleGithubSignIn}
-                className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-              >
-                <img
-                  className="max-w-[45px] filter dark:invert"
-                  src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                  alt="Github"
-                />
-              </button>
-            </div>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="mt-6">
-                <label
-                  htmlFor="email"
-                  className="mb-2 dark:text-gray-400 text-xl italic font-medium"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  className="border mt-3 p-3 dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out outline-none duration-300 border-gray-300 rounded-lg w-full"
-                  type="email"
-                  placeholder="Your Email"
-                  required
-                />
-              </div>
-              <div className="relative">
-                <label
-                  htmlFor="password"
-                  className="mb-2 dark:text-gray-400 text-xl italic font-medium"
-                >
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  className="border mt-3 mb-2 p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 outline-none ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                  type={passwordShow ? "text" : "password"}
-                  placeholder="Password"
-                  required
-                />
-                <span
-                  className="absolute top-[52px] right-8"
-                  onClick={() => setPasswordShow(!passwordShow)}
-                >
-                  {passwordShow ? (
-                    <IoEye className="md:text-2xl text-[22px]"></IoEye>
-                  ) : (
-                    <IoEyeOff className="md:text-2xl text-[22px]"></IoEyeOff>
-                  )}
-                </span>
-              </div>
-              <a className="group text-blue-500 transition-all duration-100 ease-in-out">
-                <span className="bg-left-bottom bg-gradient-to-r text-base from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                  Forget your password?
-                </span>
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              className="w-full px-4 py-2 text-gray-600 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              required
+            />
+          </div>
+          <div className="mb-4 relative">
+            <input
+              id="password"
+              name="password"
+              type={passwordShow ? "text" : "password"}
+              placeholder="Password"
+              className="w-full px-4 py-2 text-gray-500 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              required
+            />
+            <span
+              className="absolute top-2 right-4 text-gray-400 text-xl cursor-pointer"
+              onClick={() => setPasswordShow(!passwordShow)}
+            >
+              {passwordShow ? <IoEye /> : <IoEyeOff />}
+            </span>
+            <div className="text-right mt-2">
+              <a href="#" className="text-blue-500 hover:underline text-sm">
+                Forgot password?
               </a>
-              {loginError && (
-                <p className="md:text-lg text-base font-bold text-center pt-2 pb-1 text-red-600">
-                  {loginError}
-                </p>
-              )}
-              <button
-                className="bg-gradient-to-r dark:text-gray-300 from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out text-xl font-bold italic"
-                type="submit"
-              >
-                Login
-              </button>
-            </form>
-            <div className="flex flex-col md:mt-10 mt-8 items-center justify-center font-semibold italic md:text-xl text-lg">
-              <h3 className="dark:text-gray-300">
-                Don&apos;t have an account?
-                <Link
-                  className="group text-blue-600 transition-all duration-100 ease-in-out"
-                  to="/registration"
-                >
-                  <span className="hover:underline ml-3 text-xl">
-                    Sign Up Here!
-                  </span>
-                </Link>
-              </h3>
-            </div>
-
-            <div className="text-gray-500 flex text-center flex-col md:mt-4 mt-2 items-center text-sm">
-              <p className="cursor-default text-lg italic">
-                By signing in, you agree to our
-                <span className="btn btn-link text-base">
-                  Terms & Conditions
-                </span>
-              </p>
             </div>
           </div>
+
+          {loginError && (
+            <p className="text-red-600 text-center mb-3">{loginError}</p>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 font-normal py-2 px-4 rounded-lg transition duration-200"
+          >
+            Start listening
+          </button>
+        </form>
+
+        <div className="flex items-center my-6">
+          <div className="flex-grow bg-gray-600 h-px"></div>
+          <span className="text-gray-400 px-4">or</span>
+          <div className="flex-grow bg-gray-600 h-px"></div>
+        </div>
+
+        {/* Social Login */}
+        <div className="flex justify-center space-x-4">
+          <button
+            className="bg-gray-700 p-2 rounded-full"
+            onClick={handleGoogleSignIn}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
+              alt="Google"
+              className="w-7 h-7"
+            />
+          </button>
+          <button
+            className="bg-gray-300 p-2 rounded-full"
+            onClick={handleGithubSignIn}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/733/733609.png"
+              alt="Github"
+              className="w-7 h-7"
+            />
+          </button>
+        </div>
+
+        <div className="text-center mt-6">
+          <p className="text-gray-500">
+            Don’t have an account yet?{" "}
+            <Link to="/registration" className="text-blue-500 hover:underline">
+              Create one.
+            </Link>
+          </p>
         </div>
       </div>
     </div>
