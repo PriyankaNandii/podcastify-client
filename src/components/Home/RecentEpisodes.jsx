@@ -21,6 +21,7 @@ const RecentEpisodes = () => {
                     </div>
                     <div className="card-body text-white p-3">
                         <h2 className="card-title">Episode Title</h2>
+                        <h2 className="card-title">Episode Title</h2>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, ea.</p>
                         <div className="card-actions justify-start">
                         <button className="btn text-xl font-normal text-white  bg-red-600 ">Listen</button>

@@ -46,6 +46,8 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
         path: "/addpodcast",
         element: <AddPodCast />,
       },
