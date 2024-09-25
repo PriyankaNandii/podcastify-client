@@ -1,7 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+  const dashboard = useLocation();
+
+  if (dashboard.pathname === "/dashboard") {
+    return;
+  }
   const { logOut, user } = useAuth();
   const navLinks = (
     <>
