@@ -15,7 +15,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        // need to redirect home page, for now I redirect it to register page!
         element: <Home></Home>,
       },
       {
