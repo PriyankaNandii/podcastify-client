@@ -62,36 +62,6 @@ export default function About() {
           alt=""
         />
         <div className="absolute top-6 pl-7 flex items-center justify-between w-3/4">
-          {/* <div className="bg-slate-50 p-5 shadow-md">
-            <h1 className="text-xl">Episode description</h1>
-            <div className="border">
-              <div className="p-2">
-                <h1 className="font-bold">
-                  Embrancing AI tools for streamlined results
-                </h1>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum placeat in beatae adipisci quia aut nihil omnis, iste
-                  modi aperiam nesciunt eligendi quibusdam esse voluptates hic
-                  libero ipsum distinctio. Incidunt?
-                </div>
-              </div>
-              <div className="p-2">
-                <h1 className="font-bold">
-                  Time consuming for AI video making
-                </h1>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum placeat in beatae adipisci quia aut nihil omnis.
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-2 p-5">
-              <button className="btn">Save as draft</button>
-              <button className="btn bg-[#94C62A]">Publish now</button>
-            </div>
-          </div>
-          <div></div> */}
           <img
             src="https://pbcdn1.podbean.com/fs1/site/www-v2/images/feature/home-ai-transcription@2x_resize_1x.webp"
             alt=""
