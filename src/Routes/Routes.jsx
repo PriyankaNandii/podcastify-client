@@ -53,10 +53,27 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />,
+    errorElement: "Error element",
     children: [
       {
         path: "",
         element: <MiddleNavbar />,
+      },
+      {
+        path: "home",
+        element: <MiddleNavbar />,
+      },
+      {
+        path: "discover",
+        element: "Hello world",
+      },
+      {
+        path: "albums",
+        element: "Hello",
+      },
+      {
+        path: "artist",
+        element: "Hello world",
       },
     ],
   },

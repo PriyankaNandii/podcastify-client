@@ -1,3 +1,5 @@
+import { useState } from "react";
+import LeftNavbar from "./LeftNavbar";
 import RightNavbar from "./RightNavbar";
 import Cards from "./cards/Cards";
 import Music from "./cards/Music";
@@ -5,9 +7,9 @@ import MusicPlayer from "./cards/MusicPlayer";
 import mike from "/music.jpg";
 export default function MiddleNavbar() {
   return (
-    <div className="p-5 bg-[#18181F] flex items-start justify-center">
+    <div className="p-5 bg-[#18181F] flex items-start justify-center relative">
       {/* discover section */}
-      <div className="border p-2">
+      <div className="p-2">
         <section className="flex items-center justify-between text-white p-4">
           <h1 className="lg:text-2xl font-semibold">Discover</h1>
           <div className="flex items-center justify-center gap-3">
@@ -93,7 +95,7 @@ export default function MiddleNavbar() {
           </div>
         </section>
       </div>
-      <div className="hidden md:block w-[400px]">
+      <div className="hidden md:block w-[800px]">
         <RightNavbar />
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function MusicPlayer() {
       </div>
       <div className="font-black flex items-center justify-evenly text-[12px]">
         <h1 className="text-white">2:20</h1>
-        <div className="h-2 bg-[#616166] rounded-lg w-40 relative">
+        <div className="h-2 bg-[#616166] rounded-lg md:w-28 w-36 relative border">
           <div className="h-2 bg-white rounded-lg w-20 absolute top-0 left-0"></div>
         </div>
         <h1 className="text-[#616166]">5:20</h1>

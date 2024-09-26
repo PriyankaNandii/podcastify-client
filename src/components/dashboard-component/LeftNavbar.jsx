@@ -3,15 +3,16 @@ import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
-import { renderMatches } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LeftNavbar() {
   const { user } = useAuth();
   const { photoURL, displayName } = user || {};
+
   return (
-    <div className="bg-gradient-to-r from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full">
+    <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full">
       {/*  */}
-      <div>
+      <>
         <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
           <img src={photoURL} alt="" className="w-20 h-20 rounded-full" />
           <h1 className="text-xl font-bold">Hi, {displayName}</h1>
@@ -19,22 +20,30 @@ export default function LeftNavbar() {
         <div className="pl-5 pt-2 font-black ">
           <h1 className="text-white">Menu</h1>
           <aside className="mt-3 space-y-4 hover:*:text-white">
-            <div className="flex items-center justify-start gap-3">
+            <Link
+              to="/dashboard/home"
+              className="flex items-center justify-start gap-3">
               <FaHome />
               <h1>Home</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
+            </Link>
+            <Link
+              to="/dashboard/discover"
+              className="flex items-center justify-start gap-3">
               <FaCompass />
               <h1>Discover</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
+            </Link>
+            <Link
+              to="/dashboard/albums"
+              className="flex items-center justify-start gap-3">
               <FaBook />
               <h1>Albums</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
+            </Link>
+            <Link
+              to="/dashboard/artist"
+              className="flex items-center justify-start gap-3">
               <FaUser />
               <h1>Artist</h1>
-            </div>
+            </Link>
           </aside>
         </div>
 
@@ -102,7 +111,7 @@ export default function LeftNavbar() {
             </div>
           </aside>
         </div>
-      </div>
+      </>
     </div>
   );
 }
