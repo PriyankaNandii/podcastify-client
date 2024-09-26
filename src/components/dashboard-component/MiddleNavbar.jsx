@@ -10,7 +10,7 @@ export default function MiddleNavbar() {
     <div className="p-5 bg-[#18181F] flex items-start justify-center relative">
       {/* discover section */}
       <div className="p-2">
-        <section className="flex items-center justify-between text-white p-4">
+        <section className="flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-between text-white p-4">
           <h1 className="lg:text-2xl font-semibold">Discover</h1>
           <div className="flex items-center justify-center gap-3">
             <div className="relative bg-[#616166] rounded-lg">
@@ -55,7 +55,7 @@ export default function MiddleNavbar() {
         <section className="block md:hidden w-[320px] mx-auto">
           <MusicPlayer />
         </section>
-        <section className="grid grid-cols-4 gap-2 p-5 mt-4 border rounded-3xl bg-[#232329]">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-4 p-2 md:p-5 mt-4 border rounded-3xl bg-[#232329]">
           <div className="space-y-3 col-span-3 text-white">
             <h1>MELODY</h1>
             <h1 className="lg:text-2xl font-semibold">
@@ -67,10 +67,12 @@ export default function MiddleNavbar() {
               expedita quidem, veritatis dignissimos saepe similique minus
               fugiat eveniet ullam ratione maxime in?
             </p>
-            <button className="btn btn-accent">Explore Now</button>
+            <button className="btn bg-red-800 text-white border-none">
+              Explore Now
+            </button>
           </div>
           <aside>
-            <img src={mike} alt="" className="w-96 h-40" />
+            <img src={mike} alt="" className="w-40 md:w-96 h-40" />
           </aside>
         </section>
 
