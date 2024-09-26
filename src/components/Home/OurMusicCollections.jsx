@@ -7,17 +7,26 @@ import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipForward } from "react-icons/io5";
 import { IoPlaySkipBackSharp } from "react-icons/io5";
 import pic from "../../assets/images/ai-generated-8640312_1280.webp";
-
-const LatestEpisodes = () => {
-  return (
-    <div className=" bg-black text-white py-24">
+const OurMusicCollections = () => {
+    return (
+        <div>
+             <div className="bg-[#171717] text-white py-24">
       <h2 className="text-center text-red-800 text-lg p-3">
         Start Listening Today
       </h2>
-      <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">Popular Music's</h1>
+      <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">Our Music Collections</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-        <div className="bg-[#151515] p-6 rounded-lg shadow-lg lg:w-96 w-full">
-          <div className="relative md:px-10 px-10 py-2">
+        <div className="bg-black p-6 rounded-lg shadow-lg lg:w-96 w-full">
+        <div className="flex justify-end items-center text-red-800 gap-4 mr-2">
+            <button className="text-2xl">
+              <FaShareSquare />
+            </button>
+            <button className="text-2xl">
+              <FiDownload />
+            </button>
+            <button className="text-sm border border-red-800 p-1">1px</button>
+          </div>
+          <div className="relative  py-4 md:px-2 px-2">
             <img
               src={pic}
               alt="Episode 47"
@@ -69,15 +78,7 @@ const LatestEpisodes = () => {
               <FaVolumeUp />
             </button>
           </div>
-          <div className="mt-12 flex justify-end items-center text-red-800 gap-4">
-            <button className="text-2xl">
-              <FaShareSquare />
-            </button>
-            <button className="text-2xl">
-              <FiDownload />
-            </button>
-            <button className="text-sm border border-red-800 p-1">1px</button>
-          </div>
+       
         </div>
       </div>
 
@@ -87,7 +88,8 @@ const LatestEpisodes = () => {
         </button>
       </div>
     </div>
-  );
+        </div>
+    );
 };
 
-export default LatestEpisodes;
+export default OurMusicCollections;
