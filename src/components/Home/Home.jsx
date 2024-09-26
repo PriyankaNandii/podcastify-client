@@ -16,7 +16,8 @@ const Home = () => {
            <OurMusicCollections />
            <Contact />
         </div>
-    );
+    
+  );
 };
 
 export default Home;

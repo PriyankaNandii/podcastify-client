@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import logo from '../../assets/images/newlogo.png';
 import { MdOutlineLogin } from "react-icons/md";
@@ -6,6 +6,11 @@ import { IoPersonAdd } from "react-icons/io5";
 
 
 const Navbar = () => {
+  const dashboard = useLocation();
+
+  if (dashboard.pathname === "/dashboard") {
+    return;
+  }
   const { logOut, user } = useAuth();
   const navLinks = (
     <>
