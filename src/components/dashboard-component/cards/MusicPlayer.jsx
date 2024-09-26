@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function MusicPlayer() {
   const [musicPlayOrPause, setMusicPlayOrPause] = useState(false);
   return (
-    <div className="text-center space-y-8 p-5 rounded-xl bg-[#23232A] select-none">
+    <div className="text-center space-y-8 p-4 rounded-xl bg-[#23232A] select-none">
       <h1 className="text-white text-lg">Now Playing</h1>
       <img src={mike} alt="" className="w-full h-36 rounded-2xl mx-auto" />
       <div className="font-bold text-center">

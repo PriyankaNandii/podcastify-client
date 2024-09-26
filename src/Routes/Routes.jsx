@@ -8,6 +8,7 @@ import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddPodCast from "../Pages/Podcast/AddPodCast";
+import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 
 const router = createBrowserRouter([
   {
@@ -44,10 +45,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "dashboard",
-        element: <Dashboard />,
         path: "/addpodcast",
         element: <AddPodCast />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "",
+        element: <MiddleNavbar />,
       },
     ],
   },
