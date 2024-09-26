@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
 import "../../App.css";
-import img from "../../../src/assets/images/podcast.jpg";
+// import imgfrom "../../../src/assets/images/podcast.jpg"; 
 import { useRef } from "react";
 import MeetOurHost from "./MeetOurHost";
 import LatestPodcast from "./LatestPodcast";
