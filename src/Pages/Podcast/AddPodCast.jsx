@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddPodCast = () => {
     const [tags, setTags] = useState([]);
@@ -29,11 +30,11 @@ const AddPodCast = () => {
         })
         .then(response => {
             console.log(response.data);
-            alert('Podcast uploaded successfully');
+            toast.success('Podcast added successfully!');
         })
         .catch(error => {
             console.error(error);
-            alert('Failed to upload podcast');
+            console.log('Failed to upload podcast');
         });
     };
 
@@ -77,7 +78,7 @@ const AddPodCast = () => {
                         type="text"
                         id="title"
                         name="title"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         placeholder="Enter podcast title"
                         required
                     />
@@ -95,7 +96,7 @@ const AddPodCast = () => {
                         type="text"
                         id="host"
                         name="host"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         placeholder="Enter host name"
                         required
                     />
@@ -113,7 +114,7 @@ const AddPodCast = () => {
                         type="text"
                         id="guest"
                         name="guest"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         placeholder="Enter guest name(s)"
                     />
                 </div>
@@ -130,7 +131,7 @@ const AddPodCast = () => {
                         id="description"
                         name="description"
                         rows="5"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         placeholder="Enter podcast description"
                         required
                     ></textarea>
@@ -148,7 +149,7 @@ const AddPodCast = () => {
                         type="file"
                         id="coverImage"
                         name="coverImage"
-                        className="w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-2 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         onChange={(e) => setCoverImage(e.target.files[0])}
                         required
                     />
@@ -167,7 +168,7 @@ const AddPodCast = () => {
                         id="audioFile"
                         name="audioFile"
                         accept="audio/*"
-                        className="w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-2 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         onChange={(e) => setAudioFile(e.target.files[0])}
                         required
                     />
@@ -185,7 +186,7 @@ const AddPodCast = () => {
                         type="date"
                         id="releaseDate"
                         name="releaseDate"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         required
                     />
                 </div>
@@ -201,7 +202,7 @@ const AddPodCast = () => {
                     <select
                         id="category"
                         name="category"
-                        className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
+                        className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400"
                         required
                     >
                         <option value="">Select category</option>
@@ -222,7 +223,7 @@ const AddPodCast = () => {
                         Tags
                     </label>
 
-                    <div className="w-full mt-2 p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400">
+                    <div className="w-full mt-2 p-3 border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-400">
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag, index) => (
                                 <span
@@ -243,7 +244,7 @@ const AddPodCast = () => {
                                 type="text"
                                 id="tags"
                                 name="tags"
-                                className="border-none outline-none flex-grow focus:ring-0"
+                                className="border-none bg-gray-300 outline-none flex-grow focus:ring-0"
                                 placeholder="Enter tags and press space/enter"
                                 value={input}
                                 onChange={handleInputChange}
