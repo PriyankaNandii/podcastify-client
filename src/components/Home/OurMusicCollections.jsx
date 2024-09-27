@@ -12,13 +12,16 @@ import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 const OurMusicCollections = () => {
   const [podcasts, setPodcasts] = useState([]);
+  console.log(podcasts);
   const [loading, setLoading] = useState(true);
 
   // Fetch podcasts when the component mounts
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await axios.get('https://podcastify-server.vercel.app');
+        const response = await axios.get(
+          "https://podcastify-server.vercel.app"
+        );
         setPodcasts(response.data);
       } catch (err) {
         console.log(err.message);
@@ -28,7 +31,7 @@ const OurMusicCollections = () => {
     };
 
     fetchPodcasts();
-    console.log('Podcast Length: ',podcasts.length)
+    console.log("Podcast Length: ", podcasts.length);
   }, []);
 
   if (loading) {
@@ -40,10 +43,13 @@ const OurMusicCollections = () => {
         <h2 className="text-center text-red-800 text-lg p-3">
           Start Listening Today
         </h2>
-        <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">Our Music Collections</h1>
+        <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
+          Our Music Collections
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-        {podcasts?.map(podcast => (<Podcast key={podcast._id} podcast={podcast}></Podcast>))}
-      
+          {podcasts?.map((podcast) => (
+            <Podcast key={podcast._id} podcast={podcast}></Podcast>
+          ))}
         </div>
 
         <div className="text-center mt-8">
