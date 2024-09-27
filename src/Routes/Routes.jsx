@@ -8,6 +8,7 @@ import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddPodCast from "../Pages/Podcast/AddPodCast";
+import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             <About></About>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/allrecentepisodes",
+        element: <AllRecentEpisodes />,
       },
       {
         path: "dashboard",
