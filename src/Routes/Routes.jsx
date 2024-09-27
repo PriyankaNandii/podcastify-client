@@ -3,7 +3,7 @@ import Root from "../Layout/Root";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
-import UpdatedUser from "../Pages/UpdateUser/UpdateUser";
+
 import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -13,6 +13,8 @@ import Statistics from "../components/dashboard-component/Statistics/Statistics"
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
 import AllArticles from "../components/dashboard-component/articles/AllArticles";
 import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
+import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
+import UserProfile from "./../Pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -32,14 +34,14 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "/update-user",
+        path: "/user-profile",
         element: (
           <PrivateRoute>
-            {" "}
-            <UpdatedUser></UpdatedUser>{" "}
+            <UserProfile></UserProfile>
           </PrivateRoute>
         ),
       },
+
       {
         path: "/about-us",
         element: (
@@ -48,6 +50,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/allrecentepisodes",
+        element: <AllRecentEpisodes />,
+      },
+
       {
         path: "/addpodcast",
         element: <AddPodCast />,
