@@ -9,6 +9,10 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddPodCast from "../Pages/Podcast/AddPodCast";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
+import Statistics from "../components/dashboard-component/Statistics/Statistics";
+import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
+import AllArticles from "../components/dashboard-component/articles/AllArticles";
+import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
 
 const router = createBrowserRouter([
   {
@@ -64,16 +68,20 @@ const router = createBrowserRouter([
         element: <MiddleNavbar />,
       },
       {
-        path: "discover",
-        element: "Hello world",
+        path: "statistics",
+        element: <Statistics />,
       },
       {
-        path: "albums",
-        element: "Hello",
+        path: "add-publisher",
+        element: <AddPublisher />,
       },
       {
-        path: "artist",
-        element: "Hello world",
+        path: "all-users",
+        element: <AllUsers />,
+      },
+      {
+        path: "all-articles",
+        element: <AllArticles />,
       },
     ],
   },

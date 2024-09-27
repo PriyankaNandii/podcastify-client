@@ -3,6 +3,12 @@ import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
+import { FcStatistics } from "react-icons/fc";
+import { TiUserAdd } from "react-icons/ti";
+import { FaAddressBook } from "react-icons/fa";
+import { MdGroups2 } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
+
 import { Link } from "react-router-dom";
 
 export default function LeftNavbar() {
@@ -27,22 +33,29 @@ export default function LeftNavbar() {
               <h1>Home</h1>
             </Link>
             <Link
-              to="/dashboard/discover"
+              to="/dashboard/statistics"
               className="flex items-center justify-start gap-3">
-              <FaCompass />
-              <h1>Discover</h1>
+              <FcStatistics />
+              <h1>Statistics</h1>
             </Link>
             <Link
-              to="/dashboard/albums"
+              to="/dashboard/add-publisher"
               className="flex items-center justify-start gap-3">
-              <FaBook />
-              <h1>Albums</h1>
+              <FaAddressBook />
+              <h1>Add Publisher</h1>
+            </Link>
+
+            <Link
+              to="/dashboard/all-users"
+              className="flex items-center justify-start gap-3">
+              <MdGroups2 />
+              <h1>All users</h1>
             </Link>
             <Link
-              to="/dashboard/artist"
+              to="/dashboard/all-articles"
               className="flex items-center justify-start gap-3">
-              <FaUser />
-              <h1>Artist</h1>
+              <GrArticle />
+              <h1>All Articles</h1>
             </Link>
           </aside>
         </div>
@@ -66,38 +79,9 @@ export default function LeftNavbar() {
             </div>
           </aside>
         </div>
-        <div className="pl-5 pt-2 font-black mt-6">
-          <h1 className="text-white">Library</h1>
-          <aside className="mt-3 space-y-4 hover:*:text-white">
-            <div className="flex items-center justify-start gap-3">
-              <FaTimes />
-              <h1>Recent</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
-              <FaVoteYea />
-              <h1>Favorites</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
-              <FaDesktop />
-              <h1>Local</h1>
-            </div>
-          </aside>
-        </div>
+
         {/* General */}
 
-        <div className="pl-5 pt-2 font-black mt-6">
-          <h1 className="text-white">General</h1>
-          <aside className="mt-3 space-y-4 hover:*:text-white">
-            <div className="flex items-center justify-start gap-3">
-              <IoSettings />
-              <h1>Settings</h1>
-            </div>
-            <div className="flex items-center justify-start gap-3">
-              <MdLogout />
-              <h1>Logout</h1>
-            </div>
-          </aside>
-        </div>
         <div className="pl-5 pt-2 font-black mt-6">
           <h1 className="text-white">General</h1>
           <aside className="mt-3 space-y-4 hover:*:text-white">

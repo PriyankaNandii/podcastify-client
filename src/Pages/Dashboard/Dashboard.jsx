@@ -50,7 +50,7 @@ export default function Dashboard() {
       </div>
       <div
         className={`ml-0 lg:mt-0 lg:ml-64 ${
-          open ? "mt-[248px]" : "mt-[50px]"
+          open ? "mt-[248px]" : "mt-[50px] bg-[#616166] text-white"
         }`}>
         <Outlet></Outlet>
       </div>
