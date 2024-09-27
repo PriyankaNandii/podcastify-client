@@ -10,9 +10,9 @@ const LatestPodcast = () => {
 
   return (
     <div>
-      <div className="text-white text-center">
-      <h1 className="text-xl py-4">Our Team</h1>
-      <h1 className="text-4xl font-bold">Meet with Our <br /> <span className="text-red-600">podcasters</span></h1>
+      <div className=" text-center">
+      <h1 className="text-lg font-semibold text-red-800 py-4">Our Team</h1>
+      <h1 className="text-4xl text-white font-bold">Meet with Our Podcaster's</h1>
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-y-4 my-10">
         {/* host 1 */}

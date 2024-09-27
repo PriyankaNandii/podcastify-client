@@ -14,12 +14,14 @@ import Testimonial from "./Testimonial";
 export default function About() {
   return (
     <div>
-      <div className="my-10">
+
+    
+      <div className="">
         <AboutUs></AboutUs>
       </div>
-      <div className="my-10">
-        <Testimonial></Testimonial>
-      <div className="flex items-center justify-center py-4 relative">
+      <div className="">
+        {/* <Testimonial></Testimonial> */}
+      {/* <div className="flex items-center justify-center py-4 relative">
         <img
           src="https://pbcdn1.podbean.com/fs1/site/www-v2/images/feature/home-ai-bg@2x_resize_1x.webp"
           alt=""
@@ -36,11 +38,12 @@ export default function About() {
             className="animate__animated animate__backInRight"
           />
         </div>
-      </div>
-      <div className="my-10">
+      </div> */}
+      {/* <div className="my-10">
         <MeetOurHost />
+      </div> */}
       </div>
-      </div>
+      
       </div>
   );
 }

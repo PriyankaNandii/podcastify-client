@@ -22,7 +22,7 @@ const Podcast = ({ podcast }) => {
   const { title, coverImageUrl, audioFileUrl } = podcast;
 
 //   localhost sharing url
-  const shareUrl = `http://localhost:5000${audioFileUrl}`;
+  const shareUrl = `https://podcastify-server.vercel.app${audioFileUrl}`;
   
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,7 +46,7 @@ const Podcast = ({ podcast }) => {
       {/* Podcast cover image */}
       <div className="relative py-4 md:px-2 px-2">
         <img
-          src={`http://localhost:5000${coverImageUrl}`}
+          src={`https://podcastify-server.vercel.app${coverImageUrl}`}
           alt="Episode Cover"
           className="w-full h-56 object-cover rounded"
         />

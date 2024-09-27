@@ -3,7 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-
+import register from "../../assets/images/registration.webp";
 const Registration = () => {
   const { createUser, signInWithGoogle, updateUserProfile, signInWithGithub } =
     useAuth();
@@ -88,18 +88,18 @@ const Registration = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#253259] to-purple-950 min-h-screen flex items-center justify-center ">
+    <div className="bg-[#171717] min-h-screen flex items-center justify-center ">
       <div className="relative w-full max-w-4xl h-[600px] bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex">
         <div className="w-2/3 relative">
           <img
-            src="https://media.istockphoto.com/id/1400623377/photo/studio-microphone-in-neon-lights-sound-recording-equipment.jpg?s=612x612&w=0&k=20&c=kHwik6XC-PJMO96H2ixw5gw8ifpUE7JS_0l0mGlAtaY="
+            src={register}
             alt="Podcast"
             className="object-cover h-full w-full"
           />
         </div>
 
         {/* Right Side - Form */}
-        <div className="w-1/2 bg-[#253259] p-8 flex flex-col justify-center">
+        <div className="w-1/2 bg-black p-8 flex flex-col justify-center">
           <h2 className="text-white text-center text-3xl italic font-semibold mb-4">
             Create an account
           </h2>
@@ -209,7 +209,7 @@ const Registration = () => {
           </div>
           <p className="text-white text-center text-sm mt-2">
             Already have an account?{" "}
-            <a href="/login" className="text-purple-400">
+            <a href="/login" className="text-red-800">
               Sign In
             </a>
           </p>
