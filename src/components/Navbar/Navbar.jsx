@@ -17,7 +17,8 @@ const Navbar = () => {
             isActive
               ? "text-blue-800 text-xl font-bold"
               : "text-blue-800 text-xl font-bold"
-          }>
+          }
+        >
           Home
         </NavLink>
       </li>
@@ -28,7 +29,8 @@ const Navbar = () => {
             isActive
               ? "text-blue-800 text-xl font-bold"
               : "text-blue-800 text-xl font-bold"
-          }>
+          }
+        >
           About
         </NavLink>
       </li>
@@ -50,7 +52,8 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -61,7 +64,8 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
               {navLinks}
             </ul>
           </div>
@@ -78,6 +82,11 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <img
+                src={user?.photoURL}
+                alt="Profile"
+                className="w-12 h-12 rounded-full mr-2"
+              />
               <button onClick={handleSignOut} className="btn mr-2">
                 Logout
               </button>
