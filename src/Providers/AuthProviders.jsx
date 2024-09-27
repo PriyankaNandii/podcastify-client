@@ -36,8 +36,13 @@ const AuthProviders = ({ children }) => {
         displayName: name,
         photoURL: photo,
       });
-      const currentUsers = auth.currentUser;
-      setUser(currentUsers);
+      const updatedUser = auth.currentUser;
+      setUser({
+        ...updatedUser,
+        displayName: name,
+        photoURL: photo,
+        email: email,
+      });
       setLoading(false);
     } catch (error) {
       console.log(error);

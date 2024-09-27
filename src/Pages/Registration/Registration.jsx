@@ -17,13 +17,11 @@ const Registration = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const photoURL = form.photo.value;
-    const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
-    const termsChecked = form.terms.checked;
-    console.log(name, email, photoURL, password, termsChecked, confirmPassword);
+    const name = form?.name?.value;
+    const email = form?.email?.value;
+    const password = form?.password?.value;
+    const confirmPassword = form?.confirmPassword?.value;
+    console.log(name, email, password, confirmPassword);
 
     setRegisterError("");
 
@@ -40,16 +38,13 @@ const Registration = () => {
     } else if (password !== confirmPassword) {
       setRegisterError("! Password and Confirm password did not matched !");
       return;
-    } else if (!termsChecked) {
-      setRegisterError("! Please accept our Terms and Conditions !");
-      return;
     }
 
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
         toast.success("Congratulation! Registration Successful");
-        updateUserProfile(name, photoURL).then(() => {
+        updateUserProfile(name).then(() => {
           e.target.reset();
           navigate("/");
         });
@@ -110,9 +105,10 @@ const Registration = () => {
           </h2>
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
-              <label className="text-white block mb-2">Name</label>
+              <label className="text-white block mb-2">Full Name</label>
               <input
                 type="text"
+                name="name"
                 className="w-full p-2 rounded-lg border border-gray-600 bg-transparent text-white outline-none"
                 placeholder="Enter your name"
                 required
@@ -122,6 +118,7 @@ const Registration = () => {
               <label className="text-white block mb-2">Email</label>
               <input
                 type="email"
+                name="email"
                 className="w-full p-2 rounded-lg border border-gray-600 bg-transparent text-white outline-none"
                 placeholder="Enter your email"
                 required
@@ -134,6 +131,7 @@ const Registration = () => {
                   type={passwordShow ? "text" : "password"}
                   className="w-full p-2 rounded-lg border border-gray-600 bg-transparent text-white outline-none"
                   placeholder="Enter your password"
+                  name="password"
                   required
                 />
                 <span
@@ -154,6 +152,7 @@ const Registration = () => {
               <div className="relative">
                 <input
                   type={conPasswordShow ? "text" : "password"}
+                  name="confirmPassword"
                   className="w-full p-2 rounded-lg border border-gray-600 bg-transparent text-white outline-none"
                   placeholder="Confirm your password"
                   required
@@ -173,12 +172,15 @@ const Registration = () => {
 
             {registerError && (
               <i>
-                <p className="md:text-lg text-base pt-4 pb-1 font-bold text-center text-red-600">
+                <p className="text-base italic font-semibold text-center text-red-500 mt-5 mb-1">
                   {registerError}
                 </p>
               </i>
             )}
-            <button className="w-full mt-4 bg-red-800 text-white p-2 rounded-lg font-semibold">
+            <button
+              type="submit"
+              className="w-full mt-4 bg-purple-700 text-white p-2 rounded-lg font-semibold"
+            >
               Create Account
             </button>
           </form>
