@@ -1,24 +1,16 @@
-// import { MdForward10 } from "react-icons/md";
-// import { MdReplay10 } from "react-icons/md";
-// import { FaCirclePlay } from "react-icons/fa6";
-// import { FaVolumeUp } from "react-icons/fa";
-// import { FaShareSquare } from "react-icons/fa";
-// import { FiDownload } from "react-icons/fi";
-// import { IoPlaySkipForward } from "react-icons/io5";
-// import { IoPlaySkipBackSharp } from "react-icons/io5";
-// import pic from "../../assets/images/ai-generated-8640312_1280.webp";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 const OurMusicCollections = () => {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   // Fetch podcasts when the component mounts
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/podcast");
+        const response = await axiosPublic.get("/podcast");
         setPodcasts(response.data);
       } catch (err) {
         console.log(err.message);
