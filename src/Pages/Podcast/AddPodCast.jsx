@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 
 const AddPodCast = () => {
   const [tags, setTags] = useState([]);
   const [input, setInput] = useState("");
   const [coverImage, setCoverImage] = useState(null);
   const [audioFile, setAudioFile] = useState(null);
+  const axiosPublic = useAxiosPublic();
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -34,8 +35,8 @@ const AddPodCast = () => {
     console.log(data);
 
     // Send POST request to backend
-    axios
-      .post("http://localhost:5000/upload", data, {
+    axiosPublic
+      .post("/upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((response) => {

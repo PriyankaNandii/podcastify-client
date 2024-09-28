@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaShareSquare, FaVolumeUp } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
