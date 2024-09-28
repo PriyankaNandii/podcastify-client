@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 const OurMusicCollections = () => {
   const [podcasts, setPodcasts] = useState([]);
+  console.log(podcasts);
   const [loading, setLoading] = useState(true);
 
   // Fetch podcasts when the component mounts
@@ -32,7 +33,7 @@ const OurMusicCollections = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading podcasts...</p>;
+    return <p className="text-center p-4 text-xl">Loading podcasts...</p>;
   }
   return (
     <div>

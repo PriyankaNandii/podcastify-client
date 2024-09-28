@@ -3,11 +3,11 @@ import mike from "/music.jpg";
 export default function Music() {
   return (
     <div className="space-y-4">
-      <section className="flex justify-between">
+      <section className="flex flex-col md:flex-row justify-between">
         <div className="flex items-center justify-center gap-4">
           <img src={mike} alt="" className="w-20 h-20 block rounded-full" />
           <div>
-            <h1 className=" text-xl">Eventually</h1>
+            <h1 className="lg:text-xl">Eventually</h1>
             <h1 className="text-[#67676C]">By Monir Kahan</h1>
           </div>
         </div>
@@ -19,7 +19,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -33,7 +33,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -42,11 +42,11 @@ export default function Music() {
           </svg>
         </div>
       </section>
-      <section className="flex justify-between">
+      <section className="flex flex-col md:flex-row justify-between">
         <div className="flex items-center justify-center gap-4">
           <img src={mike} alt="" className="w-20 h-20 block rounded-full" />
           <div>
-            <h1 className=" text-xl">Eventually</h1>
+            <h1 className="md:text-xl">Eventually</h1>
             <h1 className="text-[#67676C]">By Monir Kahan</h1>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -72,7 +72,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -81,11 +81,11 @@ export default function Music() {
           </svg>
         </div>
       </section>
-      <section className="flex justify-between">
+      <section className="flex flex-col md:flex-row justify-between">
         <div className="flex items-center justify-center gap-4">
           <img src={mike} alt="" className="w-20 h-20 block rounded-full" />
           <div>
-            <h1 className=" text-xl">Eventually</h1>
+            <h1 className="md:text-xl">Eventually</h1>
             <h1 className="text-[#67676C]">By Monir Kahan</h1>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -111,7 +111,7 @@ export default function Music() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 bg-[#23232A] p-1 rounded-md text-white ">
+            className="size-6 md:size-8 bg-[#23232A] p-1 rounded-md text-white ">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
