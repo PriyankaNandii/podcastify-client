@@ -9,7 +9,7 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddPodCast from "../Pages/Podcast/AddPodCast";
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
-import UserProfile from './../Pages/UserProfile/UserProfile';
+import UserProfile from "./../Pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +39,7 @@ const router = createBrowserRouter([
 
       {
         path: "/about-us",
-        element: (
-          <PrivateRoute>
-            <About></About>
-          </PrivateRoute>
-        ),
+        element: <About></About>,
       },
       {
         path: "/allrecentepisodes",

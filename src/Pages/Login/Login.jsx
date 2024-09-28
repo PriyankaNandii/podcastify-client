@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaMusic } from "react-icons/fa";
+import login from "../../assets/images/login.webp";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, signInWithGithub } = useAuth();
@@ -52,18 +53,18 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#253259] to-purple-950 min-h-screen flex items-center justify-center ">
+    <div className="bg-[#171717] min-h-screen flex items-center justify-center ">
       <div className="relative w-full max-w-4xl h-[600px] bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex">
         <div className="w-2/3 relative">
           <img
-            src="https://marketplace.canva.com/EAFPQ74Fj8U/1/0/1600w/canva-purple-and-black-minimalist-mic-podcast-cover-DmDZX71kNMw.jpg"
+            src={login}
             alt="Podcast"
             className="object-cover h-full w-full p-4"
           />
         </div>
 
         {/* Right Side Form */}
-        <div className="w-1/2 bg-[#253259] p-8 flex flex-col justify-center">
+        <div className="w-1/2 bg-black p-8 flex flex-col justify-center">
           <div className="flex flex-col items-center justify-center mb-6 bg-gradient-to-b bg-[#253259] p-5 rounded-t-lg">
             <FaMusic className="text-5xl text-red-950 mb-3"></FaMusic>
             <h2 className="text-center italic text-gray-300 text-3xl font-bold mb-2">
