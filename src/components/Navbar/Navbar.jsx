@@ -37,6 +37,32 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink
+            to="/user-profile"
+            className={({ isActive }) =>
+              isActive
+                ? "text-red-800 text-xl font-bold border-b-2 border-b-red-800"
+                : "text-white text-xl"
+            }
+          >
+            User Profile
+          </NavLink>
+        </li>
+      )}
+      <li>
+        <NavLink
+          to="dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? "text-red-800 text-xl font-bold border-b-2 border-b-red-800"
+              : "text-white text-xl"
+          }
+        >
+          Dashboard
+        </NavLink>
+      </li>
     </>
   );
 
