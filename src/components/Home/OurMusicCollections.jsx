@@ -35,7 +35,7 @@ const OurMusicCollections = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading podcasts...</p>;
+    return <p className="text-center p-4 text-xl">Loading podcasts...</p>;
   }
   return (
     <div>
