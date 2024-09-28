@@ -44,11 +44,7 @@ const router = createBrowserRouter([
 
       {
         path: "/about-us",
-        element: (
-          <PrivateRoute>
-            <About></About>
-          </PrivateRoute>
-        ),
+        element: <About></About>,
       },
       {
         path: "/allrecentepisodes",
