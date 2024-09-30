@@ -1,14 +1,16 @@
 
+
 import './App.css'
 
 function App() {
   
 
+
   return (
-    <>
-     <h1>Hello Team</h1>
-    </>
-  )
+    <div className="overflow-hidden">
+      <About />
+    </div>
+  );
 }
 
-export default App
+export default App;
