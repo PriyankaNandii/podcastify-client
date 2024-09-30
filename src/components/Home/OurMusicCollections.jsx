@@ -1,20 +1,12 @@
-import { MdForward10 } from "react-icons/md";
-import { MdReplay10 } from "react-icons/md";
-import { FaCirclePlay } from "react-icons/fa6";
-import { FaVolumeUp } from "react-icons/fa";
-import { FaShareSquare } from "react-icons/fa";
-import { FiDownload } from "react-icons/fi";
-import { IoPlaySkipForward } from "react-icons/io5";
-import { IoPlaySkipBackSharp } from "react-icons/io5";
-import pic from "../../assets/images/ai-generated-8640312_1280.webp";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 const OurMusicCollections = () => {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPodcastId, setCurrentPodcastId] = useState(null);
 
-  // Fetch podcasts when the component mounts
+  // Fetch podcasts
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
@@ -28,12 +20,37 @@ const OurMusicCollections = () => {
     };
 
     fetchPodcasts();
-    console.log('Podcast Length: ',podcasts.length)
   }, []);
+
+  const handlePlay = (id) => {
+    if (currentPodcastId === id) {
+      setCurrentPodcastId(null);
+    } else {
+      setCurrentPodcastId(id);
+    }
+  };
+
+  const handlePlayNext = (currentId) => {
+    if (currentPodcastId === currentId) {
+      const currentIndex = podcasts.findIndex(podcast => podcast._id === currentId);
+      const nextIndex = (currentIndex + 1) % podcasts.length;
+      setCurrentPodcastId(podcasts[nextIndex]._id);
+    }
+  };
+
+  const handlePlayPrevious = (currentId) => {
+    if (currentPodcastId === currentId) {
+      const currentIndex = podcasts.findIndex(podcast => podcast._id === currentId);
+      const previousIndex = (currentIndex - 1 + podcasts.length) % podcasts.length;
+      setCurrentPodcastId(podcasts[previousIndex]._id);
+    }
+  };
 
   if (loading) {
     return <p>Loading podcasts...</p>;
   }
+
+
   return (
     <div>
       <div className="bg-[#171717] text-white py-24">
@@ -42,8 +59,18 @@ const OurMusicCollections = () => {
         </h2>
         <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">Our Music Collections</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-        {podcasts?.map(podcast => (<Podcast key={podcast._id} podcast={podcast}></Podcast>))}
-      
+          {
+            podcasts?.map(podcast =>
+            (<Podcast
+              key={podcast._id}
+              podcast={podcast}
+              isPlay={currentPodcastId === podcast._id}
+              onPlay={() => handlePlay(podcast._id)}
+              onPlayNext={() => handlePlayNext(podcast._id)}
+              onPlayPrevious={() => handlePlayPrevious(podcast._id)}
+            ></Podcast>))
+          }
+
         </div>
 
         <div className="text-center mt-8">

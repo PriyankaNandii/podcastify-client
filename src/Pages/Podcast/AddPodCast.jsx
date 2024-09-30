@@ -25,7 +25,7 @@ const AddPodCast = () => {
         console.log(data);
 
         // Send POST request to backend
-        axios.post('http://localhost:5000/upload', data, {
+        axios.post('https://podcast-zeta.vercel.app/upload', data, {
             headers: { 'Content-Type': 'multipart/form-data' },
         })
         .then(response => {
