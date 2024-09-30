@@ -139,8 +139,45 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
                 </button>
             </div>
 
+      {/* Modal for social sharing */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg w-96 max-w-xs z-50">
+            <h4 className="text-lg font-bold mb-4 text-black">
+              Share this Podcast via
+            </h4>
+            <div className="flex space-x-4">
+              <FacebookShareButton url={shareUrl} quote={title}>
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <TwitterShareButton url={shareUrl} title={title}>
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}>
+                <LinkedinIcon size={32} round />
+              </LinkedinShareButton>
+              <WhatsappShareButton url={shareUrl}>
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+              <EmailShareButton
+                url={shareUrl}
+                subject={`Check out this podcast: ${title}`}
+                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
+              >
+                <EmailIcon size={32} round />
+              </EmailShareButton>
+            </div>
+            <button
+              onClick={toggleModal}
+              className="mt-4 text-red-500 hover:text-red-700"
+            >
+              Close
+            </button>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Podcast;
