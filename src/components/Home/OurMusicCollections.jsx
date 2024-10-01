@@ -18,7 +18,7 @@ const OurMusicCollections = () => {
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await axios.get('https://podcastify-server.vercel.app');
+        const response = await axios.get('https://podcastify-server.vercel.app/podcasts');
         setPodcasts(response.data);
       } catch (err) {
         console.log(err.message);
