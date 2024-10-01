@@ -34,20 +34,19 @@ const AddPodCast = () => {
 
     console.log(data);
 
-    // Send POST request to backend
-    axiosPublic
-      .post("/upload", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((response) => {
-        console.log(response.data);
-        toast.success("Podcast added successfully!");
-      })
-      .catch((error) => {
-        console.error(error);
-        console.log("Failed to upload podcast");
-      });
-  };
+        // Send POST request to backend
+        axios.post('http://localhost:5000/upload', data, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(response => {
+            console.log(response.data);
+            toast.success('Podcast added successfully!');
+        })
+        .catch(error => {
+            console.error(error);
+            console.log('Failed to upload podcast');
+        });
+    };
 
   // // Handle input changes
   const handleInputChange = (e) => {
