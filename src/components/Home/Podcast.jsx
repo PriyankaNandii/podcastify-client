@@ -1,10 +1,10 @@
-
-import { useState } from 'react';
-import { FaShareSquare, FaVolumeUp } from 'react-icons/fa';
-import { FaCirclePlay } from 'react-icons/fa6';
-import { FiDownload } from 'react-icons/fi';
-import { IoPlaySkipBackSharp, IoPlaySkipForward } from 'react-icons/io5';
-import { MdForward10, MdReplay10 } from 'react-icons/md';
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { FaShareSquare, FaVolumeUp } from "react-icons/fa";
+import { FaCirclePlay } from "react-icons/fa6";
+import { FiDownload } from "react-icons/fi";
+import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
+import { MdForward10, MdReplay10 } from "react-icons/md";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -16,14 +16,14 @@ import {
   LinkedinIcon,
   WhatsappIcon,
   EmailIcon,
-} from 'react-share';
+} from "react-share";
 
 const Podcast = ({ podcast }) => {
   const { title, coverImageUrl, audioFileUrl } = podcast;
 
-//   localhost sharing url
-  const shareUrl = `https://podcastify-server.vercel.app${audioFileUrl}`;
-  
+  //   localhost sharing url
+  const shareUrl = `http://localhost:5000${audioFileUrl}`;
+
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,7 +46,7 @@ const Podcast = ({ podcast }) => {
       {/* Podcast cover image */}
       <div className="relative py-4 md:px-2 px-2">
         <img
-          src={`https://podcastify-server.vercel.app${coverImageUrl}`}
+          src={`http://localhost:5000${coverImageUrl}`}
           alt="Episode Cover"
           className="w-full h-56 object-cover rounded"
         />
@@ -65,7 +65,8 @@ const Podcast = ({ podcast }) => {
       {/* Audio player controls */}
       <div className="mt-6 flex items-center lg:gap-6 gap-4 text-red-800">
         <div className="audio-timing lg:text-lg text-xs">
-          <span id="current-time">0:00</span> / <span id="total-duration">0:00</span>
+          <span id="current-time">0:00</span> /{" "}
+          <span id="total-duration">0:00</span>
         </div>
         <div className="flex lg:gap-2 gap-1">
           <button className="lg:text-2xl text-xl">
@@ -93,7 +94,9 @@ const Podcast = ({ podcast }) => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-5 rounded-lg shadow-lg w-96 max-w-xs z-50">
-            <h4 className="text-lg font-bold mb-4 text-black">Share this Podcast via</h4>
+            <h4 className="text-lg font-bold mb-4 text-black">
+              Share this Podcast via
+            </h4>
             <div className="flex space-x-4">
               <FacebookShareButton url={shareUrl} quote={title}>
                 <FacebookIcon size={32} round />
@@ -107,9 +110,10 @@ const Podcast = ({ podcast }) => {
               <WhatsappShareButton url={shareUrl}>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
-              <EmailShareButton url={shareUrl}
-               subject={`Check out this podcast: ${title}`}
-               body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
+              <EmailShareButton
+                url={shareUrl}
+                subject={`Check out this podcast: ${title}`}
+                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
               >
                 <EmailIcon size={32} round />
               </EmailShareButton>

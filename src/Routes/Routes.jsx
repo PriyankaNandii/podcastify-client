@@ -8,8 +8,13 @@ import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddPodCast from "../Pages/Podcast/AddPodCast";
+import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
+import Statistics from "../components/dashboard-component/Statistics/Statistics";
+import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
+import AllArticles from "../components/dashboard-component/articles/AllArticles";
+import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
-import UserProfile from './../Pages/UserProfile/UserProfile';
+import UserProfile from "./../Pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -39,23 +44,47 @@ const router = createBrowserRouter([
 
       {
         path: "/about-us",
-        element: (
-          <PrivateRoute>
-            <About></About>
-          </PrivateRoute>
-        ),
+        element: <About></About>,
       },
       {
         path: "/allrecentepisodes",
         element: <AllRecentEpisodes />,
       },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
+
       {
         path: "/addpodcast",
         element: <AddPodCast />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    errorElement: "Error element",
+    children: [
+      {
+        path: "",
+        element: <MiddleNavbar />,
+      },
+      {
+        path: "home",
+        element: <MiddleNavbar />,
+      },
+      {
+        path: "statistics",
+        element: <Statistics />,
+      },
+      {
+        path: "add-publisher",
+        element: <AddPublisher />,
+      },
+      {
+        path: "all-users",
+        element: <AllUsers />,
+      },
+      {
+        path: "all-articles",
+        element: <AllArticles />,
       },
     ],
   },
