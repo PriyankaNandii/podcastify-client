@@ -38,7 +38,6 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-
   }
     
 
@@ -111,7 +110,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
             </div>
             <div className="relative  py-4 md:px-2 px-2">
                 <img
-                    src={`http://localhost:5000${coverImageUrl}`}
+                    src={coverImageUrl}
                     alt="Episode 47"
                     className="w-full h-56 object-cover rounded"
                 />
@@ -128,7 +127,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
                 </h3>
             </div>
             <div className="mt-6 flex items-center lg:gap-6 gap-4 text-red-800">
-                <audio ref={audioRef} src={`http://localhost:5000${audioFileUrl}`} />
+                <audio ref={audioRef} src={audioFileUrl} />
 
                 <div className="audio-timing lg:text-lg text-xs">
                     <span id="current-time">{currentTime}</span> /

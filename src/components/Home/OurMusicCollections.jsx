@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 const OurMusicCollections = () => {
+  const axiosPublic = useAxiosPublic();
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPodcastId, setCurrentPodcastId] = useState(null);
@@ -10,7 +12,7 @@ const OurMusicCollections = () => {
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/podcast");
+        const response = await axiosPublic.get("/podcast");
         setPodcasts(response.data);
       } catch (err) {
         console.log(err.message);
