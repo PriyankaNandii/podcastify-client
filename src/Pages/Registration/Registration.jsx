@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import register from "../../assets/images/registration.webp";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 const Registration = () => {
   const { createUser, signInWithGoogle, updateUserProfile, signInWithGithub } =
     useAuth();
+  const axiosPublic = useAxiosPublic();
 
   const [registerError, setRegisterError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -21,6 +23,7 @@ const Registration = () => {
     const email = form?.email?.value;
     const password = form?.password?.value;
     const confirmPassword = form?.confirmPassword?.value;
+
     console.log(name, email, password, confirmPassword);
 
     setRegisterError("");
@@ -42,13 +45,22 @@ const Registration = () => {
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        toast.success("Congratulation! Registration Successful");
-        updateUserProfile(name).then(() => {
-          e.target.reset();
-          navigate("/");
-        });
+        const user = result?.user;
+
+        return updateUserProfile(user, { displayName: name });
       })
+      .then(() => {
+        const userInfo = { name, email };
+        return axiosPublic.post("/users", userInfo);
+      })
+      .then((res) => {
+        if (res?.data?.insertedId) {
+          toast.success("Registration Successful!");
+          form.reset();
+          navigate("/");
+        }
+      })
+
       .catch((error) => {
         console.error(error);
         if (error.code === "auth/email-already-in-use") {
@@ -66,8 +78,15 @@ const Registration = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
-        toast.success("Google Sign Up Successful!");
-        navigate("/");
+        const userInfo = {
+          email: result?.user?.email,
+          name: result?.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+          toast.success("Google Registration Successful!");
+          navigate("/");
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -79,8 +98,15 @@ const Registration = () => {
     signInWithGithub()
       .then((result) => {
         console.log(result.user);
-        toast.success("Github Sign Up Successful!");
-        navigate("/");
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+          toast.success("Github Registration Successful!");
+          navigate("/");
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -88,18 +114,18 @@ const Registration = () => {
   };
 
   return (
-    <div className="bg-[#171717] min-h-screen flex items-center justify-center ">
-      <div className="relative w-full max-w-4xl h-[600px] bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex">
-        <div className="w-2/3 relative">
+    <div className="bg-[#171717] min-h-screen flex items-center justify-center">
+      <div className="relative w-full max-w-4xl h-auto bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex flex-col lg:flex-row">
+        <div className="w-full lg:w-2/3 relative h-60 lg:h-auto">
           <img
             src={register}
             alt="Podcast"
-            className="object-cover h-full w-full"
+            className="object-cover h-full w-full p-3"
           />
         </div>
 
         {/* Right Side - Form */}
-        <div className="w-1/2 bg-black p-8 flex flex-col justify-center">
+        <div className="w-full lg:w-1/2 bg-black p-8 flex flex-col justify-center">
           <h2 className="text-white text-center text-3xl italic font-semibold mb-4">
             Create an account
           </h2>
@@ -124,6 +150,7 @@ const Registration = () => {
                 required
               />
             </div>
+
             <div>
               <label className="text-white block mb-2">Password</label>
               <div className="relative">
