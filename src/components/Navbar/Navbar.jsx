@@ -51,6 +51,20 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
+      {user && (
+        <li>
+          <NavLink
+            to="/addmusic"
+            className={({ isActive }) =>
+              isActive
+                ? "text-red-800 text-xl font-bold border-b-2 border-b-red-800"
+                : "text-white text-xl"
+            }
+          >
+            Add Music
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to="dashboard"
