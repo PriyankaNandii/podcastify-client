@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaMusic } from "react-icons/fa";
 import login from "../../assets/images/login.webp";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, signInWithGithub } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
   const [loginError, setLoginError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -25,6 +27,7 @@ const Login = () => {
 
     signInUser(email, password)
       .then((result) => {
+        console.log(result);
         toast.success("User logged in Successfully!");
         e.target.reset();
         navigate(location?.state ? location.state : "/");
@@ -36,37 +39,57 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then(() => {
-        toast.success("Google Login Successful!");
-        navigate(location?.state ? location.state : "/");
+      .then((result) => {
+        console.log(result.user);
+        const userInfo = {
+          email: result?.user?.email,
+          name: result?.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+          toast.success("Google Login Successful!");
+          navigate(location?.state ? location.state : "/");
+        });
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleGithubSignIn = () => {
     signInWithGithub()
-      .then(() => {
-        toast.success("Github Login Successful!");
-        navigate(location?.state ? location.state : "/");
+      .then((result) => {
+        console.log(result.user);
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+          toast.success("Github Login Successful!");
+          navigate(location?.state ? location.state : "/");
+        });
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
-    <div className="bg-[#171717] min-h-screen flex items-center justify-center ">
-      <div className="relative w-full max-w-4xl h-[600px] bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex">
-        <div className="w-2/3 relative">
+    <div className="bg-[#171717] min-h-screen flex items-center justify-center">
+      <div className="relative w-full max-w-4xl h-auto bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex flex-col lg:flex-row">
+        <div className="w-full lg:w-2/3 relative h-60 lg:h-auto">
           <img
             src={login}
             alt="Podcast"
-            className="object-cover h-full w-full p-4"
+            className="object-cover h-full w-full p-3"
           />
         </div>
 
         {/* Right Side Form */}
-        <div className="w-1/2 bg-black p-8 flex flex-col justify-center">
+        <div className="w-full lg:w-1/2 bg-black p-8 flex flex-col justify-center">
           <div className="flex flex-col items-center justify-center mb-6 bg-gradient-to-b bg-[#253259] p-5 rounded-t-lg">
-            <FaMusic className="text-5xl text-red-950 mb-3"></FaMusic>
+            <FaMusic className="text-5xl text-red-950 mb-3" />
             <h2 className="text-center italic text-gray-300 text-3xl font-bold mb-2">
               Listen on!
             </h2>
@@ -100,9 +123,9 @@ const Login = () => {
                   onClick={() => setPasswordShow(!passwordShow)}
                 >
                   {passwordShow ? (
-                    <IoEye className="text-lg text-gray-400"></IoEye>
+                    <IoEye className="text-lg text-gray-400" />
                   ) : (
-                    <IoEyeOff className="text-lg text-gray-400"></IoEyeOff>
+                    <IoEyeOff className="text-lg text-gray-400" />
                   )}
                 </span>
               </div>

@@ -127,7 +127,10 @@ const Navbar = () => {
           {user ? (
             <>
               <img
-                src={user?.photoURL}
+                src={
+                  user?.photoURL ||
+                  "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                }
                 alt="Profile"
                 className="w-12 h-12 rounded-full mr-2"
               />
