@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
