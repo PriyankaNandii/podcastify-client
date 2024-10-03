@@ -14,7 +14,7 @@ const OurPodcasters = () => {
           Meet with Our Podcasters
         </h1>
   
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 my-10 hover:text-white">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 my-10 hover:text-white">
         <div
             className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-[#151515]  dark:text-gray-800 hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:text-white"
             data-aos="fade-up"
