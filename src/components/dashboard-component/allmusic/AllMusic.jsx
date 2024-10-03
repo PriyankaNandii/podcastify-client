@@ -30,7 +30,7 @@ const AllMusic = () => {
         <div className="container mx-auto p-6 bg-gray-100 rounded-xl shadow-lg min-h-screen">
             {loading ? (
                 <div className="flex justify-center items-center h-64">
-                    <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500" role="status">
+                    <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-900" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>
