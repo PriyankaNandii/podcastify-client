@@ -1,7 +1,6 @@
 import Aos from "aos";
 import { useEffect } from "react";
 import 'aos/dist/aos.css';
-import { IoPeopleCircleOutline } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 const OurPodcasters = () => {
 
@@ -15,7 +14,7 @@ const OurPodcasters = () => {
           Meet with Our Podcasters
         </h1>
   
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-y-4 my-10 hover:text-white">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 my-10 hover:text-white">
         <div
             className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-[#151515]  dark:text-gray-800 hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:text-white"
             data-aos="fade-up"
@@ -31,7 +30,7 @@ const OurPodcasters = () => {
                   Leroy Jenkins
                 </h2>
                 <p className="px-5 text-xs sm:text-base text-[#dededecc] dark:text-red-500">
-                  Musician
+                  Podcaster
                 </p>
               </div>
               <div className="flex justify-center pt-2 space-x-4 align-center">
@@ -89,17 +88,17 @@ const OurPodcasters = () => {
             data-aos="fade-up"
           >
             <img
-              src="https://i.ibb.co.com/zG7MFNS/6-awesome-australian-podcasts-for-women-in-business-300x300.png"
+              src="https://i.ibb.co.com/1Kb72CG/man-podcaster-influencer-blogger-smiling-260nw-2288202551.webp"
               alt=""
               className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
             />
             <div className="space-y-4 text-center divide-y dark:divide-gray-300">
               <div className="my-2 space-y-1">
                 <h2 className="text-xl text-white font-semibold sm:text-2xl">
-                  Leroy Jenkins
+                Jack Harper
                 </h2>
                 <p className="px-5 text-xs sm:text-base text-[#dededecc] dark:text-red-500">
-                  Musician
+                  Podcaster
                 </p>
               </div>
               <div className="flex justify-center pt-2 space-x-4 align-center">
@@ -157,17 +156,17 @@ const OurPodcasters = () => {
             data-aos="fade-up"
           >
             <img
-              src="https://i.ibb.co.com/zG7MFNS/6-awesome-australian-podcasts-for-women-in-business-300x300.png"
+              src="https://i.ibb.co.com/KVKYKGy/young-woman-talking-using-mic-260nw-2263384831.webp"
               alt=""
               className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
             />
             <div className="space-y-4 text-center divide-y dark:divide-gray-300">
               <div className="my-2 space-y-1">
                 <h2 className="text-xl text-white font-semibold sm:text-2xl">
-                  Leroy Jenkins
+                Ruby Huxley
                 </h2>
                 <p className="px-5 text-xs sm:text-base text-[#dededecc] dark:text-red-500">
-                  Musician
+                 Podcaster
                 </p>
               </div>
               <div className="flex justify-center pt-2 space-x-4 align-center">
@@ -225,17 +224,17 @@ const OurPodcasters = () => {
             data-aos="fade-up"
           >
             <img
-              src="https://i.ibb.co.com/zG7MFNS/6-awesome-australian-podcasts-for-women-in-business-300x300.png"
+              src="https://i.ibb.co.com/1vZFyyc/44457084-un-indien-homme-dans-une-denim-chemise-hotes-une-podcast-de-le-sien-bien-eclaire-vivant-cha.jpg"
               alt=""
               className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
             />
             <div className="space-y-4 text-center divide-y dark:divide-gray-300">
               <div className="my-2 space-y-1">
                 <h2 className="text-xl text-white font-semibold sm:text-2xl">
-                  Leroy Jenkins
+                  John Smith
                 </h2>
                 <p className="px-5 text-xs sm:text-base text-[#dededecc] dark:text-red-500">
-                  Musician
+                  Podcaster
                 </p>
               </div>
               <div className="flex justify-center pt-2 space-x-4 align-center">
