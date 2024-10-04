@@ -15,6 +15,7 @@ import AddPublisher from "../components/dashboard-component/addPublisher/AddPubl
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
+import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
 
 const router = createBrowserRouter([
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "all-articles",
         element: <AllArticles />,
+      },
+      {
+        path: "all-music",
+        element: <AllMusic />,
       },
     ],
   },
