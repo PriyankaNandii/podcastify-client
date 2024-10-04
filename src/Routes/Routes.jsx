@@ -16,6 +16,7 @@ import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
+import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "/addmusic",
         element: <PrivateRoute><AddMusic /></PrivateRoute>,
+      },
+      {
+        path: "/podcast/:id",
+        element: (
+         
+            <OurMusicCollectionsDetailsPage />
+         
+        )
       },
     ],
   },

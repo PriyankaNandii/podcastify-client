@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import logo from "../../assets/images/newlogo.png";
 import { MdOutlineLogin } from "react-icons/md";
 import { IoPersonAdd } from "react-icons/io5";
+import { IoLogOut } from "react-icons/io5";
 
 const Navbar = () => {
   // const dashboard = useLocation();
@@ -134,8 +135,8 @@ const Navbar = () => {
                 alt="Profile"
                 className="w-12 h-12 rounded-full mr-2"
               />
-              <button onClick={handleSignOut} className="btn mr-2">
-                Logout
+              <button onClick={handleSignOut} className="mr-2">
+              <IoLogOut className="text-white text-3xl"  />
               </button>
             </>
           ) : (

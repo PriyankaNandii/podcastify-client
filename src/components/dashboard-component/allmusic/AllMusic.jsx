@@ -27,7 +27,7 @@ const AllMusic = () => {
     }, []);
 
     return (
-        <div className="container mx-auto p-6 bg-gray-100 rounded-xl shadow-lg min-h-screen">
+        <div className="container mx-auto p-6 bg-[#171717] rounded-xl shadow-lg min-h-screen">
             {loading ? (
                 <div className="flex justify-center items-center h-64">
                     <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-900" role="status">
@@ -35,11 +35,11 @@ const AllMusic = () => {
                     </div>
                 </div>
             ) : (
-                <div className="bg-white rounded-xl shadow-lg p-6">
+                <div className="bg-black rounded-xl shadow-lg p-6">
                     <h2 className="text-2xl text-center font-semibold text-red-900 mb-4">Podcast Music List</h2>
-                    <table className="table-auto w-full bg-white rounded-lg shadow-md">
+                    <table className="table-auto w-full bg-black rounded-lg shadow-md">
                         <thead>
-                            <tr className="bg-red-900 text-white">
+                            <tr className="bg-red-800 text-white">
                                 <th className="p-4 text-left">SL#</th>
                                 <th className="p-4 text-left">Title</th>
                                 <th className="p-4 text-left">Musician</th>
@@ -50,7 +50,7 @@ const AllMusic = () => {
                         </thead>
                         <tbody>
                             {podcasts.map((podcast, index) => (
-                                <tr key={podcast._id} className="border-b text-gray-700 hover:bg-blue-50">
+                                <tr key={podcast._id} className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black">
                                     <td className="p-4">{index + 1}</td> {/* SL# (Serial Number) */}
                                     <td className="p-4">{podcast.title}</td>
                                     <td className="p-4">{podcast.musician}</td>
