@@ -123,7 +123,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
                     <span>⏱️{totalDuration}</span>
                 </div>
                 <h3 className="text-2xl font-bold">
-                    <Link to={`/podcast/${_id}`}>{title}</Link>
+                <Link to={`/podcast/${_id}`}>{title}</Link> 
                 </h3>
             </div>
             <div className="mt-6 flex items-center lg:gap-6 gap-4 text-red-800">

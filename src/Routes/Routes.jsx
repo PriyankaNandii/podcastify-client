@@ -15,6 +15,7 @@ import AddPublisher from "../components/dashboard-component/addPublisher/AddPubl
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
+import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "/addmusic",
         element: <PrivateRoute><AddMusic /></PrivateRoute>,
+      },
+      {
+        path: "/podcast/:id",
+        element: (
+         
+            <OurMusicCollectionsDetailsPage />
+         
+        )
       },
     ],
   },
