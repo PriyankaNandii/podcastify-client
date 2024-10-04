@@ -1,4 +1,4 @@
-import { FaDesktop, FaHome, FaTimes, FaVoteYea } from "react-icons/fa";
+import { FaDesktop, FaHome, FaLayerGroup, FaTimes, FaVoteYea } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
@@ -55,7 +55,13 @@ export default function LeftNavbar() {
               to="/dashboard/all-articles"
               className="flex items-center justify-start gap-3">
               <GrArticle />
-              <h1>All Articles</h1>
+              <h1>All Article</h1>
+            </Link>
+            <Link
+              to="/dashboard/all-music"
+              className="flex items-center justify-start gap-3">
+              <FaLayerGroup />
+              <h1>All Music</h1>
             </Link>
           </aside>
         </div>

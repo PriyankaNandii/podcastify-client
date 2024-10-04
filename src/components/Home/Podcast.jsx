@@ -34,7 +34,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const date = dateObj.toLocaleDateString("en-US", options);
 
   //   localhost sharing url
-  const shareUrl = `https://podcastify-server.vercel.app${audioFileUrl}`;
+  const shareUrl = `http://localhost:5000${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
