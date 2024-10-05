@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom";
 import LeftNavbar from "../../components/dashboard-component/LeftNavbar";
-import MiddleNavbar from "../../components/dashboard-component/MiddleNavbar";
-import RightNavbar from "../../components/dashboard-component/RightNavbar";
 import { useState } from "react";
 
 export default function Dashboard() {
