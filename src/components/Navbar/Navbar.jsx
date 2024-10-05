@@ -13,9 +13,11 @@ function Navbar() {
   const handleSignOut = () => {
     logOut().then().catch();
   };
-
+  if (!user && isDropdownOpen) {
+    setIsDropdownOpen(false);
+  }
   return (
-    <nav className="bg-black opacity-9 shadow-md">
+    <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
         <div className="text-2xl font-bold">
           <img src={logo} className="lg:w-44 w-36" alt="Microphone GIF" />
@@ -126,6 +128,7 @@ function Navbar() {
           </div>
         )}
 
+        {/* Mobile Menu */}
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -152,7 +155,6 @@ function Navbar() {
         <div className="lg:hidden pb-6">
           {user ? (
             <>
-              {" "}
               <NavLink
                 to="/"
                 className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
@@ -170,7 +172,7 @@ function Navbar() {
                 className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
               >
                 Dashboard
-              </NavLink>{" "}
+              </NavLink>
               <NavLink
                 to="/addmusic"
                 className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
@@ -197,23 +199,23 @@ function Navbar() {
                 className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
               >
                 Dashboard
-              </NavLink>{" "}
+              </NavLink>
+              {/* Only show login and signup if user doesn't exist */}
+              <NavLink
+                to="/login"
+                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold italic"
+              >
+                <hr className="my-4 border-gray-600" />
+                Log in
+              </NavLink>
+              <NavLink
+                to="/registration"
+                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md"
+              >
+                Sign up free
+              </NavLink>
             </>
           )}
-
-          <NavLink
-            to="/login"
-            className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold italic"
-          >
-            <hr className="my-4 border-gray-600" />
-            Log in
-          </NavLink>
-          <NavLink
-            to="/registration"
-            className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md"
-          >
-            Sign up free
-          </NavLink>
         </div>
       )}
     </nav>
