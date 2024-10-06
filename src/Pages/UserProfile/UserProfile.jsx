@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import {
   FaArrowLeft,
-  FaArrowRight,
   FaLock,
   FaPodcast,
   FaQuestionCircle,
   FaSignOutAlt,
 } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -19,12 +17,11 @@ import { FaRegEdit } from "react-icons/fa";
 const UserProfile = () => {
   const { user, loading, logOut } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [userData, setUserData] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(userData?.phoneNumber || "");
 
-  // Fetch user data by ID
+  // Fetch user data by
   const fetchUserData = async () => {
     try {
       const response = await axiosSecure.get(`/users/email/${user?.email}`);
@@ -106,14 +103,7 @@ const UserProfile = () => {
                 <button
                   onClick={handleEdit}
                   className="text-gray-600 focus:outline-none"
-                >
-                  {/* <div className="flex items-center   rounded-lg">
-                    <h1 className="text-xl font-bold text-white">
-                      Profile
-                    </h1>
-                    <FaArrowRight className="w-6  h-6 text-red-800 ml-2" />
-                  </div> */}
-                </button>
+                ></button>
               </div>
 
               {/* Profile details */}
@@ -142,7 +132,7 @@ const UserProfile = () => {
                 </p>
 
                 <p className="text-[#dededecc] text-base">
-                  UserName : {userData?.username || " Not Set"}
+                  UserName : @{userData?.username || " Not Set"}
                 </p>
               </div>
 
@@ -160,7 +150,9 @@ const UserProfile = () => {
                 <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
                     <FaLock className="text-red-800   w-5 h-5" />
-                    <span className="ml-4 text-[#dededecc]">Change Password</span>
+                    <span className="ml-4 text-[#dededecc]">
+                      Change Password
+                    </span>
                   </div>
                   <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                 </div>
@@ -169,7 +161,9 @@ const UserProfile = () => {
                 <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
                     <FaQuestionCircle className="text-red-800  w-5 h-5" />
-                    <span className="ml-4 text-[#dededecc]">Help & Support</span>
+                    <span className="ml-4 text-[#dededecc]">
+                      Help & Support
+                    </span>
                   </div>
                   <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                 </div>
@@ -194,15 +188,10 @@ const UserProfile = () => {
               {/* Top bar with back button */}
               <div className="flex items-center mb-6">
                 <div className="flex  px-3 py-1 items-center">
-                  <button
-                    className=" focus:outline-none"
-                    onClick={handleEdit}
-                  >
+                  <button className=" focus:outline-none" onClick={handleEdit}>
                     <FaArrowLeft className="w-6  h-6 text-red-800 mr-3" />
                   </button>
-                  <h1 className="text-xl font-bold text-white ">
-                    Back
-                  </h1>
+                  <h1 className="text-xl font-bold text-white ">Back</h1>
                 </div>
               </div>
               {/* Profile Picture and Username */}
@@ -216,14 +205,14 @@ const UserProfile = () => {
                   alt="Profile"
                 />
                 <h2 className="text-2xl font-semibold mt-4  text-white">
-                  Name : {userData?.name }
+                  Name : {userData?.name}
                 </h2>
 
                 <p className="text-[#dededecc]  p-2 text-base">
-                 Email : {userData?.email || "Email: not found"}
+                  Email : {userData?.email || "Email: not found"}
                 </p>
                 <p className="text-[#dededecc] text-base ">
-                  UserName : {userData?.username || "Not Set"}
+                  UserName : @{userData?.username || "Not Set"}
                 </p>
               </div>
               <form onSubmit={handleUpdateProfile}>
@@ -280,7 +269,6 @@ const UserProfile = () => {
                       defaultValue={userData?.email || "Email: not found"}
                       readOnly
                       className="mt-1 p-2 border bg-[#D1D5DB] block w-full rounded-md border-gray-300 shadow-sm focus:border-red-800 focus:ring focus:ring-red-800"
-
                     />
                   </div>
                 </div>

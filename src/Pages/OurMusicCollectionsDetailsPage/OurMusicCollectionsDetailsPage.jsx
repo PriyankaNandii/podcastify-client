@@ -23,7 +23,7 @@ const OurMusicCollectionsDetailsPage = () => {
   useEffect(() => {
     const fetchPodcast = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/podcast/${id}`);
+        const response = await fetch(`http://localhost:5000/${id}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -91,12 +91,12 @@ const OurMusicCollectionsDetailsPage = () => {
   // Render podcast details if data is present
   return podcast ? (
     <div className="md:px-20 px-5 bg-[#171717]">
-      <section class=" ">
-        <div class="container px-6 py-10 mx-auto">
-          <div class="lg:flex lg:-mx-6 gap-10">
-            <div class="lg:w-3/4 lg:px-6">
+      <section className=" ">
+        <div className="container px-6 py-10 mx-auto">
+          <div className="lg:flex lg:-mx-6 gap-10">
+            <div className="lg:w-3/4 lg:px-6">
               <img
-                class="object-cover object-center w-full h-80 xl:h-[28rem] rounded-xl"
+                className="object-cover object-center w-full h-80 xl:h-[28rem] rounded-xl"
                 src={podcast.coverImageUrl}
                 alt=""
               />
@@ -140,31 +140,31 @@ const OurMusicCollectionsDetailsPage = () => {
               </div>
 
               <div>
-                <p class="mt-6 text-base text-red-800 italic">
+                <p className="mt-6 text-base text-red-800 italic">
                   Category: {podcast.category}
                 </p>
 
-                <h1 class="max-w-lg mt-4 text-2xl font-semibold leading-tight text-white dark:text-white">
+                <h1 className="max-w-lg mt-4 text-2xl font-semibold leading-tight text-white dark:text-white">
                   {podcast.title}
                 </h1>
-                <h1 class="max-w-3xl mt-2 text-base leading-tight text-[#dededecc] dark:text-white">
-                  <span className="text-2xl font-bold">Lyrics -</span> "{" "}
-                  {podcast.description} "
+                <h1 className="max-w-3xl mt-2 text-base leading-tight text-[#dededecc] dark:text-white">
+                  <span className="text-2xl font-bold">Lyrics -</span> &quot;{" "}
+                  {podcast.description} &quot;
                 </h1>
 
-                <div class="flex items-center mt-6">
+                <div className="flex items-center mt-6">
                   <img
-                    class="object-cover object-center w-10 h-10 rounded-full"
+                    className="object-cover object-center w-10 h-10 rounded-full"
                     src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                     alt=""
                   />
 
-                  <div class="flex gap-10">
+                  <div className="flex gap-10">
                     <div className="ml-5">
-                      <h1 class="text-lg text-red-800 dark:text-gray-200">
+                      <h1 className="text-lg text-red-800 dark:text-gray-200">
                         {podcast.musician}
                       </h1>
-                      <p class="text-sm text-[#dededecc] dark:text-gray-400">
+                      <p className="text-sm text-[#dededecc] dark:text-gray-400">
                         {podcast.tags}
                       </p>
                     </div>
@@ -226,7 +226,7 @@ const OurMusicCollectionsDetailsPage = () => {
                             <label className="form-control w-full max-w-xs ">
                               <div className="label">
                                 <span className="label-text">
-                                 Write Review Here
+                                  Write Review Here
                                 </span>
                               </div>
                               <input
@@ -235,7 +235,9 @@ const OurMusicCollectionsDetailsPage = () => {
                                 className="input input-bordered w-full max-w-xs"
                               />
                             </label>
-                            <button className="btn bg-red-800 text-white mt-5">Submit</button>
+                            <button className="btn bg-red-800 text-white mt-5">
+                              Submit
+                            </button>
                           </p>
                         </div>
                       </dialog>
@@ -245,7 +247,7 @@ const OurMusicCollectionsDetailsPage = () => {
               </div>
             </div>
 
-            <div class="mt-8 lg:w-2/4 lg:mt-0 lg:px-6">
+            <div className="mt-8 lg:w-2/4 lg:mt-0 lg:px-6">
               <h1 className="text-2xl text-white  py-5">Discover More Music</h1>
               <div>
                 {podcasts?.map((podcast) => (
