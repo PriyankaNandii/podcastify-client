@@ -44,6 +44,7 @@ export default function LeftNavbar() {
               </Link>
               {isAdmin ? (
                 <>
+                  {/* Admin routes only */}
                   <Link
                     to="/dashboard/all-users"
                     className="flex items-center justify-start gap-3">
@@ -78,20 +79,21 @@ export default function LeftNavbar() {
                 </>
               ) : (
                 <>
+                  {/* Podcasters only */}
                   <Link
-                    to="/dashboard/all-music"
+                    to="/dashboard/add-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Release new music</h1>
                   </Link>
                   <Link
-                    to="/dashboard/all-music"
+                    to="/dashboard/add-video"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Release new video</h1>
                   </Link>
                   <Link
-                    to="/dashboard/all-music"
+                    to="/dashboard/live-stream"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Make live</h1>

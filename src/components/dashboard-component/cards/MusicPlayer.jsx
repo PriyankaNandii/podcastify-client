@@ -84,13 +84,15 @@ export default function MusicPlayer() {
           By: {trackList[currentTrackIndex].musician}
         </h2>
       </div>
-      <audio
-        ref={audioRef}
-        src={trackList[currentTrackIndex].audioFileUrl}
-        onPlay={handlePlay}
-        onPause={handlePause}
-        controls
-      />
+      <div className="flex items-center justify-center">
+        <audio
+          ref={audioRef}
+          src={trackList[currentTrackIndex].audioFileUrl}
+          onPlay={handlePlay}
+          onPause={handlePause}
+          controls
+        />
+      </div>
 
       <div className="flex items-center justify-between text-white *:text-xl *:cursor-pointer">
         <HiArrowPathRoundedSquare />
