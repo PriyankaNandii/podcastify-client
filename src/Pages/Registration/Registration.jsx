@@ -120,7 +120,7 @@ const Registration = () => {
           <img
             src={register}
             alt="Podcast"
-            className="object-cover h-full w-full p-3"
+            className="object-cover h-full w-full"
           />
         </div>
 

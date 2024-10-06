@@ -77,8 +77,8 @@ const Login = () => {
 
   return (
     <div className="bg-[#171717] min-h-screen flex items-center justify-center">
-      <div className="relative w-full max-w-4xl h-auto bg-gradient-to-r from-[#18284c] to-[#18284c] rounded-lg overflow-hidden shadow-lg flex flex-col lg:flex-row">
-        <div className="w-full lg:w-2/3 relative h-60 lg:h-auto">
+      <div className="relative w-full max-w-4xl h-auto  rounded-lg overflow-hidden shadow-lg flex flex-col lg:flex-row">
+        <div className="w-full lg:w-2/3 relative h-64 lg:h-auto">
           <img
             src={login}
             alt="Podcast"
@@ -87,9 +87,9 @@ const Login = () => {
         </div>
 
         {/* Right Side Form */}
-        <div className="w-full lg:w-1/2 bg-black p-8 flex flex-col justify-center">
-          <div className="flex flex-col items-center justify-center mb-6 bg-gradient-to-b bg-[#253259] p-5 rounded-t-lg">
-            <FaMusic className="text-5xl text-red-950 mb-3" />
+        <div className="w-full lg:w-1/2 bg-black p-8  flex flex-col justify-center">
+          <div className="flex flex-col items-center justify-center mb-6 bg-gradient-to-b  p-5 rounded-t-lg">
+            <FaMusic className="text-5xl text-red-800 mb-3" />
             <h2 className="text-center italic text-gray-300 text-3xl font-bold mb-2">
               Listen on!
             </h2>
@@ -136,7 +136,7 @@ const Login = () => {
                 {loginError}
               </p>
             )}
-            <button className="w-full mt-4 bg-purple-700 text-white p-2 rounded-lg font-semibold">
+            <button className="w-full mt-4 bg-red-800 text-white p-2 rounded-lg font-semibold">
               Sign In
             </button>
           </form>

@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
 import {
   FaArrowLeft,
-  FaArrowRight,
   FaLock,
   FaPodcast,
   FaQuestionCircle,
   FaSignOutAlt,
 } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import "../UserProfile/user.css";
+import { FaRegEdit } from "react-icons/fa";
 
 const UserProfile = () => {
   const { user, loading, logOut } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [userData, setUserData] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(userData?.phoneNumber || "");
 
-  // Fetch user data by ID
+  // Fetch user data by
   const fetchUserData = async () => {
     try {
       const response = await axiosSecure.get(`/users/email/${user?.email}`);
@@ -91,95 +89,92 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="flex bg-gradient-to-r from-[#142a4c] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% justify-center items-center min-h-screen p-4">
-      <div className="relative md:w-8/12  shadow-lg rounded-lg overflow-hidden">
+    <div className="flex bg-gradient-to-r from-[#142a4c] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% justify-center items-center min-h-screen">
+      <div className="relative w-full  shadow-lg rounded-lg overflow-hidden">
         <img
           src="https://static.vecteezy.com/system/resources/previews/037/169/619/non_2x/ai-generated-recording-a-podcast-in-the-office-free-photo.jpg"
           alt="Podcast Background"
           className="absolute inset-0 object-cover w-full h-full"
         />
-        <div className="relative z-10 min-h-screen flex flex-col p-6">
+        <div className="relative z-10 min-h-screen flex flex-col md:w-5/12 mx-auto m-5">
           {!isEditing ? (
             <div className="flex flex-col">
-              <div className="flex items-center mb-6">
+              <div className="flex items-center mb-">
                 <button
                   onClick={handleEdit}
                   className="text-gray-600 focus:outline-none"
-                >
-                  <div className="flex items-center bg-gray-800 px-3 py-1 rounded-lg">
-                    <h1 className="text-2xl italic font-bold text-blue-700">
-                      Profile
-                    </h1>
-                    <FaArrowRight className="w-6 italic h-6 text-blue-700 ml-2" />
-                  </div>
-                </button>
+                ></button>
               </div>
 
               {/* Profile details */}
-              <div className="flex flex-col items-center mt-6 bg-gray-300 rounded-lg shadow-md p-4">
+              <div className="flex flex-col items-center  bg-black rounded-lg shadow-md p-8">
+                <button
+                  onClick={handleEdit}
+                  className="flex justify-end text-4xl text-red-800  rounded-lg w-full"
+                >
+                  <FaRegEdit className="border border-red-800 p-2 rounded-md" />
+                </button>
+
                 <img
-                  className="w-28 h-28 rounded-full border-4 border-blue-300 shadow-md"
+                  className="w-36 h-36 rounded-full border-4 border-red-800 shadow-md"
                   src={
                     user?.photoURL ||
                     "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
                   }
                   alt="Profile"
                 />
-                <h2 className="text-xl font-bold mt-4 text-gray-800">
-                  {userData?.name}
+                <h2 className="text-2xl font-bold mt-4 text-white">
+                  Name : {userData?.name}
                 </h2>
 
-                <p className="text-gray-600 text-sm mt-1 mb-1 lowercase italic">
-                  {userData?.email || "Email: not found"}
+                <p className="text-[#dededecc] text-base py-2 ">
+                  Email : {userData?.email || "Email: not found"}
                 </p>
 
-                <p className="text-gray-600 text-base lowercase italic">
-                  @{userData?.username}
+                <p className="text-[#dededecc] text-base">
+                  UserName : @{userData?.username || " Not Set"}
                 </p>
-
-                <button
-                  onClick={handleEdit}
-                  className="mt-4 px-6 py-2 text-white rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/80 dark:shadow-lg dark:shadow-blue-800/80"
-                >
-                  Edit Profile
-                </button>
               </div>
 
               <div className="mt-8 space-y-4">
                 {/* My Podcasts */}
-                <div className="flex items-center justify-between px-6 py-4 bg-gray-300 rounded-lg shadow-sm">
+                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
-                    <FaPodcast className="text-blue-500 w-5 h-5" />
-                    <span className="ml-4 text-gray-800">My Podcasts</span>
+                    <FaPodcast className="text-red-800   w-5 h-5" />
+                    <span className="ml-4 text-[#dededecc]">My Podcasts</span>
                   </div>
                   <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                 </div>
 
                 {/* Change Password */}
-                <div className="flex items-center justify-between px-6 py-4 bg-gray-300 rounded-lg shadow-sm">
+                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
-                    <FaLock className="text-blue-500 w-5 h-5" />
-                    <span className="ml-4 text-gray-800">Change Password</span>
+                    <FaLock className="text-red-800   w-5 h-5" />
+                    <span className="ml-4 text-[#dededecc]">
+                      Change Password
+                    </span>
                   </div>
                   <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                 </div>
 
                 {/* Help & Support */}
-                <div className="flex items-center justify-between px-6 py-4 bg-gray-300 rounded-lg shadow-sm">
+                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
-                    <FaQuestionCircle className="text-blue-500 w-5 h-5" />
-                    <span className="ml-4 text-gray-800">Help & Support</span>
+                    <FaQuestionCircle className="text-red-800  w-5 h-5" />
+                    <span className="ml-4 text-[#dededecc]">
+                      Help & Support
+                    </span>
                   </div>
                   <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                 </div>
 
                 {/* Log out */}
-                <div className="flex items-center justify-between px-6 py-4 bg-gray-300 rounded-lg shadow-sm">
+                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
                   <div className="flex items-center">
-                    <FaSignOutAlt className="text-blue-500 w-5 h-5" />
+                    <FaSignOutAlt className="text-red-800  w-5 h-5" />
                     <button
                       onClick={handleSignOut}
-                      className="ml-4 text-gray-800"
+                      className="ml-4 text-[#dededecc]"
                     >
                       Log out
                     </button>
@@ -192,51 +187,46 @@ const UserProfile = () => {
             <div className="flex flex-col">
               {/* Top bar with back button */}
               <div className="flex items-center mb-6">
-                <div className="flex bg-gray-800 px-3 py-1 items-center">
-                  <button
-                    className="text-gray-600 focus:outline-none"
-                    onClick={handleEdit}
-                  >
-                    <FaArrowLeft className="w-6 italic h-6 text-blue-700 mr-3" />
+                <div className="flex  px-3 py-1 items-center">
+                  <button className=" focus:outline-none" onClick={handleEdit}>
+                    <FaArrowLeft className="w-6  h-6 text-red-800 mr-3" />
                   </button>
-                  <h1 className="text-xl italic font-bold text-blue-700">
-                    Edit Profile
-                  </h1>
+                  <h1 className="text-xl font-bold text-white ">Back</h1>
                 </div>
               </div>
               {/* Profile Picture and Username */}
-              <div className="flex flex-col items-center mt-6">
+              <div className="flex flex-col items-center">
                 <img
-                  className="w-28 h-28 rounded-full border-4 border-blue-300 shadow-md"
+                  className="w-36 h-36 rounded-full border-4 border-red-800 shadow-md"
                   src={
                     user?.photoURL ||
                     "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
                   }
                   alt="Profile"
                 />
-                <h2 className="text-xl font-semibold mt-4 italic text-white">
-                  {userData?.name}
+                <h2 className="text-2xl font-semibold mt-4  text-white">
+                  Name : {userData?.name}
                 </h2>
 
-                <p className="text-gray-300 mt-1 mb-1 lowercase italic">
-                  {userData?.email || "Email: not found"}
+                <p className="text-[#dededecc]  p-2 text-base">
+                  Email : {userData?.email || "Email: not found"}
                 </p>
-                <p className="text-gray-300 lowercase italic">
-                  @{userData?.username}
+                <p className="text-[#dededecc] text-base ">
+                  UserName : @{userData?.username || "Not Set"}
                 </p>
               </div>
               <form onSubmit={handleUpdateProfile}>
                 <div className="mt-8 px-6 space-y-4">
                   {/* Full Name */}
                   <div className="w-10/12 mx-auto">
-                    <label className="block text-sm italic font-semibold text-blue-100">
+                    <label className="block text-base font-semibold text-blue-100">
                       Full name
                     </label>
                     <input
                       type="text"
                       name="name"
                       defaultValue={userData?.name}
-                      className="mt-1 p-2 border bg-gray-300 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500"
+                      className="mt-1 p-2 border bg-[#D1D5DB] block w-full rounded-md border-gray-300 shadow-sm focus:border-red-800 focus:ring focus:ring-red-800"
                     />
                   </div>
 
@@ -257,20 +247,20 @@ const UserProfile = () => {
 
                   {/* Username */}
                   <div className="w-10/12 mx-auto">
-                    <label className="block text-sm italic font-semibold text-blue-100">
+                    <label className="block text-base font-semibold text-blue-100">
                       Username
                     </label>
                     <input
                       type="text"
                       name="username"
                       defaultValue={userData?.username}
-                      className="mt-1 lowercase p-2 border bg-gray-300 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500"
+                      className="mt-1 p-2 border bg-[#D1D5DB] block w-full rounded-md border-gray-300 shadow-sm focus:border-red-800 focus:ring focus:ring-red-800"
                     />
                   </div>
 
                   {/* Email */}
                   <div className="w-10/12 mx-auto">
-                    <label className="block text-sm italic font-semibold text-blue-100">
+                    <label className="block text-base font-semibold text-blue-100">
                       Email
                     </label>
                     <input
@@ -278,7 +268,7 @@ const UserProfile = () => {
                       name="email"
                       defaultValue={userData?.email || "Email: not found"}
                       readOnly
-                      className="mt-1 p-2 bg-gray-300 border block w-full rounded-md border-gray-300 shadow-sm"
+                      className="mt-1 p-2 border bg-[#D1D5DB] block w-full rounded-md border-gray-300 shadow-sm focus:border-red-800 focus:ring focus:ring-red-800"
                     />
                   </div>
                 </div>
@@ -287,7 +277,7 @@ const UserProfile = () => {
                 <div className="px-6 mt-8 w-7/12 mx-auto">
                   <button
                     type="submit"
-                    className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300"
+                    className="w-full py-3 bg-gradient-to-r from-red-800 to-black text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 transition duration-300"
                   >
                     Save
                   </button>
