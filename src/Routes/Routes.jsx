@@ -22,6 +22,9 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: (
+      <h1 className="text-center text-lg">Oops! something went wrong</h1>
+    ),
     children: [
       {
         path: "/",
@@ -55,7 +58,11 @@ const router = createBrowserRouter([
 
       {
         path: "/addmusic",
-        element: <PrivateRoute><AddMusic /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddMusic />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/podcast/:id",
@@ -69,8 +76,14 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
-    errorElement: "Error element",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    errorElement: (
+      <h1 className="text-center text-lg">Oops! something went wrong</h1>
+    ),
     children: [
       {
         path: "",
@@ -81,21 +94,14 @@ const router = createBrowserRouter([
         element: <MiddleNavbar />,
       },
       {
-        path: "statistics",
-        element: <Statistics />,
-      },
-      {
-        path: "add-publisher",
-        element: <AddPublisher />,
-      },
-      {
         path: "all-users",
         element: <AllUsers />,
       },
       {
-        path: "all-articles",
-        element: <AllArticles />,
+        path: "all-podcasters",
+        element: <AddPublisher />,
       },
+
       {
         path: "all-music",
         element: <AllMusic />,

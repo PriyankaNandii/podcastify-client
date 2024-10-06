@@ -126,10 +126,16 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   return (
     <div className="bg-black p-6 rounded-lg shadow-lg w-full">
       <div className="flex justify-end items-center text-red-800 gap-4 mr-2">
-        <button onClick={toggleModal} className="text-2xl">
+        <button
+          onClick={toggleModal}
+          className="text-2xl"
+          title="Share this song">
           <FaShareSquare />
         </button>
-        <button onClick={handleDownload} className="text-2xl">
+        <button
+          onClick={handleDownload}
+          className="text-2xl"
+          title="Download this song">
           <FiDownload />
         </button>
         <button className="text-sm border border-red-800 p-1">1px</button>
@@ -219,15 +225,13 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
               <EmailShareButton
                 url={shareUrl}
                 subject={`Check out this podcast: ${title}`}
-                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
-              >
+                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}>
                 <EmailIcon size={32} round />
               </EmailShareButton>
             </div>
             <button
               onClick={toggleModal}
-              className="mt-4 text-red-500 hover:text-red-700"
-            >
+              className="mt-4 text-red-500 hover:text-red-700">
               Close
             </button>
           </div>
