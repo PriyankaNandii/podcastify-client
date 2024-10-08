@@ -4,15 +4,14 @@ import Cards from "./cards/Cards";
 import Music from "./cards/Music";
 import MusicPlayer from "./cards/MusicPlayer";
 import mike from "/music.jpg";
-import useOnlyAdmin from "../../Hooks/useOnlyAdmin";
+
 import Statistics from "./Statistics/Statistics";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 export default function MiddleNavbar() {
-  const { isAdmin, loading } = useOnlyAdmin();
-  const { role } = useCheckUserRole();
+  const { role, isPending } = useCheckUserRole();
   return (
     <>
-      {loading ? (
+      {isPending ? (
         <h1 className="text-center text-lg">Please wait...</h1>
       ) : (
         <>
