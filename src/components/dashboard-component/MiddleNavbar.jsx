@@ -6,20 +6,23 @@ import MusicPlayer from "./cards/MusicPlayer";
 import mike from "/music.jpg";
 import useOnlyAdmin from "../../Hooks/useOnlyAdmin";
 import Statistics from "./Statistics/Statistics";
+import useCheckUserRole from "../../Hooks/useCheckUserRole";
 export default function MiddleNavbar() {
   const { isAdmin, loading } = useOnlyAdmin();
+  const { role } = useCheckUserRole();
   return (
     <>
       {loading ? (
         <h1 className="text-center text-lg">Please wait...</h1>
       ) : (
         <>
-          {isAdmin ? (
+          {role === "admin" && (
             <>
               <Statistics />
             </>
-          ) : (
-            <div className="p-5 bg-[#18181F] flex items-start justify-center relative">
+          )}
+          {(role === "podcaster" || role === "user") && (
+            <div className="p-2 md:p-5 bg-[#18181F] flex items-start flex-col-reverse lg:flex-row justify-center relative">
               {/* discover section */}
               <div className="p-2">
                 <section className="flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-between text-white p-4">
@@ -64,9 +67,7 @@ export default function MiddleNavbar() {
                   </div>
                 </section>
                 {/* Melody section */}
-                <section className="block md:hidden w-[320px] mx-auto">
-                  <MusicPlayer />
-                </section>
+
                 <section className="flex flex-col lg:flex-row items-center justify-center gap-4 p-2 md:p-5 mt-4 border rounded-3xl bg-[#232329]">
                   <div className="space-y-3 col-span-3 text-white">
                     <h1>MELODY</h1>
@@ -109,9 +110,11 @@ export default function MiddleNavbar() {
                   </div>
                 </section>
               </div>
-              <div className="hidden md:block w-[800px]">
-                <RightNavbar />
-              </div>
+              {role !== "user" && (
+                <div className="w-full lg:w-[800px] justify-center items-center flex">
+                  <RightNavbar />
+                </div>
+              )}
             </div>
           )}
         </>

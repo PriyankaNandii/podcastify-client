@@ -5,9 +5,9 @@ import { useState } from "react";
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
   return (
-    <div>
+    <div className="bg-[#18181F]">
       <div
-        className="bg-[#18181F] z-10 w-full p-3 block fixed left-0 top-0 lg:hidden"
+        className=" z-10 w-full p-3 block fixed left-0 top-0 lg:hidden"
         onClick={() => isOpen(!open)}>
         {!open ? (
           <svg
