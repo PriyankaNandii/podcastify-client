@@ -6,19 +6,22 @@ import MusicPlayer from "./cards/MusicPlayer";
 import mike from "/music.jpg";
 import useOnlyAdmin from "../../Hooks/useOnlyAdmin";
 import Statistics from "./Statistics/Statistics";
+import useCheckUserRole from "../../Hooks/useCheckUserRole";
 export default function MiddleNavbar() {
   const { isAdmin, loading } = useOnlyAdmin();
+  const { role } = useCheckUserRole();
   return (
     <>
       {loading ? (
         <h1 className="text-center text-lg">Please wait...</h1>
       ) : (
         <>
-          {isAdmin ? (
+          {role === "admin" && (
             <>
               <Statistics />
             </>
-          ) : (
+          )}
+          {(role === "podcaster" || role === "user") && (
             <div className="p-2 md:p-5 bg-[#18181F] flex items-start flex-col-reverse lg:flex-row justify-center relative">
               {/* discover section */}
               <div className="p-2">
@@ -107,9 +110,11 @@ export default function MiddleNavbar() {
                   </div>
                 </section>
               </div>
-              <div className="w-full lg:w-[800px] justify-center items-center flex">
-                <RightNavbar />
-              </div>
+              {role !== "user" && (
+                <div className="w-full lg:w-[800px] justify-center items-center flex">
+                  <RightNavbar />
+                </div>
+              )}
             </div>
           )}
         </>
