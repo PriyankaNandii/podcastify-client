@@ -23,12 +23,12 @@ export default function LeftNavbar() {
   const { role, isPending } = useCheckUserRole();
 
   return (
-    <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full">
+    <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full h-full flex overflow-y-auto">
       {/*  */}
       {isPending ? (
         <h1 className="text-center text-sm text-white">Please wait...</h1>
       ) : (
-        <div>
+        <div className="">
           <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
             <img src={photoURL} alt="" className="w-20 h-20 rounded-full" />
             <h1 className="text-xl font-bold">Hi, {displayName}</h1>
@@ -120,9 +120,7 @@ export default function LeftNavbar() {
             </aside>
           </div>
 
-          {/* General */}
-
-          <div className="pl-5 pt-2 font-black mt-6">
+          <div className="pl-5 pt-2 font-black mt-6 flex-grow">
             <h1 className="text-white">General</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
               <div className="flex items-center justify-start gap-3">

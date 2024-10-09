@@ -32,5 +32,5 @@ export default function useCheckUserRole() {
     default:
       break;
   }
-  return { role, isPending, isError, error };
+  return { role, isPending, isError, error, data };
 }
