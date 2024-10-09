@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
-export default function PreventUnauthorizedPerson({ user, name }) {
+export default function PreventUnauthorizedPerson({ email, name }) {
   const { logOut } = useAuth();
   const container = useRef();
   const tl = useRef();

@@ -17,6 +17,7 @@ import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
+import InfiniteScrollingCards from "../components/Home/InfiniteScrollingCards";
 
 const router = createBrowserRouter([
   {
