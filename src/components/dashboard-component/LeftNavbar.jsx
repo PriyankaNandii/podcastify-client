@@ -90,7 +90,7 @@ export default function LeftNavbar() {
                     className="flex items-center justify-start gap-3"
                   >
                     <FaLayerGroup />
-                    <h1>All Music</h1>
+                    <h1>All Podcast</h1>
                   </Link>
 
                   <Link
