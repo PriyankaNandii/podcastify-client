@@ -51,7 +51,7 @@ const Registration = () => {
         return updateUserProfile(user, { displayName: name });
       })
       .then(() => {
-        const userInfo = { name, email };
+        const userInfo = { name, email, role: "user" };
         return axiosPublic.post("/users", userInfo);
       })
       .then((res) => {
