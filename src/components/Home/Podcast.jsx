@@ -34,7 +34,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const date = dateObj.toLocaleDateString("en-US", options);
 
   //   localhost sharing url
-  const shareUrl = `http://localhost:5000${audioFileUrl}`;
+  const shareUrl = `https://podcastify-server.vercel.app${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -129,13 +129,15 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         <button
           onClick={toggleModal}
           className="text-2xl"
-          title="Share this song">
+          title="Share this song"
+        >
           <FaShareSquare />
         </button>
         <button
           onClick={handleDownload}
           className="text-2xl"
-          title="Download this song">
+          title="Download this song"
+        >
           <FiDownload />
         </button>
         <button className="text-sm border border-red-800 p-1">1px</button>
@@ -225,13 +227,15 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
               <EmailShareButton
                 url={shareUrl}
                 subject={`Check out this podcast: ${title}`}
-                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}>
+                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
+              >
                 <EmailIcon size={32} round />
               </EmailShareButton>
             </div>
             <button
               onClick={toggleModal}
-              className="mt-4 text-red-500 hover:text-red-700">
+              className="mt-4 text-red-500 hover:text-red-700"
+            >
               Close
             </button>
           </div>

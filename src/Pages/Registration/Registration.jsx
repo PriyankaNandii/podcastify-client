@@ -81,6 +81,7 @@ const Registration = () => {
         const userInfo = {
           email: result?.user?.email,
           name: result?.user?.displayName,
+          role: "user",
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -101,6 +102,7 @@ const Registration = () => {
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          role: "user",
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);

@@ -24,9 +24,9 @@ export default function Statistics() {
 
   // dummy data
   const data = [
-    { name: "Total Users", value: stats?.user || 70 },
-    { name: "Active Podcasters", value: stats?.podcasters || 60 },
-    { name: "Episodes", value: stats?.episodes || 50 },
+    { name: "Total Users", value: stats?.users || 0 },
+    { name: "Active Podcasters", value: stats?.podcasters || 10 },
+    { name: "Episodes", value: stats?.episodes || 10 },
   ];
 
   const COLORS = ["#1E3A8A", "#6B7299", "#FF0000"];
