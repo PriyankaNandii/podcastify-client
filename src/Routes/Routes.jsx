@@ -3,7 +3,6 @@ import Root from "../Layout/Root";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
-
 import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -13,8 +12,10 @@ import AddPublisher from "../components/dashboard-component/addPublisher/AddPubl
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
-import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
+import MyMusic from "../Pages/Dashboard/Podcaster/MyMusic";
+import EditPodcast from "../Pages/Dashboard/Podcaster/EditPodcast";
+import AllPodCaster from "../Pages/Dashboard/Admin/AllPodCaster";
 
 const router = createBrowserRouter([
   {
@@ -95,10 +96,17 @@ const router = createBrowserRouter([
         path: "all-podcasters",
         element: <AddPublisher />,
       },
-
       {
         path: "all-music",
-        element: <AllMusic />,
+        element: <AllPodCaster />,
+      },      
+      {
+        path: "my-music",
+        element: <MyMusic />,
+      },
+      {
+        path: "my-music/edit/:id",
+        element: <EditPodcast />,
       },
       {
         path: "add-video",
