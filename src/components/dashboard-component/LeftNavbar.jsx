@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
+import { SiWebtrees } from "react-icons/si";
 import { MdLogout } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
@@ -82,6 +83,12 @@ export default function LeftNavbar() {
               {role === "podcaster" && (
                 <>
                   <Link
+                    to="/dashboard/my-music"
+                    className="flex items-center justify-start gap-3">
+                    <FaLayerGroup />
+                    <h1>Manage Music</h1>
+                  </Link>
+                  <Link
                     to="/dashboard/add-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
@@ -125,6 +132,10 @@ export default function LeftNavbar() {
           <div className="pl-5 pt-2 font-black mt-6">
             <h1 className="text-white">General</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
+              <div className="flex items-center justify-start gap-3">
+                <SiWebtrees />
+                <Link to='/'><h1>View Site</h1></Link>
+              </div>
               <div className="flex items-center justify-start gap-3">
                 <IoSettings />
                 <h1>Settings</h1>
