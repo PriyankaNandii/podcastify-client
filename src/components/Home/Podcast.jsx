@@ -5,7 +5,7 @@ import { FaShareSquare, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
-import { MdForward10, MdReplay10 } from "react-icons/md";
+import { MdForward10, MdOutlinePlaylistAdd, MdReplay10 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import {
   FacebookShareButton,
@@ -138,7 +138,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
           title="Download this song">
           <FiDownload />
         </button>
-        <button className="text-sm border border-red-800 p-1">1px</button>
+        <button className="text-2xl"><MdOutlinePlaylistAdd /></button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">
         <img
