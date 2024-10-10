@@ -15,7 +15,9 @@ const LatestEpisodes = () => {
       <h2 className="text-center text-red-800 text-lg p-3">
         Start Listening Today
       </h2>
-      <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">Popular Music's</h1>
+      <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
+        Popular Music's
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
         <div className="bg-[#151515] p-6 rounded-lg shadow-lg lg:w-96 w-full">
           <div className="relative md:px-10 px-10 py-2">
@@ -43,9 +45,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           "
-          >
-            <div class="audio-timing lg:text-lg text-xs">
+           ">
+            <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
             </div>
@@ -106,9 +107,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           "
-          >
-            <div class="audio-timing lg:text-lg text-xs">
+           ">
+            <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
             </div>
@@ -169,9 +169,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           "
-          >
-            <div class="audio-timing lg:text-lg text-xs">
+           ">
+            <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
             </div>
@@ -206,16 +205,15 @@ const LatestEpisodes = () => {
             <button className="text-sm border border-red-800 p-1">1px</button>
           </div>
         </div>
-        
       </div>
 
-     <Link to="/allrecentepisodes">
-     <div className="text-center mt-8">
-        <button className="bg-red-800 text-white lg:px-6 px-3 lg:py-4 py-2 text-lg rounded-md">
-          Load More
-        </button>
-      </div>
-     </Link>
+      <Link to="/allrecentepisodes">
+        <div className="text-center mt-8">
+          <button className="bg-red-800 text-white lg:px-6 px-3 lg:py-4 py-2 text-lg rounded-md">
+            Load More
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };

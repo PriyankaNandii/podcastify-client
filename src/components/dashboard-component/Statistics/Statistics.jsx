@@ -7,14 +7,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import useOnlyAdmin from "../../../Hooks/useOnlyAdmin";
 
 export default function Statistics() {
-  const { allUsers } = useOnlyAdmin();
-  const onlyUser = allUsers.filter((user) => user.role === "user");
-  const onlyPodcasters = allUsers.filter(
-    (podcast) => podcast.role === "podcaster"
-  );
   const data = [
     {
       user: 100,

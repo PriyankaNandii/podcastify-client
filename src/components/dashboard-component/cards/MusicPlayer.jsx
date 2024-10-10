@@ -74,7 +74,7 @@ export default function MusicPlayer() {
     <div className="text-center space-y-8 p-4 rounded-xl bg-[#23232A] select-none">
       <h1 className="text-white text-lg">Now Playing</h1>
       <img
-        src={trackList[currentTrackIndex].coverImageUrl}
+        src={trackList[currentTrackIndex]?.coverImageUrl}
         alt=""
         className="w-full h-36 rounded-2xl mx-auto"
       />
