@@ -1,15 +1,13 @@
 import { Outlet } from "react-router-dom";
 import LeftNavbar from "../../components/dashboard-component/LeftNavbar";
-import MiddleNavbar from "../../components/dashboard-component/MiddleNavbar";
-import RightNavbar from "../../components/dashboard-component/RightNavbar";
 import { useState } from "react";
 
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
   return (
-    <div>
+    <div className="bg-[#18181F]">
       <div
-        className="bg-[#18181F] z-10 w-full p-3 block fixed left-0 top-0 lg:hidden"
+        className=" z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
         onClick={() => isOpen(!open)}>
         {!open ? (
           <svg
@@ -45,7 +43,7 @@ export default function Dashboard() {
       <div
         className={`fixed w-full ${
           !open ? "h-0" : "h-[200px]"
-        }  lg:w-64 lg:left-0 lg:top-0 mt-0 z-20 lg:m-0 top-12 overflow-y-scroll lg:h-screen`}>
+        }  lg:w-64 lg:left-0 lg:top-0 mt-0 z-20 lg:m-0 top-12 lg:h-screen`}>
         <LeftNavbar />
       </div>
       <div

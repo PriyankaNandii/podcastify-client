@@ -157,7 +157,7 @@
 // export default Reviews;
 
 import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -189,11 +189,13 @@ const Reviews = () => {
         Start Listening Today
       </h2>
       <h1 className="text-center text-2xl lg:text-5xl font-bold mb-12 text-white">
-        What Our Listener's Are Saying
+        What Our Listener&apos;s Are Saying
       </h1>
       <div className="  flex gap-4 justify-end items-center p-3">
-        <h1 className="text-[#dededecc] text-lg">Share Your Experience Here</h1> 
-        <h1 className="text-red-800 text-xl"><GrEdit /></h1>
+        <h1 className="text-[#dededecc] text-lg">Share Your Experience Here</h1>
+        <h1 className="text-red-800 text-xl">
+          <GrEdit />
+        </h1>
       </div>
       <Swiper
         slidesPerView={3}
@@ -207,93 +209,102 @@ const Reviews = () => {
         onResize={(swiper) => swiper.changeDirection(getDirection())}
         className="swiper"
       >
-        <div class="grid w-full grid-cols-1 gap-8 mt-8 2xl:grid-cols-3  lg:mt-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-items-center">
-          <div class="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
-            <p class="leading-loose text-white dark:text-gray-400">
-            "I love using Podcastify for my music podcast needs! I've learned so much about different music styles and the stories behind them. It's a fantastic resource for music lovers everywhere!"
+        <div className="grid w-full grid-cols-1 gap-8 mt-8 2xl:grid-cols-3  lg:mt-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-items-center">
+          <div className="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
+            <p className="leading-loose text-white dark:text-gray-400">
+              &quot;I love using Podcastify for my music podcast needs!
+              I&apos;ve learned so much about different music styles and the
+              stories behind them. It&apos;s a fantastic resource for music
+              lovers everywhere!&quot;
             </p>
 
-            <div class="flex items-center mt-6 -mx-2">
+            <div className="flex items-center mt-6 -mx-2">
               <img
-                class="object-cover mx-2 rounded-full w-14 h-14"
+                className="object-cover mx-2 rounded-full w-14 h-14"
                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 alt=""
               />
 
-              <div class="mx-2">
-                <h1 class="font-semibold text-red-800 dark:text-white">
+              <div className="mx-2">
+                <h1 className="font-semibold text-red-800 dark:text-white">
                   Robbert
                 </h1>
-                <span class="text-sm text-[#dededecc] dark:text-gray-400">
+                <span className="text-sm text-[#dededecc] dark:text-gray-400">
                   CTO, Robert Consultency
                 </span>
               </div>
             </div>
           </div>
 
-          <div class="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
-            <p class="leading-loose text-white dark:text-gray-400">
-            "I had an amazing experience with Podcastify!The interface is user-friendly, making it easy to navigate through various genres and episodes. I highly recommend this platform to anyone looking to explore new music content!"
+          <div className="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
+            <p className="leading-loose text-white dark:text-gray-400">
+              &quot;I had an amazing experience with Podcastify! The interface
+              is user-friendly, making it easy to navigate through various
+              genres and episodes. I highly recommend this platform to anyone
+              looking to explore new music content!&quot;
             </p>
 
-            <div class="flex items-center mt-6 -mx-2">
+            <div className="flex items-center mt-6 -mx-2">
               <img
-                class="object-cover mx-2 rounded-full w-14 h-14"
+                className="object-cover mx-2 rounded-full w-14 h-14"
                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 alt=""
               />
 
-              <div class="mx-2">
-                <h1 class="font-semibold text-red-800 dark:text-white">
-                Emily Carter
+              <div className="mx-2">
+                <h1 className="font-semibold text-red-800 dark:text-white">
+                  Emily Carter
                 </h1>
-                <span class="text-sm text-[#dededecc] dark:text-gray-400">
-                Los Angeles, CA, USA
+                <span className="text-sm text-[#dededecc] dark:text-gray-400">
+                  Los Angeles, CA, USA
                 </span>
               </div>
             </div>
           </div>
 
-          <div class="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
-            <p class="leading-loose text-white dark:text-gray-400">
-            "The quality of the podcasts is top-notch, and I appreciate how easy it is to subscribe and keep up with my favorite shows. The recommendations are spot on, and I always discover new artists and trends!"
+          <div className="w-full p-8 bg-[#151515] rounded-md shadow-lg dark:bg-gray-800">
+            <p className="leading-loose text-white dark:text-gray-400">
+              &quot;The quality of the podcasts is top-notch, and I appreciate
+              how easy it is to subscribe and keep up with my favorite shows.
+              The recommendations are spot on, and I always discover new artists
+              and trends!&quot;
             </p>
 
-            <div class="flex items-center mt-6 -mx-2">
+            <div className="flex items-center mt-6 -mx-2">
               <img
-                class="object-cover mx-2 rounded-full w-14 h-14"
+                className="object-cover mx-2 rounded-full w-14 h-14"
                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 alt=""
               />
 
-              <div class="mx-2">
-                <h1 class="font-semibold text-red-800 dark:text-white">
-                Jake Thompson
+              <div className="mx-2">
+                <h1 className="font-semibold text-red-800 dark:text-white">
+                  Jake Thompson
                 </h1>
-                <span class="text-sm text-[#dededecc] dark:text-gray-400">
-                New York City, NY, USA
+                <span className="text-sm text-[#dededecc] dark:text-gray-400">
+                  New York City, NY, USA
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="items-center hidden mt-12 md:flex p-5">
+        <div className="items-center hidden mt-12 md:flex p-5">
           <button
             title="left arrow"
-            class="p-2 text-red-800 hover:text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:text-black border-red-700 dark:hover:bg-red-800 hover:bg-red-800"
+            className="p-2 text-red-800 hover:text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:text-black border-red-700 dark:hover:bg-red-800 hover:bg-red-800"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M15 19l-7-7 7-7"
               />
             </svg>
@@ -301,20 +312,20 @@ const Reviews = () => {
 
           <button
             title="right arrow"
-            class="p-2 text-red-800 hover:text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:text-black border-red-700 lg:mx-6 dark:hover:bg-red-800 hover:bg-red-800
+            className="p-2 text-red-800 hover:text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:text-black border-red-700 lg:mx-6 dark:hover:bg-red-800 hover:bg-red-800
              "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M9 5l7 7-7 7"
               />
             </svg>
