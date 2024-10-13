@@ -7,20 +7,38 @@ import {
 } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
+import { SiWebtrees } from "react-icons/si";
 import { MdLogout } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
-import { TiUserAdd } from "react-icons/ti";
 import { FaAddressBook } from "react-icons/fa";
 import { MdGroups2 } from "react-icons/md";
 import { GrArticle } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 export default function LeftNavbar() {
   const { user, logOut } = useAuth();
-  const { photoURL, displayName } = user || {};
   const { role, isPending } = useCheckUserRole();
+  const axiosSecure = useAxiosSecure();
+  const [userData, setUserData] = useState(null);
+
+  // Fetch user data by
+  const fetchUserData = async () => {
+    try {
+      const response = await axiosSecure.get(`/users/email/${user?.email}`);
+      setUserData(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+  useEffect(() => {
+    if (user?.email) {
+      fetchUserData();
+    }
+  }, [user?.email]);
 
   return (
     <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full h-full flex overflow-y-auto">
@@ -30,15 +48,23 @@ export default function LeftNavbar() {
       ) : (
         <div className="">
           <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
-            <img src={photoURL} alt="" className="w-20 h-20 rounded-full" />
-            <h1 className="text-xl font-bold">Hi, {displayName}</h1>
+            <img
+              src={
+                user?.photoURL ||
+                "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+              }
+              alt=""
+              className="w-20 h-20 rounded-full"
+            />
+            <h1 className="text-xl font-bold">Hi, {userData?.name}</h1>
           </div>
           <div className="pl-5 pt-2 font-black ">
             <h1 className="text-white">Menu</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
               <Link
                 to="/dashboard/home"
-                className="flex items-center justify-start gap-3">
+                className="flex items-center justify-start gap-3"
+              >
                 <FaHome />
                 <h1>Home</h1>
               </Link>
@@ -47,32 +73,37 @@ export default function LeftNavbar() {
                   {/* Admin routes only */}
                   <Link
                     to="/dashboard/all-users"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <FcStatistics />
                     <h1>All users</h1>
                   </Link>
                   <Link
                     to="/dashboard/all-podcasters"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <FaAddressBook />
                     <h1>All podcasters</h1>
                   </Link>
                   <Link
                     to="/dashboard/all-music"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <FaLayerGroup />
-                    <h1>All Music</h1>
+                    <h1>All Podcast</h1>
                   </Link>
 
                   <Link
                     to="/dashboard/new-request"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <MdGroups2 />
                     <h1>Podcasters request</h1>
                   </Link>
                   <Link
                     to="/dashboard/audio-video-request"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <GrArticle />
                     <h1>Add audio or video request</h1>
                   </Link>
@@ -82,6 +113,12 @@ export default function LeftNavbar() {
               {role === "podcaster" && (
                 <>
                   <Link
+                    to="/dashboard/my-music"
+                    className="flex items-center justify-start gap-3">
+                    <FaLayerGroup />
+                    <h1>Manage Music</h1>
+                  </Link>
+                  <Link
                     to="/dashboard/add-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
@@ -89,13 +126,15 @@ export default function LeftNavbar() {
                   </Link>
                   <Link
                     to="/dashboard/add-video"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <FaLayerGroup />
                     <h1>Release new video</h1>
                   </Link>
                   <Link
                     to="/dashboard/live-stream"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <FaLayerGroup />
                     <h1>Make live</h1>
                   </Link>
@@ -124,12 +163,17 @@ export default function LeftNavbar() {
             <h1 className="text-white">General</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
               <div className="flex items-center justify-start gap-3">
+                <SiWebtrees />
+                <Link to='/'><h1>View Site</h1></Link>
+              </div>
+              <div className="flex items-center justify-start gap-3">
                 <IoSettings />
                 <h1>Settings</h1>
               </div>
               <div
                 onClick={() => logOut()}
-                className="flex items-center justify-start gap-3 cursor-pointer">
+                className="flex items-center justify-start gap-3 cursor-pointer"
+              >
                 <MdLogout />
                 <h1>Logout</h1>
               </div>

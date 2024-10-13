@@ -22,6 +22,7 @@ const Registration = () => {
     const name = form?.name?.value;
     const email = form?.email?.value;
     const password = form?.password?.value;
+    const role = "user";
     const confirmPassword = form?.confirmPassword?.value;
 
     console.log(name, email, password, confirmPassword);
@@ -50,7 +51,7 @@ const Registration = () => {
         return updateUserProfile(user, { displayName: name });
       })
       .then(() => {
-        const userInfo = { name, email };
+        const userInfo = { name, email, role: "user" };
         return axiosPublic.post("/users", userInfo);
       })
       .then((res) => {
