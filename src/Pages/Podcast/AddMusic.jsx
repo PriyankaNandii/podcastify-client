@@ -4,6 +4,7 @@ import Select from "react-select";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddMusic = () => {
   const { user } = useContext(AuthContext);
@@ -88,6 +89,9 @@ const AddMusic = () => {
 
   return (
     <div className="bg-gradient-to-br from-black via-[#171717] to-[#171717] min-h-screen flex justify-center items-center ">
+      <Helmet>
+        <title>Podcastify | Add Music</title>
+      </Helmet>
       <div className="max-w-2xl w-full p-8 bg-black shadow-4xl rounded-lg m-5 ">
         <h2 class="text-xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500 text-center">
           Upload New Music

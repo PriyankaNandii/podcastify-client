@@ -1,12 +1,16 @@
 import { Outlet } from "react-router-dom";
 import LeftNavbar from "../../components/dashboard-component/LeftNavbar";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
 
   return (
     <div className="">
+      <Helmet>
+        <title>Podcastify | Dashboard</title>
+      </Helmet>
       <div
         className="z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
         onClick={() => isOpen(!open)}>

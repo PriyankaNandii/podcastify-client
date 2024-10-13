@@ -5,6 +5,8 @@ import {
   FaTimes,
   FaVoteYea,
 } from "react-icons/fa";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { AiOutlineNotification } from "react-icons/ai";
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { SiWebtrees } from "react-icons/si";
@@ -53,7 +55,7 @@ export default function LeftNavbar() {
       {isPending ? (
         <h1 className="text-center text-sm text-white">Please wait...</h1>
       ) : (
-        <div className="">
+        <div>
           <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
             <img
               src={
@@ -109,10 +111,10 @@ export default function LeftNavbar() {
                   </NavLink>
                   <NavLink
                     style={activeRouteStyle}
-                    to="/dashboard/audio-video-request"
+                    to="/dashboard/make-announcement"
                     className={`flex items-center justify-start gap-3 `}>
-                    <GrArticle />
-                    <h1>Add audio or video request</h1>
+                    <AiOutlineNotification />
+                    <h1>Make announcement</h1>
                   </NavLink>
                 </>
               )}
@@ -168,9 +170,16 @@ export default function LeftNavbar() {
             </aside>
           </div>
 
-          <div className="pl-5 pt-2 font-black mt-6 flex-grow">
+          <div className="pl-5 py-4 font-black mt-6 flex-grow">
             <h1 className="text-white">General</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
+              <NavLink
+                style={activeRouteStyle}
+                to="/dashboard/notification"
+                className={`flex items-center justify-start gap-3 `}>
+                <IoMdNotificationsOutline />
+                <h1>Notice</h1>
+              </NavLink>
               <div className="flex items-center justify-start gap-3">
                 <SiWebtrees />
                 <NavLink to="/">
