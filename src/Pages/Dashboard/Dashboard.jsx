@@ -4,10 +4,11 @@ import { useState } from "react";
 
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
+
   return (
-    <div className="bg-[#18181F]">
+    <div className="">
       <div
-        className=" z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
+        className="z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
         onClick={() => isOpen(!open)}>
         {!open ? (
           <svg
@@ -41,15 +42,12 @@ export default function Dashboard() {
       </div>
 
       <div
-        className={`fixed w-full ${
-          !open ? "h-0" : "h-[200px]"
-        }  lg:w-64 lg:left-0 lg:top-0 mt-0 z-20 lg:m-0 top-12 lg:h-screen`}>
+        className={`block overflow-y-auto h-0 mt-10 lg:fixed w-full lg:w-64 lg:left-0 lg:top-0  z-20 lg:mt-0 top-12 lg:h-screen  p-0  ${
+          open ? "h-52" : "h-0"
+        } `}>
         <LeftNavbar />
       </div>
-      <div
-        className={`ml-0 lg:mt-0 lg:ml-64 ${
-          open ? "mt-[248px]" : "mt-[50px] bg-[#616166] text-white"
-        }`}>
+      <div className={`ml-0 lg:ml-64`}>
         <Outlet></Outlet>
       </div>
     </div>

@@ -99,7 +99,8 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
+      // for podcaster route;
       {
         path: "my-music",
         element: <MyMusic />,
@@ -109,8 +110,16 @@ const router = createBrowserRouter([
         element: <EditPodcast />,
       },
       {
-        path: "add-video",
-        element: <h1>Add video</h1>,
+        path: "release-new-music",
+        element: <AddMusic />,
+      },
+      {
+        path: "release-new-video",
+        element: <h1>new video</h1>,
+      },
+      {
+        path: "live-stream",
+        element: "Live stream",
       },
     ],
   },

@@ -16,6 +16,15 @@ function Navbar() {
   if (!user && isDropdownOpen) {
     setIsDropdownOpen(false);
   }
+
+  const activeRouteStyle = ({ isActive, isPending, isTransitioning }) => {
+    return {
+      borderBottom: isActive ? "2px solid red" : "",
+      color: isPending ? "red" : "",
+      viewTransitionName: isTransitioning ? "slide" : "",
+    };
+  };
+  console.log(user);
   return (
     <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
@@ -24,55 +33,35 @@ function Navbar() {
         </div>
 
         <div className="hidden lg:flex space-x-6">
-          {user ? (
-            <>
-              <NavLink
-                to="/"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/addmusic"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                Add Music
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                to="/"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium italic"
-              >
-                Dashboard
-              </NavLink>
-            </>
-          )}
+          <>
+            <NavLink
+              to="/"
+              className="hover:text-red-400 text-white text-base font-medium italic">
+              Home
+            </NavLink>
+            <NavLink
+              style={activeRouteStyle}
+              to="/about-us"
+              className="hover:text-red-400 text-white text-base font-medium italic">
+              About Us
+            </NavLink>
+            {user && (
+              <>
+                <NavLink
+                  style={activeRouteStyle}
+                  to="dashboard"
+                  className="hover:text-red-400 text-white text-base font-medium italic">
+                  Dashboard
+                </NavLink>
+                <NavLink
+                  style={activeRouteStyle}
+                  to="/addmusic"
+                  className="hover:text-red-400 text-white text-base font-medium italic">
+                  Add Music
+                </NavLink>
+              </>
+            )}
+          </>
         </div>
 
         {user ? (
@@ -90,22 +79,19 @@ function Navbar() {
               <div className="absolute mt-2 w-36 bg-white rounded-lg shadow-lg py-2 lg:-left-20 z-50">
                 <NavLink
                   to="/user-profile"
-                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
-                >
+                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200">
                   <FaUserCircle className="mr-2" /> Profile
                 </NavLink>
                 <NavLink
                   to="dashboard"
-                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
-                >
+                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200">
                   <MdDashboardCustomize className="mr-2 text-base" />
                   Dashboard
                 </NavLink>
                 <hr className="my-1" />
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-200"
-                >
+                  className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-200">
                   <FaSignOutAlt className="mr-2" /> Log Out
                 </button>
               </div>
@@ -115,14 +101,12 @@ function Navbar() {
           <div className="hidden lg:block gap-4">
             <NavLink
               to="/registration"
-              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md"
-            >
+              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md">
               Sign up free
             </NavLink>
             <NavLink
               to="/login"
-              className="hover:text-red-400 text-white text-[17px] font-semibold"
-            >
+              className="hover:text-red-400 text-white text-[17px] font-semibold">
               Log in
             </NavLink>
           </div>
@@ -132,20 +116,17 @@ function Navbar() {
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="focus:outline-none"
-          >
+            className="focus:outline-none">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
+                d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
           </button>
         </div>
@@ -157,26 +138,22 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 Dashboard
               </NavLink>
               <NavLink
                 to="/addmusic"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 Add Music
               </NavLink>
             </>
@@ -184,34 +161,29 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
-              >
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic">
                 Dashboard
               </NavLink>
               {/* Only show login and signup if user doesn't exist */}
               <NavLink
                 to="/login"
-                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold italic"
-              >
+                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold italic">
                 <hr className="my-4 border-gray-600" />
                 Log in
               </NavLink>
               <NavLink
                 to="/registration"
-                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md"
-              >
+                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md">
                 Sign up free
               </NavLink>
             </>

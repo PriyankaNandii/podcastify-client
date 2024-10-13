@@ -21,7 +21,7 @@ export default function MiddleNavbar() {
             </>
           )}
           {(role === "podcaster" || role === "user") && (
-            <div className="p-2 md:p-5 bg-[#18181F] flex items-start flex-col-reverse lg:flex-row justify-center relative">
+            <div className="p-2 bg-[#18181F] flex items-start flex-col-reverse lg:flex-row justify-center relative">
               {/* discover section */}
               <div className="p-2">
                 <section className="flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-between text-white p-4">

@@ -37,14 +37,14 @@ export default function PreventUnauthorizedPerson({ email, name }) {
         Return Home
       </Link>
       <div className="h-[500px]" ref={container}>
-        <div className="box h-28 w-28 bg-slate-700 p-8 flex place-items-center rounded-xl">
-          Box 1
+        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+          Warning 1
         </div>
-        <div className="box h-28 w-28 bg-slate-700 p-8 flex place-items-center rounded-xl">
-          Box 2
+        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+          Warning 2
         </div>
-        <div className="box h-28 w-28 bg-slate-700 p-8 flex place-items-center rounded-xl">
-          Box 3
+        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+          Warning 3
         </div>
       </div>
     </div>

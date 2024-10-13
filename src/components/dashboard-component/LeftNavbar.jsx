@@ -14,7 +14,7 @@ import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
 import { MdGroups2 } from "react-icons/md";
 import { GrArticle } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -39,6 +39,13 @@ export default function LeftNavbar() {
       fetchUserData();
     }
   }, [user?.email]);
+  const activeRouteStyle = ({ isActive, isPending, isTransitioning }) => {
+    return {
+      borderLeft: isActive ? "3px solid red" : "",
+      color: isPending ? "red" : "",
+      viewTransitionName: isTransitioning ? "slide" : "",
+    };
+  };
 
   return (
     <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full h-full flex overflow-y-auto">
@@ -61,83 +68,85 @@ export default function LeftNavbar() {
           <div className="pl-5 pt-2 font-black ">
             <h1 className="text-white">Menu</h1>
             <aside className="mt-3 space-y-4 hover:*:text-white">
-              <Link
+              <NavLink
+                style={activeRouteStyle}
                 to="/dashboard/home"
-                className="flex items-center justify-start gap-3"
-              >
+                className={`flex items-center justify-start gap-3 `}>
                 <FaHome />
                 <h1>Home</h1>
-              </Link>
+              </NavLink>
               {role === "admin" && (
                 <>
                   {/* Admin routes only */}
-                  <Link
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/all-users"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <FcStatistics />
                     <h1>All users</h1>
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/all-podcasters"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaAddressBook />
                     <h1>All podcasters</h1>
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/all-music"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>All Podcast</h1>
-                  </Link>
+                  </NavLink>
 
-                  <Link
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/new-request"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <MdGroups2 />
                     <h1>Podcasters request</h1>
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/audio-video-request"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <GrArticle />
                     <h1>Add audio or video request</h1>
-                  </Link>
+                  </NavLink>
                 </>
               )}
               {/* Podcasters only */}
               {role === "podcaster" && (
                 <>
-                  <Link
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/my-music"
-                    className="flex items-center justify-start gap-3">
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
-                    <h1>Manage Music</h1>
-                  </Link>
-                  <Link
-                    to="/dashboard/add-music"
-                    className="flex items-center justify-start gap-3">
+                    <h1>My Music</h1>
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
+                    to="/dashboard/release-new-music"
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>Release new music</h1>
-                  </Link>
-                  <Link
-                    to="/dashboard/add-video"
-                    className="flex items-center justify-start gap-3"
-                  >
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
+                    to="/dashboard/release-new-video"
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>Release new video</h1>
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    style={activeRouteStyle}
                     to="/dashboard/live-stream"
-                    className="flex items-center justify-start gap-3"
-                  >
+                    className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>Make live</h1>
-                  </Link>
+                  </NavLink>
                 </>
               )}
               {role === "user" && (
@@ -164,7 +173,9 @@ export default function LeftNavbar() {
             <aside className="mt-3 space-y-4 hover:*:text-white">
               <div className="flex items-center justify-start gap-3">
                 <SiWebtrees />
-                <Link to='/'><h1>View Site</h1></Link>
+                <NavLink to="/">
+                  <h1>View Site</h1>
+                </NavLink>
               </div>
               <div className="flex items-center justify-start gap-3">
                 <IoSettings />
@@ -172,8 +183,7 @@ export default function LeftNavbar() {
               </div>
               <div
                 onClick={() => logOut()}
-                className="flex items-center justify-start gap-3 cursor-pointer"
-              >
+                className="flex items-center justify-start gap-3 cursor-pointer">
                 <MdLogout />
                 <h1>Logout</h1>
               </div>
