@@ -131,15 +131,16 @@ export default function NotificationDetails() {
     }
     try {
       const response = await axiosPublic.post("/notification-reaction", obj);
-      console.log(response);
-      toast({
-        title: "Success!",
-        description: "Successfully reacted",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top-right",
-      });
+      if (response.data.insertedId) {
+        toast({
+          title: "Success!",
+          description: "Successfully reacted",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
