@@ -28,25 +28,25 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 Dashboard
               </NavLink>
               <NavLink
                 to="/addmusic"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 Add Music
               </NavLink>
@@ -55,19 +55,19 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium italic"
+                className="hover:text-red-400 text-white text-base font-medium"
               >
                 Dashboard
               </NavLink>
@@ -157,25 +157,25 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 Dashboard
               </NavLink>
               <NavLink
                 to="/addmusic"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 Add Music
               </NavLink>
@@ -184,26 +184,26 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium italic"
+                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
               >
                 Dashboard
               </NavLink>
               {/* Only show login and signup if user doesn't exist */}
               <NavLink
                 to="/login"
-                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold italic"
+                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold"
               >
                 <hr className="my-4 border-gray-600" />
                 Log in

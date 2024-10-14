@@ -1,11 +1,11 @@
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaMusic } from "react-icons/fa";
 import login from "../../assets/images/login.webp";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signInUser, signInWithGoogle, signInWithGithub } = useAuth();
@@ -40,14 +40,18 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        console.log(result?.user);
+        const user = result?.user;
+        const uid = user?.uid;
         const userInfo = {
           email: result?.user?.email,
           name: result?.user?.displayName,
+          role: "user",
+          uid,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
-          toast.success("Google Login Successful!");
+          toast.success("User logged in Successfully!");
           navigate(location?.state ? location.state : "/");
         });
       })
@@ -59,14 +63,18 @@ const Login = () => {
   const handleGithubSignIn = () => {
     signInWithGithub()
       .then((result) => {
-        console.log(result.user);
+        console.log(result?.user);
+        const user = result?.user;
+        const uid = user?.uid;
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          role: "user",
+          uid,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
-          toast.success("Github Login Successful!");
+          toast.success("User logged in Successfully!");
           navigate(location?.state ? location.state : "/");
         });
       })

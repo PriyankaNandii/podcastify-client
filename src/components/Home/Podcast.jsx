@@ -34,7 +34,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const date = dateObj.toLocaleDateString("en-US", options);
 
   //   localhost sharing url
-  const shareUrl = `https://podcastify-server.vercel.app${audioFileUrl}`;
+  const shareUrl = `http://localhost:5000${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -140,7 +140,9 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         >
           <FiDownload />
         </button>
-        <button className="text-2xl"><MdOutlinePlaylistAdd /></button>
+        <button className="text-2xl">
+          <MdOutlinePlaylistAdd />
+        </button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">
         <img
