@@ -27,7 +27,9 @@ export default function Notifications() {
             <h3 className="text-lg text-white">{item.title}</h3>
             <h1>Admin mentioned {item.email}</h1>
             <h1>{item.description.slice(0, 15)}...</h1>
-            <Link className="btn" to={`/dashboard/notification/${item._id}`}>
+            <Link
+              className="btn"
+              to={`/dashboard/notification/${item._id}/details`}>
               Details
             </Link>
           </div>
