@@ -16,7 +16,7 @@ import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
 import { MdGroups2 } from "react-icons/md";
 import { GrArticle } from "react-icons/gr";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -127,13 +127,13 @@ export default function LeftNavbar() {
                     className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>Manage Music</h1>
-                  </Link>
+                  </NavLink>
                   <Link
                     to="/dashboard/add-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Release new music</h1>
-                  </NavLink>
+                  </Link>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/release-new-video"
