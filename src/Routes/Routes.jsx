@@ -16,6 +16,8 @@ import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsP
 import MyMusic from "../Pages/Dashboard/Podcaster/MyMusic";
 import EditPodcast from "../Pages/Dashboard/Podcaster/EditPodcast";
 import AllPodCaster from "../Pages/Dashboard/Admin/AllPodCaster";
+import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
+import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 
 const router = createBrowserRouter([
   {
@@ -99,10 +101,18 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
       {
         path: "my-music",
         element: <MyMusic />,
+      },
+      {
+        path: "new-request",
+        element: <PodcasterRequest />,
+      },
+      {
+        path: "my-playlist",
+        element: <MyPlaylist />,
       },
       {
         path: "my-music/edit/:id",

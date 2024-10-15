@@ -8,7 +8,7 @@ import {
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { SiWebtrees } from "react-icons/si";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdOutlinePlaylistAdd } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
@@ -119,6 +119,12 @@ export default function LeftNavbar() {
                     <h1>Manage Music</h1>
                   </Link>
                   <Link
+                    to="/dashboard/my-playlist"
+                    className="flex items-center justify-start gap-3">
+                    <MdOutlinePlaylistAdd />
+                    <h1>Playlist</h1>
+                  </Link>
+                  <Link
                     to="/dashboard/add-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
@@ -146,6 +152,12 @@ export default function LeftNavbar() {
                     <FaTimes />
                     <h1>Recent</h1>
                   </div>
+                  <Link
+                    to="/dashboard/my-playlist"
+                    className="flex items-center justify-start gap-3">
+                    <MdOutlinePlaylistAdd />
+                    <h1>Playlist</h1>
+                  </Link>
                   <div className="flex items-center justify-start gap-3">
                     <FaVoteYea />
                     <h1>Favorites</h1>

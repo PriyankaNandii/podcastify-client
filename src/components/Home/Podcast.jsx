@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import { FaShareSquare, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
 import { MdForward10, MdOutlinePlaylistAdd, MdReplay10 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -20,8 +19,12 @@ import {
   EmailIcon,
 } from "react-share";
 import { ClipLoader } from "react-spinners";
+import { AuthContext } from "../../Providers/AuthProviders";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
+import { toast } from "react-toastify";
 
 const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
+  const { user } = useContext(AuthContext);
   const { _id, title, releaseDate, coverImageUrl, audioFileUrl } = podcast;
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -32,6 +35,8 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const dateObj = new Date(releaseDate);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const date = dateObj.toLocaleDateString("en-US", options);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   //   localhost sharing url
   const shareUrl = `http://localhost:5000${audioFileUrl}`;
@@ -123,6 +128,35 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
       audio.removeEventListener("loadedmetadata", updateTime);
     };
   }, [onPlayNext]);
+
+  const handlePlaylist = e => {
+    e.preventDefault();
+    const user_email = user?.email;
+    if (user_email) {
+      const music_id = _id;
+      const playlistData = {
+        user_email, music_id, title
+      }
+      axiosPublic.post("/playlist", playlistData)
+        .then((response) => {
+          if (response.data.insertedId !== null) {
+            toast.success("Playlist added successfully!");
+          }
+          else {
+            toast.warning("Podcast already exists in playlist.");
+          }
+
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    else{
+      navigate('/login');
+    }
+
+  }
+
   return (
     <div className="bg-black p-6 rounded-lg shadow-lg w-full">
       <div className="flex justify-end items-center text-red-800 gap-4 mr-2">
@@ -138,7 +172,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
           title="Download this song">
           <FiDownload />
         </button>
-        <button className="text-2xl"><MdOutlinePlaylistAdd /></button>
+        <button onClick={handlePlaylist} className="text-2xl"><MdOutlinePlaylistAdd /></button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">
         <img
