@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
-export default function PreventUnauthorizedPerson({ email, name }) {
+export default function PreventUnauthorizedPerson() {
   const { logOut } = useAuth();
   const container = useRef();
   const tl = useRef();
@@ -29,21 +29,21 @@ export default function PreventUnauthorizedPerson({ email, name }) {
     { scope: container }
   );
   return (
-    <div className="space-y-5 py-5 flex items-center justify-center flex-col">
-      <h1 className="text-xl">Excuse me Mr. {name}</h1>
+    <div className="space-y-5 py-5 flex items-center justify-center flex-col bg-gradient-to-l  from-[#2a3d53] from-15% via-[#2f2a61] via-50% to-[#2a3d53] to-80% text-white h-full lg:min-h-screen">
+      <h1 className="text-xl">Excuse me Mr.</h1>
       <h1>We have notice that you are trying to access illegally</h1>
       <h1>Please return home safely before take action for you</h1>
-      <Link to="/" className="btn btn-outline" onClick={() => logOut()}>
+      <Link to="/" className="btn btn-warning" onClick={() => logOut()}>
         Return Home
       </Link>
       <div className="h-[500px]" ref={container}>
-        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+        <div className="box size-28 bg-gradient-to-l  from-[#2a3d53] from-15% via-[#2f2a61] via-50% to-[#e69833] to-70% text-white bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
           Warning 1
         </div>
-        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+        <div className="box size-28 bg-gradient-to-l  from-[#2a3d53] from-15% via-[#2f2a61] via-50% to-[#ec714b] to-80% text-white bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
           Warning 2
         </div>
-        <div className="box h-28 w-28 bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
+        <div className="box size-28 bg-gradient-to-l  from-[#2a3d53] from-15% via-[#2f2a61] via-50% to-[#f34906] to-80% text-white bg-slate-700 p-2 mg:p-8 flex items-center justify-center jt rounded-xl">
           Warning 3
         </div>
       </div>
