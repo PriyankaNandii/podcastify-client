@@ -10,6 +10,7 @@ import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
 import whychooseus from "../../assets/images/whychooseus.webp";
 import whychooseus2 from "../../assets/images/whychooseus2.webp";
+import { Helmet } from "react-helmet-async";
 const AboutUs = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -38,6 +39,9 @@ const AboutUs = () => {
 </div>
 			</div> */}
       <header className="bg-[#171717] dark:bg-gray-900">
+        <Helmet>
+          <title>Podcastify | About us</title>
+        </Helmet>
         <div className="container px-5 md:px-20 py-16 mx-auto">
           <div className="items-center lg:flex">
             <div className="w-full lg:w-1/2">
