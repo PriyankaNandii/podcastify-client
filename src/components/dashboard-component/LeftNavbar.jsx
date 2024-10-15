@@ -10,13 +10,13 @@ import { AiOutlineNotification } from "react-icons/ai";
 import useAuth from "../../Hooks/useAuth";
 import { FaBook, FaCompass, FaUser } from "react-icons/fa6";
 import { SiWebtrees } from "react-icons/si";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdOutlinePlaylistAdd } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
 import { MdGroups2 } from "react-icons/md";
 import { GrArticle } from "react-icons/gr";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -126,15 +126,14 @@ export default function LeftNavbar() {
                     to="/dashboard/my-music"
                     className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
-                    <h1>My Music</h1>
+                    <h1>Manage Music</h1>
                   </NavLink>
-                  <NavLink
-                    style={activeRouteStyle}
-                    to="/dashboard/release-new-music"
-                    className={`flex items-center justify-start gap-3 `}>
+                  <Link
+                    to="/dashboard/add-music"
+                    className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Release new music</h1>
-                  </NavLink>
+                  </Link>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/release-new-video"
@@ -157,6 +156,12 @@ export default function LeftNavbar() {
                     <FaTimes />
                     <h1>Recent</h1>
                   </div>
+                  <Link
+                    to="/dashboard/my-playlist"
+                    className="flex items-center justify-start gap-3">
+                    <MdOutlinePlaylistAdd />
+                    <h1>Playlist</h1>
+                  </Link>
                   <div className="flex items-center justify-start gap-3">
                     <FaVoteYea />
                     <h1>Favorites</h1>
