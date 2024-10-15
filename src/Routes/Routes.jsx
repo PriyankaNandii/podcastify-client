@@ -16,6 +16,9 @@ import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsP
 import MyMusic from "../Pages/Dashboard/Podcaster/MyMusic";
 import EditPodcast from "../Pages/Dashboard/Podcaster/EditPodcast";
 import AllPodCaster from "../Pages/Dashboard/Admin/AllPodCaster";
+import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
+import Notifications from "../components/dashboard-component/notifications/Notifications";
+import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +91,7 @@ const router = createBrowserRouter([
         path: "home",
         element: <MiddleNavbar />,
       },
+      // Admin route only
       {
         path: "all-users",
         element: <AllUsers />,
@@ -99,7 +103,12 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
+      {
+        path: "make-announcement",
+        element: <MakeAnnouncement />,
+      },
+      // for podcaster route;
       {
         path: "my-music",
         element: <MyMusic />,
@@ -109,8 +118,24 @@ const router = createBrowserRouter([
         element: <EditPodcast />,
       },
       {
-        path: "add-video",
-        element: <h1>Add video</h1>,
+        path: "release-new-music",
+        element: <AddMusic />,
+      },
+      {
+        path: "release-new-video",
+        element: <h1>new video</h1>,
+      },
+      {
+        path: "live-stream",
+        element: "Live stream",
+      },
+      {
+        path: "notification",
+        element: <Notifications />,
+      },
+      {
+        path: "notification/:id/details",
+        element: <NotificationDetails />,
       },
     ],
   },

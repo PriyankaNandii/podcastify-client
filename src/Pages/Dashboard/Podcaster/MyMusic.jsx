@@ -38,6 +38,8 @@ const MyMusic = () => {
     }
   }, [page, user?.email]);
 
+  console.log(podcasts, "form music");
+
   const handlePageClick = (event) => {
     const selectedPage = event.selected;
     setPage(selectedPage);
@@ -60,12 +62,14 @@ const MyMusic = () => {
   return (
     <div className="container mx-auto p-6 bg-[#171717] rounded-xl shadow-lg min-h-screen">
       <div className="bg-gradient-to-r from-[hsl(0,95%,22%)] to-[hsl(7,81%,4%)] p-6 rounded-lg shadow-md mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">My Music List</h1>
+        <h1 className="md:text-3xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500">
+          My Music List
+        </h1>
         <div className="flex items-center space-x-4">
-          <button className="bg-white text-[#FF6B6B] font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-200 transition duration-300">
-            <Link to='/addmusic'>Add Music</Link>
+          <button className="btn btn-accent">
+            <Link to="/dashboard/release-new-music">Add Music</Link>
           </button>
-          <button onClick={handleRefresh} className="bg-white text-[#FF6B6B] font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-200 transition duration-300">
+          <button onClick={handleRefresh} className="btn btn-primary">
             Refresh
           </button>
         </div>
@@ -79,8 +83,8 @@ const MyMusic = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-black rounded-xl shadow-lg p-6">
-          <table className="table-auto w-full bg-black rounded-lg shadow-md">
+        <div className="bg-black rounded-xl shadow-lg p-6 overflow-x-auto">
+          <table className="table table-auto w-full bg-black rounded-lg shadow-md">
             <thead>
               <tr className="bg-red-800 text-white">
                 <th className="p-4 text-left">SL#</th>
@@ -93,12 +97,16 @@ const MyMusic = () => {
             </thead>
             <tbody>
               {podcasts.map((podcast, index) => (
-                <tr key={podcast._id} className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black">
+                <tr
+                  key={podcast._id}
+                  className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black">
                   <td className="p-4">{index + 1 + page * itemsPerPage}</td>
                   <td className="p-4">{podcast.title}</td>
                   <td className="p-4">{podcast.musician}</td>
                   <td className="p-4">{podcast.category}</td>
-                  <td className="p-4">{new Date(podcast.releaseDate).toLocaleDateString()}</td>
+                  <td className="p-4">
+                    {new Date(podcast.releaseDate).toLocaleDateString()}
+                  </td>
                   <td className="p-4">
                     <button className="bg-green-500 text-white px-4 py-2 rounded-lg shadow mr-2 transition-transform hover:scale-105">
                       <Link to={`/dashboard/my-music/edit/${podcast._id}`}>

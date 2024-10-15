@@ -3,11 +3,14 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaTrashAlt } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
+import useCheckUserRole from "../../../Hooks/useCheckUserRole";
+import PreventUnauthorizedPerson from "../../../AdminRelated/preventUnauthorizedPerson";
 
 export default function AllUsers() {
   const axiosSecure = useAxiosSecure();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { role } = useCheckUserRole();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -65,65 +68,69 @@ export default function AllUsers() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://cdn-gcpap.nitrocdn.com/JTfyFksfXBELKzRNrLoDthpJRsbOZfCt/assets/images/optimized/rev-f01517a/wiredclip.com/wp-content/uploads/2023/07/Before-and-After-Podcast-Background-Ideas-1024x585.jpg')",
-      }}
-    >
-      <div className="container mx-auto py-10">
-        <div className="overflow-x-auto bg-gray-800 shadow-md rounded-lg">
-          {loading ? (
-            <div className="flex justify-center items-center py-10">
-              <ClipLoader color="#1E3A8A" loading={loading} size={70} />
+    <>
+      {role === "admin" ? (
+        <div
+          className="min-h-screen bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://cdn-gcpap.nitrocdn.com/JTfyFksfXBELKzRNrLoDthpJRsbOZfCt/assets/images/optimized/rev-f01517a/wiredclip.com/wp-content/uploads/2023/07/Before-and-After-Podcast-Background-Ideas-1024x585.jpg')",
+          }}>
+          <div className="container mx-auto py-10">
+            <div className="overflow-x-auto bg-gray-800 shadow-md rounded-lg">
+              {loading ? (
+                <div className="flex justify-center items-center py-10">
+                  <ClipLoader color="#1E3A8A" loading={loading} size={70} />
+                </div>
+              ) : (
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-blue-950">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                        Name
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                        Email
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                        Role
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-gray-900 divide-y divide-gray-700">
+                    {users.map((user) => (
+                      <tr key={user._id}>
+                        <td className="px-6 py-4 whitespace-nowrap text-base font-bold">
+                          {user.name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
+                          {user.email}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
+                          {user.role}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <button
+                            className="ml-2 px-3 py-2 text-base text-red-600 hover:text-red-500 focus:outline-none"
+                            onClick={() => handleDelete(user._id)}>
+                            <FaTrashAlt className="inline-block mr-1 text-base" />{" "}
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
-          ) : (
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-blue-950">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                    Email
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                    Role
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-gray-900 divide-y divide-gray-700">
-                {users.map((user) => (
-                  <tr key={user._id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-base font-bold">
-                      {user.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
-                      {user.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
-                      {user.role}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <button
-                        className="ml-2 px-3 py-2 text-base text-red-600 hover:text-red-500 focus:outline-none"
-                        onClick={() => handleDelete(user._id)}
-                      >
-                        <FaTrashAlt className="inline-block mr-1 text-base" />{" "}
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <PreventUnauthorizedPerson></PreventUnauthorizedPerson>
+      )}
+    </>
   );
 }
