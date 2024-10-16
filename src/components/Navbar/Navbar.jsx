@@ -3,7 +3,7 @@ import logo from "../../assets/images/newlogo.png";
 import useAuth from "../../Hooks/useAuth";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +16,20 @@ function Navbar() {
   if (!user && isDropdownOpen) {
     setIsDropdownOpen(false);
   }
+
+  const activeRouteStyle = ({ isActive, isPending, isTransitioning }) => {
+    return {
+      borderBottom: isActive ? "2px solid red" : "",
+      color: isPending ? "red" : "",
+      viewTransitionName: isTransitioning ? "slide" : "",
+    };
+  };
   return (
     <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
-        <div className="text-2xl font-bold">
+        <Link to="/">
           <img src={logo} className="lg:w-44 w-36" alt="Microphone GIF" />
-        </div>
+        </Link>
 
         <div className="hidden lg:flex space-x-6">
           {user ? (

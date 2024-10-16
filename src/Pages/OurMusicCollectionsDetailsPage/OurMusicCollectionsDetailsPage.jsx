@@ -10,6 +10,8 @@ import { FaShareSquare } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipForward } from "react-icons/io5";
 import { IoPlaySkipBackSharp } from "react-icons/io5";
+import PostReview from "./PostReview";
+import Reviews from "./Reviews";
 
 const OurMusicCollectionsDetailsPage = () => {
   const { id } = useParams();
@@ -90,7 +92,7 @@ const OurMusicCollectionsDetailsPage = () => {
 
   // Render podcast details if data is present
   return podcast ? (
-    <div className="md:px-20 px-5 bg-[#171717]">
+    <div className="md:px-20 pb-6 px-5 bg-[#171717]">
       <section className=" ">
         <div className="container px-6 py-10 mx-auto">
           <div className="lg:flex lg:-mx-6 gap-10">
@@ -168,80 +170,7 @@ const OurMusicCollectionsDetailsPage = () => {
                         {podcast.tags}
                       </p>
                     </div>
-                    <div>
-                      {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                      <button
-                        className="btn bg-red-800 text-white mt-2"
-                        onClick={() =>
-                          document.getElementById("my_modal_3").showModal()
-                        }
-                      >
-                        Share your thoughts
-                      </button>
-                      <dialog id="my_modal_3" className="modal">
-                        <div className="modal-box">
-                          <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white bg-black">
-                              ✕
-                            </button>
-                          </form>
-                          <h3 className="font-bold text-lg text-red-800">
-                            Hello Listener!
-                          </h3>
-                          <p className="py-4">
-                            <div className="rating rating-base pb-2 items-center flex justify-center">
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="rating-hidden"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                                defaultChecked
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                            </div>
-                            <label className="form-control w-full max-w-xs ">
-                              <div className="label">
-                                <span className="label-text">
-                                  Write Review Here
-                                </span>
-                              </div>
-                              <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-xs"
-                              />
-                            </label>
-                            <button className="btn bg-red-800 text-white mt-5">
-                              Submit
-                            </button>
-                          </p>
-                        </div>
-                      </dialog>
-                    </div>
+                    <PostReview podcastId={podcast?._id}></PostReview>
                   </div>
                 </div>
               </div>
@@ -293,6 +222,10 @@ const OurMusicCollectionsDetailsPage = () => {
           </div>
         </div>
       </section>
+      <h1 className="text-transparent bg-clip-text text-white font-semibold italic text-center text-2xl">
+        Reviews and Insights of this Episode! 🤩
+      </h1>
+      <Reviews podcastId={podcast?._id}></Reviews>
     </div>
   ) : (
     <p>No podcast details available</p>

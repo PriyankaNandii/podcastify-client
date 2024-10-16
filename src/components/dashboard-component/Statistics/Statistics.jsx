@@ -31,38 +31,40 @@ export default function Statistics() {
 
   const COLORS = ["#1E3A8A", "#6B7299", "#FF0000"];
   return (
-    <div className="bg-[#18181F] flex flex-col items-center justify-center h-screen text-white">
-      <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold">
+    <div className="bg-[#111127] h-screen flex flex-col gap-5 items-center justify-center py-5 text-white">
+      <div className="text-center">
+        <h1 className="lg:text-2xl font-bold">
           Total Users, Active Podcasters, and Episodes Uploaded at a Glance.
         </h1>
       </div>
 
       {/* Pie Chart */}
-      <ResponsiveContainer width="100%" height={400}>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={100}
-            outerRadius={150}
-            paddingAngle={2}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
+      <div className="w-full lg:w-1/2">
+        <ResponsiveContainer width="100%" height={400}>
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={100}
+              outerRadius={150}
+              paddingAngle={2}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
 
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
-      <div className="mt-8">
+      <div className="">
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-md">
           <div className="flex items-center mb-2 md:mb-0">
             <div
