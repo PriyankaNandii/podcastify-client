@@ -21,7 +21,7 @@ export default function Notifications() {
   return (
     <div className="p-5 h-full min-h-screen bg-gradient-to-r to-[#0f172a] from-[#0e1f49] text-white">
       <h1 className="text-lg md:text-2xl tec">Notification</h1>
-      <div className="space-y-10 container mx-auto  p-3 md:p-10">
+      <div className="space-y-10 w-full md:w-3/4 mx-auto  p-3 md:p-10">
         {data.map((item) => (
           <div key={item._id}>
             <h3 className="text-lg text-white">{item.title}</h3>

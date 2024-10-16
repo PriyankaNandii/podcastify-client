@@ -177,9 +177,13 @@ export default function NotificationDetails() {
           ))}
         </Flex>
       </div>
-      <div className="border h-96">
-        <iframe src="https://streamable.com/u7rnf2" autoPlay></iframe>
-      </div>
+      {/* <video controls>
+        <source
+          src={`http://localhost:5000/video/intro-palash.mp4`}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video> */}
     </div>
   );
 }

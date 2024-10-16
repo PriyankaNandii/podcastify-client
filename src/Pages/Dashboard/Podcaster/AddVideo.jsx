@@ -15,7 +15,10 @@ import {
 } from "@chakra-ui/react";
 import logo from "../../../assets/images/newlogo.png";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../Hooks/useAxiosPulic";
+
 export default function AddVideo() {
+  const axiosPublic = useAxiosPublic();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     handleSubmit,
@@ -24,7 +27,21 @@ export default function AddVideo() {
   } = useForm();
 
   const handleUpload = async (values) => {
-    console.log(values);
+    const { videoUrl, videoFile } = values;
+    const file = videoFile[0];
+    const formData = new FormData();
+    formData.append("video", file);
+    console.log(file, formData);
+    try {
+      const response = await axiosPublic.post("/uploads-video", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section className="dark:bg-gray-100 dark:text-gray-800 p-4 brightness-75">
@@ -72,7 +89,12 @@ export default function AddVideo() {
                 </FormControl>
                 <FormControl>
                   <FormLabel>Or choose a file form local folder</FormLabel>
-                  <input type="file" {...register("videoFile")} />
+                  <input
+                    type="file"
+                    name="video"
+                    accept="video/*"
+                    {...register("videoFile")}
+                  />
                 </FormControl>
                 <ModalFooter>
                   <Button variant="ghost" onClick={onClose}>
