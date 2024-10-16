@@ -62,7 +62,7 @@ export default function AddVideo() {
           </button>
           <button
             onClick={onOpen}
-            className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-violet-600 dark:text-gray-50">
+            className="px-8 py-3 m-2 text-lg  font-semibold rounded bg-violet-600 dark:text-gray-50">
             Add video
           </button>
         </div>
