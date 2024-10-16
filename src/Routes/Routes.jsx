@@ -69,7 +69,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/podcast/:id",
-        element: <OurMusicCollectionsDetailsPage />,
+        element: (
+          <PrivateRoute>
+            <OurMusicCollectionsDetailsPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -104,7 +108,7 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
       {
         path: "my-music",
         element: <MyMusic />,

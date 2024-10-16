@@ -34,6 +34,7 @@ const OurMusicCollectionsDetailsPage = () => {
           setError("Podcast not found");
         }
       } catch (error) {
+        console.log(error);
         setError("Error fetching podcast details");
       } finally {
         setLoading(false); // Turn off loading spinner
@@ -56,7 +57,7 @@ const OurMusicCollectionsDetailsPage = () => {
     };
 
     fetchPodcasts();
-  }, []);
+  }, [axiosPublic]);
 
   const handlePlay = (id) => {
     if (currentPodcastId === id) {
@@ -107,10 +108,6 @@ const OurMusicCollectionsDetailsPage = () => {
                 className="mt-6 flex items-center justify-center lg:gap-6 gap-4  text-red-800
            "
               >
-                {/* <div class="audio-timing lg:text-lg text-xs">
-              <span id="current-time">0:00</span> /
-              <span id="total-duration"> 0:00</span>
-            </div> */}
                 <div className="flex lg:gap-5 gap-1">
                   <button className=" lg:text-3xl text-xl ">
                     <IoPlaySkipBackSharp />
@@ -190,34 +187,6 @@ const OurMusicCollectionsDetailsPage = () => {
                   ></DiscoverMoreMusic>
                 ))}
               </div>
-
-              {/* <div>
-                    <h3 class="text-blue-500 capitalize">UI Resource</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Should you creat UI Product by using Blox?
-                    </a>
-                </div>
-
-                <hr class="my-6 border-gray-200 dark:border-gray-700"/>
-
-                <div>
-                    <h3 class="text-blue-500 capitalize">Premium Collection</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Top 10 Blocks you can get on Blox's collection.
-                    </a>
-                </div>
-
-                <hr class="my-6 border-gray-200 dark:border-gray-700"/>
-
-                <div>
-                    <h3 class="text-blue-500 capitalize">Premium kits</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Top 10 Ui kit you can get on Blox's collection.
-                    </a>
-                </div> */}
             </div>
           </div>
         </div>
