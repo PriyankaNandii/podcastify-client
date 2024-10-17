@@ -71,15 +71,14 @@ export default function MakeAnnouncement() {
           <FormLabel htmlFor="email">Targeted Email</FormLabel>
           <Input
             id="email"
-            title="Enter targeted email"
-            placeholder="email"
+            placeholder="If you want to mentioned someone specifically"
             {...register("email")}
           />
         </FormControl>
         <FormControl>
           <FormLabel htmlFor="description">Description</FormLabel>
           <Textarea
-            placeholder="Here is a sample placeholder"
+            placeholder="Please write your notice in details...."
             {...register("description")}
           />
         </FormControl>

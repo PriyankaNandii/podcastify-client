@@ -15,6 +15,7 @@ import { useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 // const like = (
 //   <svg
@@ -147,7 +148,10 @@ export default function NotificationDetails() {
   };
 
   return (
-    <div className="p-2">
+    <div className="p-2 bg-gradient-to-r to-[#0f172a] from-[#0e1f49] h-full lg:min-h-screen text-white">
+      <Helmet>
+        <title>Podcastify | notification | details</title>
+      </Helmet>
       <div className="w-full mx-auto md:w-1/2 text-justify p-2 md:p-4 space-y-4">
         <h1 className="font-bold">{title}</h1>
         {name ? (
@@ -173,6 +177,13 @@ export default function NotificationDetails() {
           ))}
         </Flex>
       </div>
+      {/* <video controls>
+        <source
+          src={`http://localhost:5000/video/intro-palash.mp4`}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video> */}
     </div>
   );
 }

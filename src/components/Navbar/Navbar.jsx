@@ -32,55 +32,30 @@ function Navbar() {
         </Link>
 
         <div className="hidden lg:flex space-x-6">
-          {user ? (
-            <>
-              <NavLink
-                to="/"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/addmusic"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                Add Music
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                to="/"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className="hover:text-red-400 text-white text-base font-medium"
-              >
-                Dashboard
-              </NavLink>
-            </>
-          )}
+
+          <>
+            <NavLink
+              to="/"
+              className="hover:text-red-400 text-white text-base font-medium">
+              Home
+            </NavLink>
+            <NavLink
+              style={activeRouteStyle}
+              to="/about-us"
+              className="hover:text-red-400 text-white text-base font-medium">
+              About Us
+            </NavLink>
+            {user && (
+              <>
+                <NavLink
+                  style={activeRouteStyle}
+                  to="dashboard"
+                  className="hover:text-red-400 text-white text-base font-medium">
+                  Dashboard
+                </NavLink>
+              </>
+            )}
+          </>
         </div>
 
         {user ? (

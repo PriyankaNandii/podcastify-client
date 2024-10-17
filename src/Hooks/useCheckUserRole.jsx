@@ -12,7 +12,7 @@ export default function useCheckUserRole() {
     return response.data;
   };
 
-  const { isPending, isError, data, error } = useQuery({
+  const { isLoading, data, error } = useQuery({
     queryKey: ["userRole", email],
     queryFn: checkUserRole,
   });
@@ -32,5 +32,5 @@ export default function useCheckUserRole() {
     default:
       break;
   }
-  return { role, isPending, isError, error, data };
+  return { role, isLoading, error, data };
 }
