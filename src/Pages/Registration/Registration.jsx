@@ -48,11 +48,12 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         const user = result?.user;
+        const uid = user?.uid;
 
-        return updateUserProfile(user, { displayName: name });
+        return updateUserProfile(user, { displayName: name }).then(() => uid);
       })
-      .then(() => {
-        const userInfo = { name, email, role: "user", flag };
+      .then((uid) => {
+        const userInfo = { name, email, role: "user", uid, flag };
         return axiosPublic.post("/users", userInfo);
       })
       .then((res) => {
@@ -79,10 +80,14 @@ const Registration = () => {
   const handleGoogleSignUp = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        console.log(result?.user);
+        const user = result?.user;
+        const uid = user?.uid;
         const userInfo = {
           email: result?.user?.email,
           name: result?.user?.displayName,
+          role: "user",
+          uid,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -100,9 +105,13 @@ const Registration = () => {
     signInWithGithub()
       .then((result) => {
         console.log(result.user);
+        const user = result?.user;
+        const uid = user?.uid;
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          role: "user",
+          uid,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);

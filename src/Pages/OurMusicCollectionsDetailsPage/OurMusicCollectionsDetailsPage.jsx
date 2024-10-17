@@ -10,6 +10,8 @@ import { FaShareSquare } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipForward } from "react-icons/io5";
 import { IoPlaySkipBackSharp } from "react-icons/io5";
+import PostReview from "./PostReview";
+import Reviews from "./Reviews";
 
 const OurMusicCollectionsDetailsPage = () => {
   const { id } = useParams();
@@ -23,7 +25,7 @@ const OurMusicCollectionsDetailsPage = () => {
   useEffect(() => {
     const fetchPodcast = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/${id}`);
+        const response = await fetch(`http://localhost:5000/podcast/${id}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -32,6 +34,7 @@ const OurMusicCollectionsDetailsPage = () => {
           setError("Podcast not found");
         }
       } catch (error) {
+        console.log(error);
         setError("Error fetching podcast details");
       } finally {
         setLoading(false); // Turn off loading spinner
@@ -54,7 +57,7 @@ const OurMusicCollectionsDetailsPage = () => {
     };
 
     fetchPodcasts();
-  }, []);
+  }, [axiosPublic]);
 
   const handlePlay = (id) => {
     if (currentPodcastId === id) {
@@ -90,7 +93,7 @@ const OurMusicCollectionsDetailsPage = () => {
 
   // Render podcast details if data is present
   return podcast ? (
-    <div className="md:px-20 px-5 bg-[#171717]">
+    <div className="md:px-20 pb-6 px-5 bg-[#171717]">
       <section className=" ">
         <div className="container px-6 py-10 mx-auto">
           <div className="lg:flex lg:-mx-6 gap-10">
@@ -105,10 +108,6 @@ const OurMusicCollectionsDetailsPage = () => {
                 className="mt-6 flex items-center justify-center lg:gap-6 gap-4  text-red-800
            "
               >
-                {/* <div class="audio-timing lg:text-lg text-xs">
-              <span id="current-time">0:00</span> /
-              <span id="total-duration"> 0:00</span>
-            </div> */}
                 <div className="flex lg:gap-5 gap-1">
                   <button className=" lg:text-3xl text-xl ">
                     <IoPlaySkipBackSharp />
@@ -168,80 +167,7 @@ const OurMusicCollectionsDetailsPage = () => {
                         {podcast.tags}
                       </p>
                     </div>
-                    <div>
-                      {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                      <button
-                        className="btn bg-red-800 text-white mt-2"
-                        onClick={() =>
-                          document.getElementById("my_modal_3").showModal()
-                        }
-                      >
-                        Share your thoughts
-                      </button>
-                      <dialog id="my_modal_3" className="modal">
-                        <div className="modal-box">
-                          <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white bg-black">
-                              ✕
-                            </button>
-                          </form>
-                          <h3 className="font-bold text-lg text-red-800">
-                            Hello Listener!
-                          </h3>
-                          <p className="py-4">
-                            <div className="rating rating-base pb-2 items-center flex justify-center">
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="rating-hidden"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                                defaultChecked
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                              <input
-                                type="radio"
-                                name="rating-9"
-                                className="mask mask-star-2"
-                              />
-                            </div>
-                            <label className="form-control w-full max-w-xs ">
-                              <div className="label">
-                                <span className="label-text">
-                                  Write Review Here
-                                </span>
-                              </div>
-                              <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-xs"
-                              />
-                            </label>
-                            <button className="btn bg-red-800 text-white mt-5">
-                              Submit
-                            </button>
-                          </p>
-                        </div>
-                      </dialog>
-                    </div>
+                    <PostReview podcastId={podcast?._id}></PostReview>
                   </div>
                 </div>
               </div>
@@ -261,38 +187,14 @@ const OurMusicCollectionsDetailsPage = () => {
                   ></DiscoverMoreMusic>
                 ))}
               </div>
-
-              {/* <div>
-                    <h3 class="text-blue-500 capitalize">UI Resource</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Should you creat UI Product by using Blox?
-                    </a>
-                </div>
-
-                <hr class="my-6 border-gray-200 dark:border-gray-700"/>
-
-                <div>
-                    <h3 class="text-blue-500 capitalize">Premium Collection</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Top 10 Blocks you can get on Blox's collection.
-                    </a>
-                </div>
-
-                <hr class="my-6 border-gray-200 dark:border-gray-700"/>
-
-                <div>
-                    <h3 class="text-blue-500 capitalize">Premium kits</h3>
-
-                    <a href="#" class="block mt-2 font-medium text-gray-700 hover:underline hover:text-gray-500 dark:text-gray-400 ">
-                        Top 10 Ui kit you can get on Blox's collection.
-                    </a>
-                </div> */}
             </div>
           </div>
         </div>
       </section>
+      <h1 className="text-transparent bg-clip-text text-white font-semibold italic text-center text-2xl">
+        Reviews and Insights of this Episode! 🤩
+      </h1>
+      <Reviews podcastId={podcast?._id}></Reviews>
     </div>
   ) : (
     <p>No podcast details available</p>

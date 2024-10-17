@@ -41,6 +41,7 @@ export default function LeftNavbar() {
       fetchUserData();
     }
   }, [user?.email]);
+
   const activeRouteStyle = ({ isActive, isPending, isTransitioning }) => {
     return {
       borderLeft: isActive ? "3px solid red" : "",
@@ -74,7 +75,8 @@ export default function LeftNavbar() {
               <NavLink
                 style={activeRouteStyle}
                 to="/dashboard/home"
-                className={`flex items-center justify-start gap-3 `}>
+                className={`flex items-center justify-start gap-3 `}
+              >
                 <FaHome />
                 <h1>Home</h1>
               </NavLink>
@@ -84,21 +86,24 @@ export default function LeftNavbar() {
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/all-users"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FcStatistics />
                     <h1>All users</h1>
                   </NavLink>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/all-podcasters"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FaAddressBook />
                     <h1>All podcasters</h1>
                   </NavLink>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/all-music"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FaLayerGroup />
                     <h1>All Podcast</h1>
                   </NavLink>
@@ -106,14 +111,16 @@ export default function LeftNavbar() {
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/new-request"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <MdGroups2 />
                     <h1>Podcasters request</h1>
                   </NavLink>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/make-announcement"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <AiOutlineNotification />
                     <h1>Make announcement</h1>
                   </NavLink>
@@ -125,28 +132,34 @@ export default function LeftNavbar() {
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/my-music"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FaLayerGroup />
                     <h1>Manage Music</h1>
                   </NavLink>
+
+
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/release-new-music"
                     className="flex items-center justify-start gap-3">
+
                     <FaLayerGroup />
                     <h1>Release new music</h1>
                   </NavLink>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/release-new-video"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FaLayerGroup />
                     <h1>Release new video</h1>
                   </NavLink>
                   {/* <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/live-stream"
-                    className={`flex items-center justify-start gap-3 `}>
+                    className={`flex items-center justify-start gap-3 `}
+                  >
                     <FaLayerGroup />
                     <h1>Make live</h1>
                   </NavLink> */}
@@ -160,7 +173,8 @@ export default function LeftNavbar() {
                   </div>
                   <Link
                     to="/dashboard/my-playlist"
-                    className="flex items-center justify-start gap-3">
+                    className="flex items-center justify-start gap-3"
+                  >
                     <MdOutlinePlaylistAdd />
                     <h1>Playlist</h1>
                   </Link>
@@ -183,7 +197,8 @@ export default function LeftNavbar() {
               <NavLink
                 style={activeRouteStyle}
                 to="/dashboard/notification"
-                className={`flex items-center justify-start gap-3 `}>
+                className={`flex items-center justify-start gap-3 `}
+              >
                 <IoMdNotificationsOutline />
                 <h1>Notice</h1>
               </NavLink>
@@ -199,7 +214,8 @@ export default function LeftNavbar() {
               </div>
               <div
                 onClick={() => logOut()}
-                className="flex items-center justify-start gap-3 cursor-pointer">
+                className="flex items-center justify-start gap-3 cursor-pointer"
+              >
                 <MdLogout />
                 <h1>Logout</h1>
               </div>

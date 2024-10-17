@@ -163,13 +163,15 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         <button
           onClick={toggleModal}
           className="text-2xl"
-          title="Share this song">
+          title="Share this song"
+        >
           <FaShareSquare />
         </button>
         <button
           onClick={handleDownload}
           className="text-2xl"
-          title="Download this song">
+          title="Download this song"
+        >
           <FiDownload />
         </button>
         <button onClick={handlePlaylist} className="text-2xl"><MdOutlinePlaylistAdd /></button>
@@ -259,13 +261,15 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
               <EmailShareButton
                 url={shareUrl}
                 subject={`Check out this podcast: ${title}`}
-                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}>
+                body={`I found this amazing podcast titled "${title}". You can listen to it here: ${shareUrl}`}
+              >
                 <EmailIcon size={32} round />
               </EmailShareButton>
             </div>
             <button
               onClick={toggleModal}
-              className="mt-4 text-red-500 hover:text-red-700">
+              className="mt-4 text-red-500 hover:text-red-700"
+            >
               Close
             </button>
           </div>

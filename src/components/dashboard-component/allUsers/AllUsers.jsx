@@ -45,7 +45,9 @@ export default function AllUsers() {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/users/${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
+          console.log(res.data);
+          if (res?.data?.deletedCount > 0) {
+            console.log(res.data);
             setUsers((prevUsers) =>
               prevUsers.filter((user) => user._id !== id)
             );
@@ -67,6 +69,7 @@ export default function AllUsers() {
 
   return (
     <>
+
       <div
         className="min-h-screen bg-cover bg-center"
         style={{
@@ -122,6 +125,7 @@ export default function AllUsers() {
                 </tbody>
               </table>
             )}
+
           </div>
         </div>
       </div>
