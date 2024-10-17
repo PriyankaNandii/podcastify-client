@@ -108,18 +108,15 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-      
+      {
+        path: "all-music",
+        element: <AllPodCaster />,
+      },
       {
         path: "my-music",
         element: <MyMusic />,
-
-        element: (
-          <AdminRoute>
-            <AllPodCaster />
-          </AdminRoute>
-        ),
-
       },
+
       {
         path: "new-request",
         element: (

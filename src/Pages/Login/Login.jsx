@@ -38,22 +38,21 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then((result) => 
+      .then((result) => {
         console.log(result?.user);
         const user = result?.user;
         const uid = user?.uid;
+
         const userInfo = {
           email: result?.user?.email,
           name: result?.user?.displayName,
           role: "user",
           uid,
         };
-        axiosPublic.post("/users", userInfo).then((res) => {
 
+        axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
           toast.success("User logged in Successfully!");
-
-          toast.success("Google Login Successful!");
           navigate(location?.state ? location.state : "/");
         });
       })
@@ -65,7 +64,6 @@ const Login = () => {
   const handleGithubSignIn = () => {
     signInWithGithub()
       .then((result) => {
-
         console.log(result?.user);
         const user = result?.user;
         const uid = user?.uid;
@@ -132,7 +130,8 @@ const Login = () => {
                 />
                 <span
                   className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
-                  onClick={() => setPasswordShow(!passwordShow)}>
+                  onClick={() => setPasswordShow(!passwordShow)}
+                >
                   {passwordShow ? (
                     <IoEye className="text-lg text-gray-400" />
                   ) : (
@@ -156,7 +155,8 @@ const Login = () => {
           <div className="flex mt-4 justify-center space-x-4">
             <button
               className="bg-gray-700 p-2 rounded-full"
-              onClick={handleGoogleSignIn}>
+              onClick={handleGoogleSignIn}
+            >
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
                 alt="Google"
@@ -165,7 +165,8 @@ const Login = () => {
             </button>
             <button
               className="bg-gray-300 p-2 rounded-full"
-              onClick={handleGithubSignIn}>
+              onClick={handleGithubSignIn}
+            >
               <img
                 src="https://cdn-icons-png.flaticon.com/512/733/733609.png"
                 alt="Github"
