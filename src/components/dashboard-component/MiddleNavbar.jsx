@@ -1,8 +1,6 @@
-import { useState } from "react";
 import RightNavbar from "./RightNavbar";
 import Cards from "./cards/Cards";
 import Music from "./cards/Music";
-import MusicPlayer from "./cards/MusicPlayer";
 import mike from "/music.jpg";
 
 import Statistics from "./Statistics/Statistics";
@@ -20,7 +18,7 @@ export default function MiddleNavbar() {
               <Statistics />
             </>
           )}
-          {(role === "podcaster" || role === "user") && (
+          {role === "podcaster" && (
             <div className="p-2 bg-[#18181F] flex items-start flex-col-reverse lg:flex-row justify-center relative">
               {/* discover section */}
               <div className="p-2">
@@ -34,7 +32,8 @@ export default function MiddleNavbar() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-6 absolute left-1 top-1/2 -translate-y-1/2">
+                        className="size-6 absolute left-1 top-1/2 -translate-y-1/2"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -56,7 +55,8 @@ export default function MiddleNavbar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="size-10 bg-[#23232A] p-2 rounded-md text-white cursor-pointer">
+                      className="size-10 bg-[#23232A] p-2 rounded-md text-white cursor-pointer"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"

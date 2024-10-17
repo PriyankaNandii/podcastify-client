@@ -28,7 +28,7 @@ export default function MusicPlayer() {
       }
     };
     fetchData();
-  }, []);
+  }, [axiosPublic]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -109,7 +109,8 @@ export default function MusicPlayer() {
                 playAudio();
               }
             }}
-            className="border-2 p-2 rounded-2xl bg-white text-black">
+            className="border-2 p-2 rounded-2xl bg-white text-black"
+          >
             {isPlaying ? <TbPlayerPause /> : <TbPlayerPlayFilled />}
           </div>
           <IoMdSkipForward

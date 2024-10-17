@@ -13,7 +13,8 @@ export default function RightNavbar() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-8 bg-[#23232A] p-1 rounded-md text-white cursor-pointer">
+          className="size-8 bg-[#23232A] p-1 rounded-md text-white cursor-pointer"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

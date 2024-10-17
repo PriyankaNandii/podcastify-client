@@ -104,10 +104,7 @@ const OurMusicCollectionsDetailsPage = () => {
                 alt=""
               />
 
-              <div
-                className="mt-6 flex items-center justify-center lg:gap-6 gap-4  text-red-800
-           "
-              >
+              <div className="mt-6 flex items-center justify-center lg:gap-6 gap-4  text-red-800">
                 <div className="flex lg:gap-5 gap-1">
                   <button className=" lg:text-3xl text-xl ">
                     <IoPlaySkipBackSharp />

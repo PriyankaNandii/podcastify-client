@@ -2,18 +2,27 @@ import { Outlet } from "react-router-dom";
 import LeftNavbar from "../../components/dashboard-component/LeftNavbar";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import UserDashoard from "../../components/dashboard-component/Statistics/UserDashoard";
+import useCheckUserRole from "../../Hooks/useCheckUserRole";
 
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
+  const { role } = useCheckUserRole();
 
   return (
     <div className="">
       <Helmet>
         <title>Podcastify | Dashboard</title>
       </Helmet>
+      {role === "user" && (
+        <div>
+          <UserDashoard></UserDashoard>
+        </div>
+      )}
       <div
         className="z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
-        onClick={() => isOpen(!open)}>
+        onClick={() => isOpen(!open)}
+      >
         {!open ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +30,8 @@ export default function Dashboard() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className={`size-6 text-white cursor-pointer`}>
+            className={`size-6 text-white cursor-pointer`}
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -35,7 +45,8 @@ export default function Dashboard() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-white cursor-pointer hover:text-red-700 transition-colors">
+            className="size-6 text-white cursor-pointer hover:text-red-700 transition-colors"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -48,7 +59,8 @@ export default function Dashboard() {
       <div
         className={`block overflow-y-auto h-0 mt-10 lg:fixed w-full lg:w-64 lg:left-0 lg:top-0  z-20 lg:mt-0 top-12 lg:h-screen  p-0  ${
           open ? "h-52" : "h-0"
-        } `}>
+        } `}
+      >
         <LeftNavbar />
       </div>
       <div className={`ml-0 lg:ml-64`}>
