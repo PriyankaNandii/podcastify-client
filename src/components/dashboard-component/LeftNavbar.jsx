@@ -14,10 +14,9 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 export default function LeftNavbar() {
   const { user, logOut } = useAuth();
-  const { role, isPending } = useCheckUserRole();
+  const { role, isLoading } = useCheckUserRole();
   const axiosSecure = useAxiosSecure();
   const [userData, setUserData] = useState(null);
-
   // Fetch user data by
   const fetchUserData = async () => {
     try {
@@ -46,7 +45,7 @@ export default function LeftNavbar() {
       {(role === "admin" || role === "podcaster") && (
         <div className="py-4 text-[#a3a3a3] w-full h-full flex overflow-y-auto bg-gradient-to-r from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% bg-gray-800">
           {/* Content goes here */}
-          {isPending ? (
+          {isLoading ? (
             <h1 className="text-center text-sm text-white">Please wait...</h1>
           ) : (
             <div>

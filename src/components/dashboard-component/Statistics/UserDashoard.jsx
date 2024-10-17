@@ -1,6 +1,4 @@
 import {
-  FaBackward,
-  FaForward,
   FaHeart,
   FaListUl,
   FaPause,

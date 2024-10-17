@@ -1,4 +1,3 @@
-import mike from "/music.jpg";
 import { TiArrowShuffle } from "react-icons/ti";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
 import { IoMdSkipBackward, IoMdSkipForward } from "react-icons/io";

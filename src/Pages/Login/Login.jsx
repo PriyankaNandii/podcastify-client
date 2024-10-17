@@ -27,7 +27,6 @@ const Login = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result);
         toast.success("User logged in Successfully!");
         e.target.reset();
         navigate(location?.state ? location.state : "/");
@@ -43,12 +42,14 @@ const Login = () => {
         console.log(result?.user);
         const user = result?.user;
         const uid = user?.uid;
+
         const userInfo = {
           email: result?.user?.email,
           name: result?.user?.displayName,
           role: "user",
           uid,
         };
+
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
           toast.success("User logged in Successfully!");
@@ -66,6 +67,7 @@ const Login = () => {
         console.log(result?.user);
         const user = result?.user;
         const uid = user?.uid;
+
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
