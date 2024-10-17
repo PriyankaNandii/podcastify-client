@@ -20,13 +20,13 @@ import { Link, NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from "../../Layout/Loader";
 
 export default function LeftNavbar() {
   const { user, logOut } = useAuth();
-  const { role, isPending } = useCheckUserRole();
+  const { role, isLoading } = useCheckUserRole();
   const axiosSecure = useAxiosSecure();
   const [userData, setUserData] = useState(null);
-
   // Fetch user data by
   const fetchUserData = async () => {
     try {
@@ -50,17 +50,18 @@ export default function LeftNavbar() {
   };
 
   return (
-    <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full h-full flex overflow-y-auto">
+    <div className="bg-gradient-to-r py-4 from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% text-[#a3a3a3] w-full h-full overflow-y-auto">
       {/*  */}
-      {isPending ? (
-        <h1 className="text-center text-sm text-white">Please wait...</h1>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <div>
-          <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
+        <>
+          <div className="flex items-center justify-center p-5 flex-col gap-y-2">
             <img
               src={
-                user?.photoURL ||
-                "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                user?.photoURL
+                  ? user?.photoURL
+                  : "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
               }
               alt=""
               className="w-20 h-20 rounded-full"
@@ -128,12 +129,13 @@ export default function LeftNavbar() {
                     <FaLayerGroup />
                     <h1>Manage Music</h1>
                   </NavLink>
-                  <Link
-                    to="/dashboard/add-music"
+                  <NavLink
+                    style={activeRouteStyle}
+                    to="/dashboard/release-new-music"
                     className="flex items-center justify-start gap-3">
                     <FaLayerGroup />
                     <h1>Release new music</h1>
-                  </Link>
+                  </NavLink>
                   <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/release-new-video"
@@ -141,13 +143,13 @@ export default function LeftNavbar() {
                     <FaLayerGroup />
                     <h1>Release new video</h1>
                   </NavLink>
-                  <NavLink
+                  {/* <NavLink
                     style={activeRouteStyle}
                     to="/dashboard/live-stream"
                     className={`flex items-center justify-start gap-3 `}>
                     <FaLayerGroup />
                     <h1>Make live</h1>
-                  </NavLink>
+                  </NavLink> */}
                 </>
               )}
               {role === "user" && (
@@ -203,7 +205,7 @@ export default function LeftNavbar() {
               </div>
             </aside>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

@@ -35,13 +35,13 @@ function Navbar() {
           <>
             <NavLink
               to="/"
-              className="hover:text-red-400 text-white text-base font-medium italic">
+              className="hover:text-red-400 text-white text-base font-medium">
               Home
             </NavLink>
             <NavLink
               style={activeRouteStyle}
               to="/about-us"
-              className="hover:text-red-400 text-white text-base font-medium italic">
+              className="hover:text-red-400 text-white text-base font-medium">
               About Us
             </NavLink>
             {user && (
@@ -49,14 +49,8 @@ function Navbar() {
                 <NavLink
                   style={activeRouteStyle}
                   to="dashboard"
-                  className="hover:text-red-400 text-white text-base font-medium italic">
+                  className="hover:text-red-400 text-white text-base font-medium">
                   Dashboard
-                </NavLink>
-                <NavLink
-                  style={activeRouteStyle}
-                  to="/addmusic"
-                  className="hover:text-red-400 text-white text-base font-medium italic">
-                  Add Music
                 </NavLink>
               </>
             )}
