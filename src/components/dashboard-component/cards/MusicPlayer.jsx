@@ -69,6 +69,7 @@ export default function MusicPlayer() {
   if (loading) {
     return <h1 className="text-center text-sm">Please wait...</h1>;
   }
+  console.log(trackList);
   return (
     <div className="text-center space-y-8 p-4 rounded-xl bg-[#23232A] select-none">
       <h1 className="text-white text-lg">Now Playing</h1>
@@ -108,8 +109,7 @@ export default function MusicPlayer() {
                 playAudio();
               }
             }}
-            className="border-2 p-2 rounded-2xl bg-white text-black"
-          >
+            className="border-2 p-2 rounded-2xl bg-white text-black">
             {isPlaying ? <TbPlayerPause /> : <TbPlayerPlayFilled />}
           </div>
           <IoMdSkipForward

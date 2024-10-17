@@ -27,13 +27,12 @@ export default function AddVideo() {
   } = useForm();
 
   const handleUpload = async (values) => {
-    const { videoUrl, videoFile } = values;
-    const file = videoFile[0];
+    const file = values.videoFile[0];
     const formData = new FormData();
     formData.append("video", file);
-    console.log(file, formData);
+
     try {
-      const response = await axiosPublic.post("/uploads-video", formData, {
+      const response = await axiosPublic.post("/video-upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -62,10 +61,13 @@ export default function AddVideo() {
           </button>
           <button
             onClick={onOpen}
-            className="px-8 py-3 m-2 text-lg  font-semibold rounded bg-violet-600 dark:text-gray-50">
+            className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-600 dark:text-gray-50">
             Add video
           </button>
         </div>
+        <video controls>
+          <source src="http://localhost:5000/video/cartoon.mp4" />
+        </video>
       </div>
       <>
         <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
@@ -79,19 +81,10 @@ export default function AddVideo() {
                 onSubmit={handleSubmit(handleUpload)}
                 className="space-y-6">
                 <FormControl>
-                  <FormLabel>Video URL</FormLabel>
-                  <Input
-                    type="text"
-                    {...register("videoUrl")}
-                    placeholder="Paste your video URL"
-                  />
-                  <FormHelperText>We will share your video</FormHelperText>
-                </FormControl>
-                <FormControl>
                   <FormLabel>Or choose a file form local folder</FormLabel>
                   <input
                     type="file"
-                    name="video"
+                    name="file"
                     accept="video/*"
                     {...register("videoFile")}
                   />

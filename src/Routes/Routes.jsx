@@ -8,7 +8,6 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
-import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
 import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
@@ -104,17 +103,13 @@ const router = createBrowserRouter([
         path: "all-podcasters",
         element: (
           <AdminRoute>
-            <AddPublisher />
+            <AllPodCaster />
           </AdminRoute>
         ),
       },
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },
-      {
-        path: "my-music",
-        element: <MyMusic />,
       },
 
       {
@@ -156,7 +151,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "release-new-music",
+        path: "add-music",
         element: (
           <PodcasterRoute>
             <AddMusic />
