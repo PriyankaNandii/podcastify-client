@@ -1,5 +1,5 @@
 import Aos from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import { IoIosNotifications } from "react-icons/io";
 import useDataFetcher from "../../Hooks/useDataFetcher";
@@ -16,7 +16,6 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-  useQuery,
   useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -25,13 +24,26 @@ const OurPodcasters = () => {
   const toast = useToast();
   const { data, isLoading } = useDataFetcher("users");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [mySubs, setMySubs] = useState([]);
 
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
-  }, []);
+
+    const mySubscription = async () => {
+      try {
+        const response = await axiosPublic.get(
+          `/mySubscription/${user?.email}`
+        );
+        setMySubs(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    mySubscription();
+  }, [user?.email]);
   if (isLoading) {
     return <Loader />;
   }
@@ -134,7 +146,7 @@ const OurPodcasters = () => {
                   onClick={() =>
                     handleSubscription(podcaster._id, podcaster.uid)
                   }
-                  className="btn bg-red-800 text-white mt-5">
+                  className={`btn  text-white mt-5 bg-red-600`}>
                   Subscribe
                 </button>
                 <h1 className="text-white text-xs">0 subscribers</h1>
