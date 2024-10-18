@@ -5,6 +5,7 @@ import mike from "/music.jpg";
 
 import Statistics from "./Statistics/Statistics";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
+import UserDashoard from "./Statistics/UserDashoard";
 export default function MiddleNavbar() {
   const { role, isPending } = useCheckUserRole();
   return (
@@ -116,6 +117,7 @@ export default function MiddleNavbar() {
               )}
             </div>
           )}
+          {role === "user" && <UserDashoard></UserDashoard>}
         </>
       )}
     </>

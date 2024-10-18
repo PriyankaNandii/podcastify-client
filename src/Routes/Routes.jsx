@@ -91,6 +91,10 @@ const router = createBrowserRouter([
         path: "home",
         element: <MiddleNavbar />,
       },
+      {
+        path: "settings",
+        element: <UserProfile></UserProfile>,
+      },
       // Admin route only
       {
         path: "all-users",
@@ -111,10 +115,6 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },
-      {
-        path: "my-music",
-        element: <MyMusic />,
       },
 
       {

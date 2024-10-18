@@ -60,7 +60,7 @@ const MyMusic = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-[#171717] rounded-xl shadow-lg min-h-screen">
+    <div className="container mx-auto p-6 bg-[#171717] shadow-lg min-h-screen">
       <div className="bg-gradient-to-r from-[hsl(0,95%,22%)] to-[hsl(7,81%,4%)] p-6 rounded-lg shadow-md mb-6 flex items-center justify-between">
         <h1 className="md:text-3xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500">
           My Music List
@@ -78,7 +78,8 @@ const MyMusic = () => {
         <div className="flex justify-center items-center h-64">
           <div
             className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-900"
-            role="status">
+            role="status"
+          >
             <span className="visually-hidden">Loading...</span>
           </div>
         </div>
@@ -99,7 +100,8 @@ const MyMusic = () => {
               {podcasts.map((podcast, index) => (
                 <tr
                   key={podcast._id}
-                  className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black">
+                  className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black"
+                >
                   <td className="p-4">{index + 1 + page * itemsPerPage}</td>
                   <td className="p-4">{podcast.title}</td>
                   <td className="p-4">{podcast.musician}</td>
@@ -115,7 +117,8 @@ const MyMusic = () => {
                     </button>
                     <button
                       onClick={() => deleteItem(podcast._id)}
-                      className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105">
+                      className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105"
+                    >
                       <MdDeleteForever />
                     </button>
                   </td>

@@ -1,6 +1,8 @@
+import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import MusicPlayer from "./cards/MusicPlayer";
 
 export default function RightNavbar() {
+  const { role } = useCheckUserRole();
   return (
     <section className="p-4">
       <div className="flex items-center justify-between">
@@ -22,6 +24,7 @@ export default function RightNavbar() {
           />
         </svg>
       </div>
+
       <div className="mt-10">
         <MusicPlayer />
       </div>
