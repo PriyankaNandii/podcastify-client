@@ -78,15 +78,15 @@ export default function MusicPlayer() {
         className="w-full h-36 rounded-2xl mx-auto"
       />
       <div className="font-bold text-center">
-        <h2>Now: {trackList[currentTrackIndex].title}</h2>
+        <h2>Now: {trackList[currentTrackIndex]?.title}</h2>
         <h2 className="text-[#616166]">
-          By: {trackList[currentTrackIndex].musician}
+          By: {trackList[currentTrackIndex]?.musician}
         </h2>
       </div>
       <div className="flex items-center justify-center">
         <audio
           ref={audioRef}
-          src={trackList[currentTrackIndex].audioFileUrl}
+          src={trackList[currentTrackIndex]?.audioFileUrl}
           onPlay={handlePlay}
           onPause={handlePause}
           controls
