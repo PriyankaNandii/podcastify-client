@@ -39,6 +39,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => 
+      {
         console.log(result?.user);
         const user = result?.user;
         const uid = user?.uid;
