@@ -3,7 +3,6 @@ import Root from "../Layout/Root";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
-import AdminRoute from "./AdminRoute";
 import Home from "../components/Home/Home";
 import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -93,10 +92,6 @@ const router = createBrowserRouter([
         path: "home",
         element: <MiddleNavbar />,
       },
-      {
-        path: "settings",
-        element: <UserProfile></UserProfile>,
-      },
       // Admin route only
       {
         path: "all-users",
@@ -104,14 +99,15 @@ const router = createBrowserRouter([
       },
       {
         path: "all-podcasters",
-        element: <AdminRoute><AddPublisher /></AdminRoute>
+        element: <AddPublisher />,
       },
+      {
+        path: "all-music",
+        element: <AllPodCaster />,
+      },      
       {
         path: "my-music",
         element: <MyMusic />,
-      },
-      {
-        element: <AdminRoute><AllPodCaster /></AdminRoute>
       },
       {
         path: "new-request",
