@@ -20,10 +20,6 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
-import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
-import AdminRoute from "./AdminRoute";
-import PodcasterRoute from "./PodcasterRoute";
-import AddVideo from "../Pages/Dashboard/Podcaster/AddVideo";
 
 const router = createBrowserRouter([
   {
@@ -62,13 +58,18 @@ const router = createBrowserRouter([
         path: "/allrecentepisodes",
         element: <AllRecentEpisodes />,
       },
+
       {
-        path: "/podcast/:id",
+        path: "/addmusic",
         element: (
           <PrivateRoute>
-            <OurMusicCollectionsDetailsPage />
+            <AddMusic />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/podcast/:id",
+        element: <OurMusicCollectionsDetailsPage />,
       },
     ],
   },
@@ -91,85 +92,46 @@ const router = createBrowserRouter([
         path: "home",
         element: <MiddleNavbar />,
       },
-      {
-        path: "settings",
-        element: <UserProfile></UserProfile>,
-      },
       // Admin route only
       {
         path: "all-users",
-        element: (
-          <AdminRoute>
-            <AllUsers />
-          </AdminRoute>
-        ),
+        element: <AllUsers />,
       },
       {
         path: "all-podcasters",
-        element: (
-          <AdminRoute>
-            <AddPublisher />
-          </AdminRoute>
-        ),
+        element: <AddPublisher />,
       },
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },
-
-      {
-        path: "new-request",
-        element: (
-          <AdminRoute>
-            <PodcasterRequest />
-          </AdminRoute>
-        ),
-      },
-      {
-        path: "make-announcement",
-        element: (
-          <AdminRoute>
-            <MakeAnnouncement />
-          </AdminRoute>
-        ),
-      },
-
+      },      
       {
         path: "my-music",
-        element: (
-          <PodcasterRoute>
-            <MyMusic />
-          </PodcasterRoute>
-        ),
+        element: <MyMusic />,
       },
-
+      {
+        path: "new-request",
+        element: <PodcasterRequest />,
+      },
       {
         path: "my-playlist",
         element: <MyPlaylist />,
       },
       {
         path: "my-music/edit/:id",
-        element: (
-          <PodcasterRoute>
-            <EditPodcast />
-          </PodcasterRoute>
-        ),
+        element: <EditPodcast />,
       },
       {
         path: "release-new-music",
-        element: (
-          <PodcasterRoute>
-            <AddMusic />
-          </PodcasterRoute>
-        ),
+        element: <AddMusic />,
       },
       {
         path: "release-new-video",
-        element: (
-          <PodcasterRoute>
-            <AddVideo />
-          </PodcasterRoute>
-        ),
+        element: <h1>new video</h1>,
+      },
+      {
+        path: "live-stream",
+        element: "Live stream",
       },
       {
         path: "notification",
