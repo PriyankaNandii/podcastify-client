@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import { FaShareSquare, FaVolumeMute, FaVolumeUp } from "react-icons/fa";

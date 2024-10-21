@@ -1,10 +1,4 @@
-import {
-  FaHeart,
-  FaListUl,
-  FaPause,
-  FaPlay,
-  FaPlayCircle,
-} from "react-icons/fa";
+import { FaHeart, FaListUl, FaPause, FaPlay } from "react-icons/fa";
 import { IoMdSkipBackward, IoMdSkipForward } from "react-icons/io";
 
 import { useEffect, useRef, useState } from "react";

@@ -1,4 +1,4 @@
-import { FaHome, FaLayerGroup, FaTimes } from "react-icons/fa";
+import { FaHome, FaLayerGroup } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineNotification } from "react-icons/ai";
 import useAuth from "../../Hooks/useAuth";
@@ -12,9 +12,8 @@ import {
   MdLogout,
   MdPlaylistPlay,
   MdSettings,
-  MdTrendingUp,
 } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
