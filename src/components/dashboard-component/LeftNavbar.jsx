@@ -231,18 +231,18 @@ export default function LeftNavbar() {
                               to="my-playlist"
                               className="hover:text-blue-500"
                             >
-                              Playlist
+                              Playlists
                             </NavLink>
                           </li>
-                          {/* <li className="flex items-center space-x-3">
-                            <MdFavorite size={24} />
+                          <li className="flex items-center space-x-3">
+                            <MdFavorite size={23} />
                             <a
                               href="/favorites"
                               className="hover:text-blue-500"
                             >
                               Favorites
                             </a>
-                          </li> */}
+                          </li>
                           {/* <li className="flex items-center space-x-3">
                             <MdTrendingUp size={24} />
                             <a href="/trending" className="hover:text-blue-500">

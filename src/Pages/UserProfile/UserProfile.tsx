@@ -14,6 +14,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import "../UserProfile/user.css";
 import { FaRegEdit } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 interface UserData {
   name: string;
@@ -147,13 +148,15 @@ const UserProfile: React.FC = () => {
 
               <div className="mt-8 space-y-4">
                 {/* My Podcasts */}
-                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
-                  <div className="flex items-center">
-                    <FaPodcast className="text-red-800   w-5 h-5" />
-                    <span className="ml-4 text-[#dededecc]">My Podcasts</span>
+                <NavLink to="/dashboard/my-playlist">
+                  <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
+                    <div className="flex items-center">
+                      <FaPodcast className="text-red-800   w-5 h-5" />
+                      <span className="ml-4 text-[#dededecc]">My Podcasts</span>
+                    </div>
+                    <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
                   </div>
-                  <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
-                </div>
+                </NavLink>
 
                 {/* Change Password */}
                 <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
