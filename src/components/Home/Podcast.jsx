@@ -129,33 +129,32 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
     };
   }, [onPlayNext]);
 
-  const handlePlaylist = e => {
+  const handlePlaylist = (e) => {
     e.preventDefault();
     const user_email = user?.email;
     if (user_email) {
       const music_id = _id;
       const playlistData = {
-        user_email, music_id, title
-      }
-      axiosPublic.post("/playlist", playlistData)
+        user_email,
+        music_id,
+        title,
+      };
+      axiosPublic
+        .post("/playlist", playlistData)
         .then((response) => {
           if (response.data.insertedId !== null) {
             toast.success("Playlist added successfully!");
-          }
-          else {
+          } else {
             toast.warning("Podcast already exists in playlist.");
           }
-
         })
         .catch((error) => {
           console.error(error);
         });
+    } else {
+      navigate("/login");
     }
-    else{
-      navigate('/login');
-    }
-
-  }
+  };
 
   return (
     <div className="bg-black p-6 rounded-lg shadow-lg w-full">
@@ -174,7 +173,9 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         >
           <FiDownload />
         </button>
-        <button onClick={handlePlaylist} className="text-2xl"><MdOutlinePlaylistAdd /></button>
+        <button onClick={handlePlaylist} className="text-2xl">
+          <MdOutlinePlaylistAdd />
+        </button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">
         <img

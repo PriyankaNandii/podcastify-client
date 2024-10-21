@@ -234,7 +234,7 @@ export default function LeftNavbar() {
                               Playlist
                             </NavLink>
                           </li>
-                          <li className="flex items-center space-x-3">
+                          {/* <li className="flex items-center space-x-3">
                             <MdFavorite size={24} />
                             <a
                               href="/favorites"
@@ -242,7 +242,7 @@ export default function LeftNavbar() {
                             >
                               Favorites
                             </a>
-                          </li>
+                          </li> */}
                           {/* <li className="flex items-center space-x-3">
                             <MdTrendingUp size={24} />
                             <a href="/trending" className="hover:text-blue-500">
