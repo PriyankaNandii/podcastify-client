@@ -95,7 +95,42 @@ const AllPodcasts = () => {
         <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
           All Podcasts
         </h1>
-        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto"></div>
+        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+          {/* Category Filter */}
+          <select
+            className={`p-2 text-base text-black border border-gray-300 rounded-md ${
+              selectedCategory
+                ? "bg-neutral-300 text-black font-bold"
+                : "bg-white"
+            } hover:border-blue-500 focus:outline-none focus:ring-blue-500`}
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">All Categories</option>
+            <option value="Love">Love</option>
+            <option value="Sad">Sad</option>
+            <option value="Happy">Happy</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Relaxing">Relaxing</option>
+            <option value="Party">Party</option>
+          </select>
+          {/* Language Filter */}
+          <select
+            className={`p-2 text-base text-black border border-gray-300 rounded-md ${
+              selectedLanguage
+                ? "bg-neutral-300 text-black font-bold"
+                : "bg-white"
+            } hover:border-blue-500 focus:outline-none focus:ring-blue-500`}
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value)}
+          >
+            <option value="">All Languages</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Bengali">Bangla</option>
+            {/* Add more languages as needed */}
+          </select>
+        </div>
         {/* Search */}
         <div className="mt-6 mx-auto max-w-2xl sm:px-6 lg:px-8">
           <form onSubmit={handleSubmit}>
