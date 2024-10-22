@@ -96,24 +96,6 @@ const AllPodcasts = () => {
           All Podcasts
         </h1>
         <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-          {/* Category Filter */}
-          <select
-            className={`p-2 text-base text-black border border-gray-300 rounded-md ${
-              selectedCategory
-                ? "bg-neutral-300 text-black font-bold"
-                : "bg-white"
-            } hover:border-blue-500 focus:outline-none focus:ring-blue-500`}
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Love">Love</option>
-            <option value="Sad">Sad</option>
-            <option value="Happy">Happy</option>
-            <option value="Romantic">Romantic</option>
-            <option value="Relaxing">Relaxing</option>
-            <option value="Party">Party</option>
-          </select>
           {/* Language Filter */}
           <select
             className={`p-2 text-base text-black border border-gray-300 rounded-md ${
