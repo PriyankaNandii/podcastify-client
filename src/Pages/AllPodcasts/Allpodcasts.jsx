@@ -87,96 +87,100 @@ const AllPodcasts = () => {
   }
 
   return (
-    <div>
-      <div className="bg-[#171717] text-white py-24">
-        <h2 className="text-center text-red-800 text-lg p-3">
-          Start Listening Today
-        </h2>
-        <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
-          All Podcasts
-        </h1>
-        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-          {/* Category Filter */}
-          <select
-            className={`p-2 text-base text-black border border-gray-300 rounded-md ${
-              selectedCategory
-                ? "bg-neutral-300 text-black font-bold"
-                : "bg-white"
-            } hover:border-blue-500 focus:outline-none focus:ring-blue-500`}
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Love">Love</option>
-            <option value="Sad">Sad</option>
-            <option value="Happy">Happy</option>
-            <option value="Romantic">Romantic</option>
-            <option value="Relaxing">Relaxing</option>
-            <option value="Party">Party</option>
-          </select>
-          {/* Language Filter */}
-          <select
-            className={`p-2 text-base text-black border border-gray-300 rounded-md ${
-              selectedLanguage
-                ? "bg-neutral-300 text-black font-bold"
-                : "bg-white"
-            } hover:border-blue-500 focus:outline-none focus:ring-blue-500`}
-            value={selectedLanguage}
-            onChange={(e) => setSelectedLanguage(e.target.value)}
-          >
-            <option value="">All Languages</option>
-            <option value="English">English</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Bengali">Bangla</option>
-            {/* Add more languages as needed */}
-          </select>
-        </div>
-        {/* Search */}
-        <div className="mt-6 mx-auto max-w-2xl sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-r from-[#141c4c] via-[#18171E] to-[#1b1f24] text-[#a3a3a3] py-24">
+      <h2 className="text-center text-red-800 text-lg p-3">
+        Start Listening Today
+      </h2>
+      <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10 text-white">
+        All Podcasts
+      </h1>
+
+      {/* Filters Section */}
+      <div className="flex flex-col md:flex-row gap-4 w-9/12 mx-auto justify-start items-center mb-8">
+        {/* Category Filter */}
+        <select
+          className={`p-3 text-base text-white border border-gray-600 rounded-lg ${
+            selectedCategory
+              ? "bg-[#2d2d2d] text-white font-bold"
+              : "bg-[#171717] text-gray-400"
+          } hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-200`}
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="">All Categories</option>
+          <option value="Love">Love</option>
+          <option value="Sad">Sad</option>
+          <option value="Happy">Happy</option>
+          <option value="Romantic">Romantic</option>
+          <option value="Relaxing">Relaxing</option>
+          <option value="Party">Party</option>
+        </select>
+
+        {/* Language Filter */}
+        <select
+          className={`p-3 text-base text-white border border-gray-600 rounded-lg ${
+            selectedLanguage
+              ? "bg-[#2d2d2d] text-white font-bold"
+              : "bg-[#171717] text-gray-400"
+          } hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-200`}
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <option value="">All Languages</option>
+          <option value="English">English</option>
+          <option value="Hindi">Hindi</option>
+          <option value="Bengali">Bangla</option>
+        </select>
+
+        {/* Search Bar */}
+        <div className="w-full md:w-auto flex-1">
           <form onSubmit={handleSubmit}>
             <label
-              className="mx-auto relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-200"
+              className="relative bg-[#171717] flex items-center justify-between border border-gray-700 py-1 px-4 rounded-2xl shadow-lg focus-within:ring-1 w-10/12  transition-all duration-200"
               htmlFor="search"
             >
               <input
                 id="search"
                 placeholder="Search a podcast"
                 name="search"
-                className="px-3 py-[2px] w-full text-xl rounded-md flex-1 outline-none bg-white text-black font-semibold placeholder:font-normal"
+                className="w-full text-lg font-semibold placeholder:font-normal px-4 py-2 rounded-md focus:outline-none bg-[#2d2d2d] text-white placeholder-gray-400"
                 style={{ fontStyle: "italic" }}
                 defaultValue={search}
                 ref={searchRef}
               />
 
-              <button
-                type="submit"
-                className="mr-3 px-4 py-1 text-lg text-white font-normal rounded-md bg-blue-500"
-              >
-                Search
-              </button>
-
-              <button
-                type="button"
-                onClick={handleClearSearch}
-                className="p-2 mr-2 text-gray-600 rounded-md flex items-center justify-center"
-              >
-                <ImCross className="text-base" />
-              </button>
+              <div className="flex gap-2">
+                <button
+                  type="submit"
+                  className="px-6 py-1 ml-6 text-white font-semibold rounded-md text-base bg-blue-800 hover:bg-blue-900 transition-colors duration-200"
+                >
+                  Search
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClearSearch}
+                  className="p-2 text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <ImCross className="text-lg" />
+                </button>
+              </div>
             </label>
           </form>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-          {podcasts?.map((podcast) => (
-            <Podcast
-              key={podcast._id}
-              podcast={podcast}
-              isPlay={currentPodcastId === podcast._id}
-              onPlay={() => handlePlay(podcast._id)}
-              onPlayNext={() => handlePlayNext(podcast._id)}
-              onPlayPrevious={() => handlePlayPrevious(podcast._id)}
-            ></Podcast>
-          ))}
-        </div>
+      </div>
+
+      {/* Podcasts List */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5 md:px-20 mt-8">
+        {podcasts?.map((podcast) => (
+          <Podcast
+            key={podcast._id}
+            podcast={podcast}
+            isPlay={currentPodcastId === podcast._id}
+            onPlay={() => handlePlay(podcast._id)}
+            onPlayNext={() => handlePlayNext(podcast._id)}
+            onPlayPrevious={() => handlePlayPrevious(podcast._id)}
+          />
+        ))}
       </div>
     </div>
   );

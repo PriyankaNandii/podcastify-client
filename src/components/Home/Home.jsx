@@ -3,9 +3,9 @@ import AboutUs from "./AboutUs";
 import Contact from "./Contact";
 import OurMusicCollections from "./OurMusicCollections";
 import OurPodcasters from "./OurPodcasters";
-import RecentEpisodes from "./RecentEpisodes";
 import Reviews from "./Reviews";
 import Slider from "./Slider";
+import TrendingPodcasts from "./TrendingPodcasts";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
         <title>Podcastify</title>
       </Helmet>
       <Slider></Slider>
-      <RecentEpisodes></RecentEpisodes>
+      <TrendingPodcasts></TrendingPodcasts>
       <AboutUs />
       <Reviews />
       <OurMusicCollections />

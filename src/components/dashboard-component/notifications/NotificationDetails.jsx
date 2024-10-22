@@ -2,16 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Loader from "../../../Layout/Loader";
 import useAxiosPublic from "../../../Hooks/useAxiosPulic";
-import {
-  Box,
-  Flex,
-  HStack,
-  useRadio,
-  useRadioGroup,
-  useToast,
-} from "@chakra-ui/react";
+import { Flex, useToast } from "@chakra-ui/react";
 import useAuth from "../../../Hooks/useAuth";
-import { useState } from "react";
+
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
@@ -171,7 +164,8 @@ export default function NotificationDetails() {
               className={`${
                 checkReactedBefore?.react === ele.action ? "bg-red-500" : ""
               } text-2xl cursor-pointer p-1 rounded-lg`}
-              onClick={() => reactions(ele.action)}>
+              onClick={() => reactions(ele.action)}
+            >
               {ele.icon}
             </div>
           ))}

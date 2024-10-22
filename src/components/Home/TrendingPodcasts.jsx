@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Podcast from "./Podcast";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
+import Podcast from "./Podcast";
 import { NavLink } from "react-router-dom";
-const OurMusicCollections = () => {
+
+const TrendingPodcasts = () => {
   const axiosPublic = useAxiosPublic();
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,7 +65,7 @@ const OurMusicCollections = () => {
           Start Listening Today
         </h2>
         <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
-          Our Podcast&apos;s Collections
+          Trending Podcast&apos;s
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
           {podcasts?.slice(0, 6).map((podcast) => (
@@ -86,7 +87,7 @@ const OurMusicCollections = () => {
               type="button"
               className="text-white bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-500 dark:focus:ring-red-800 shadow-lg shadow-red-400/50 dark:shadow-lg dark:shadow-red-800/80 font- rounded-lg px-5 py-2.5 text-center me-2 mb-2 text-lg italic"
             >
-              Listen & Explore More Podcasts
+              Explore All Podcasts
             </button>
           </NavLink>
         </div>
@@ -95,4 +96,4 @@ const OurMusicCollections = () => {
   );
 };
 
-export default OurMusicCollections;
+export default TrendingPodcasts;

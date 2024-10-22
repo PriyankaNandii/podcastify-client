@@ -1,5 +1,5 @@
 import { FaSignOutAlt, FaUserCircle } from "react-icons/fa";
-import logo from "../../assets/images/newlogo.png";
+import logo from "../../assets/images/podcastLogoo.png";
 import useAuth from "../../Hooks/useAuth";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useState } from "react";
@@ -17,40 +17,49 @@ function Navbar() {
     setIsDropdownOpen(false);
   }
 
-  const activeRouteStyle = ({ isActive, isPending, isTransitioning }) => {
-    return {
-      borderBottom: isActive ? "2px solid red" : "",
-      color: isPending ? "red" : "",
-      viewTransitionName: isTransitioning ? "slide" : "",
-    };
-  };
   return (
     <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
         <Link to="/">
-          <img src={logo} className="lg:w-44 w-36" alt="Microphone GIF" />
+          <img
+            src={logo}
+            className="lg:w-[205px] w-36 text-center"
+            alt="Microphone GIF"
+          />
         </Link>
 
         <div className="hidden lg:flex space-x-6">
-
           <>
             <NavLink
               to="/"
-              className="hover:text-red-400 text-white text-base font-medium">
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }
+            >
               Home
             </NavLink>
             <NavLink
-              style={activeRouteStyle}
               to="/about-us"
-              className="hover:text-red-400 text-white text-base font-medium">
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }
+            >
               About Us
             </NavLink>
             {user && (
               <>
                 <NavLink
-                  style={activeRouteStyle}
                   to="dashboard"
-                  className="hover:text-red-400 text-white text-base font-medium">
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                      : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                  }
+                >
                   Dashboard
                 </NavLink>
               </>
@@ -98,13 +107,13 @@ function Navbar() {
           <div className="hidden lg:block gap-4">
             <NavLink
               to="/registration"
-              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md"
+              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
             >
               Sign up free
             </NavLink>
             <NavLink
               to="/login"
-              className="hover:text-red-400 text-white text-[17px] font-semibold"
+              className="bg-gray-600 text-base text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200 font-semibold"
             >
               Log in
             </NavLink>
@@ -140,25 +149,41 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 Dashboard
               </NavLink>
               <NavLink
                 to="/addmusic"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 Add Music
               </NavLink>
@@ -167,26 +192,38 @@ function Navbar() {
             <>
               <NavLink
                 to="/"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 Home
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 About Us
               </NavLink>
               <NavLink
                 to="dashboard"
-                className="block px-4 py-2 hover:text-red-400 text-white text-[15px] font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
+                    : "block px-4 py-2  text-white text-[15px] font-medium"
+                }
               >
                 Dashboard
               </NavLink>
-              {/* Only show login and signup if user doesn't exist */}
+
               <NavLink
                 to="/login"
-                className="block px-5 py-2 hover:text-red-500 text-white text-[17px] font-semibold"
+                className="block px-5 lg:ml-0 md:ml-4 py-2 hover:text-red-500 text-white text-[17px] font-semibold"
               >
                 <hr className="my-4 border-gray-600" />
                 Log in

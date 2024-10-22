@@ -168,7 +168,7 @@ export default function LeftNavbar() {
                         className={`flex items-center justify-start gap-3`}
                       >
                         <FaLayerGroup />
-                        <h1>Manage Music</h1>
+                        <h1>Manage Podcasts</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
@@ -183,7 +183,7 @@ export default function LeftNavbar() {
                         className="flex items-center justify-start gap-3"
                       >
                         <FaLayerGroup />
-                        <h1>Release new music</h1>
+                        <h1>Release new podcast</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}

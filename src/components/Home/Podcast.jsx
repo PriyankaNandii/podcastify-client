@@ -6,7 +6,7 @@ import { FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
 import { MdForward10, MdOutlinePlaylistAdd, MdReplay10 } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -22,28 +22,66 @@ import {
 import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
-import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { BiUpvote } from "react-icons/bi";
+import toast from "react-hot-toast";
 
 const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const { user } = useContext(AuthContext);
-  const { _id, title, releaseDate, coverImageUrl, audioFileUrl } = podcast;
+  const {
+    _id,
+    title,
+    releaseDate,
+    coverImageUrl,
+    audioFileUrl,
+    voters,
+    userEmail,
+    upVote,
+  } = podcast;
+
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [totalDuration, setTotalDuration] = useState("0:00");
   const [isMuted, setIsMuted] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const queryClient = useQueryClient();
 
   const dateObj = new Date(releaseDate);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const date = dateObj.toLocaleDateString("en-US", options);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const location = useLocation();
 
   //   localhost sharing url
   const shareUrl = `http://localhost:5000${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Vote to a podcast
+  const { mutateAsync: voteIncrement } = useMutation({
+    mutationFn: async ({ id }) =>
+      await axiosPublic.put(`/voteCount/${id}`, { emailUser: user?.email }),
+    onSuccess: () => queryClient.invalidateQueries(["proSearch"]),
+  });
+
+  // Vote handler
+  const handleVoteCount = async (podcasts) => {
+    if (!user) {
+      navigate("/login", { state: { from: location } });
+      return;
+    }
+
+    try {
+      await voteIncrement({ id: podcasts._id, emailUser: user?.email });
+      toast("Woww! Vote done", {
+        icon: "👏",
+      });
+    } catch (error) {
+      console.log(error || "Error voting for podcast");
+    }
+  };
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -53,17 +91,19 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const response = await fetch(audioFileUrl);
+      const response = await fetch(audioFileUrl); // Consider updating this URL if CORS is an issue
       if (!response.ok) throw new Error("Network response was not ok");
       const blob = await response.blob();
-      const link = Object.assign(document.createElement("a"), {
-        href: URL.createObjectURL(blob),
-        download: `${title}.mp3`,
-      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${title}.mp3`;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
       URL.revokeObjectURL(link.href);
     } catch (error) {
       console.error("Download failed:", error);
+      toast.error("Download failed. Please try again."); // Improved error handling
     } finally {
       setIsDownloading(false);
     }
@@ -146,7 +186,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
           if (response.data.insertedId !== null) {
             toast.success("Playlist added successfully!");
           } else {
-            toast.warning("Podcast already exists in playlist.");
+            toast.error("Podcast already exists in playlist.");
           }
         })
         .catch((error) => {
@@ -158,7 +198,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   };
 
   return (
-    <div className="bg-black p-6 rounded-lg shadow-lg w-full">
+    <div className="bg-[#1c171e] shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-6 w-full">
       <div className="flex justify-end items-center text-red-800 gap-4 mr-2">
         <button
           onClick={toggleModal}
@@ -176,6 +216,26 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         </button>
         <button onClick={handlePlaylist} className="text-2xl">
           <MdOutlinePlaylistAdd />
+        </button>
+        {/* Vote Button */}
+        <button
+          onClick={() => {
+            if (voters?.includes(user?.email)) {
+              toast.error("You've already voted this podcast");
+            } else {
+              handleVoteCount(podcast);
+            }
+          }}
+          disabled={user?.email === userEmail}
+          className={`py-1 px-4 hover:text-purple-800 hover:scale-105 hover:shadow text-center border rounded-md border-gray-800 h-8 text-sm flex items-center gap-1 lg:gap-2 ${
+            user?.email === userEmail
+              ? "cursor-not-allowed opacity-60 hover:text-black"
+              : ""
+          }`}
+          title="Like this podcast"
+        >
+          <BiUpvote className="text-xl"></BiUpvote>
+          <span className="text-lg">{upVote || 0}</span>
         </button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">

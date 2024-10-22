@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import {
   FaArrowLeft,
@@ -14,29 +13,18 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import "../UserProfile/user.css";
 import { FaRegEdit } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 
-interface UserData {
-  name: string;
-  email: string;
-  username: string;
-  phoneNumber?: string;
-  photoURL?: string;
-}
-
-const UserProfile: React.FC = () => {
+const UserProfile = () => {
   const { user, loading, logOut } = useAuth();
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState(false);
   const axiosSecure = useAxiosSecure();
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [userData, setUserData] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(userData?.phoneNumber || "");
 
-  // Fetch user data by email
+  // Fetch user data by
   const fetchUserData = async () => {
-    if (!user?.email) return;
-
     try {
-      const response = await axiosSecure.get(`/users/email/${user.email}`);
+      const response = await axiosSecure.get(`/users/email/${user?.email}`);
       setUserData(response.data);
       setPhoneNumber(response.data.phoneNumber || "");
     } catch (error) {
@@ -45,21 +33,22 @@ const UserProfile: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchUserData();
+    if (user?.email) {
+      fetchUserData();
+    }
   }, [user?.email]);
 
   const handleEdit = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const updatedData: UserData = {
-      name: (form.name as unknown as HTMLInputElement).value,
-      username: (form.username as unknown as HTMLInputElement).value,
+    const form = e.target;
+    const updatedData = {
+      name: form?.name?.value,
+      username: form?.username?.value,
       phoneNumber: phoneNumber,
-      email: userData?.email || "",
     };
 
     try {
@@ -71,7 +60,9 @@ const UserProfile: React.FC = () => {
         Swal.fire({
           title: "Profile Updated ✅",
           text: "You're all set! Your profile looks great 👏",
-          imageUrl: user?.photoURL || "https://example.com/default-image.jpg",
+          imageUrl:
+            user?.photoURL ||
+            "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg",
           imageWidth: 80,
           imageHeight: 80,
           confirmButtonText: "Yay! 🤩",
@@ -89,7 +80,6 @@ const UserProfile: React.FC = () => {
       console.error("Error updating profile:", error);
     }
   };
-
   const handleSignOut = () => {
     logOut().then().catch();
   };
@@ -148,15 +138,13 @@ const UserProfile: React.FC = () => {
 
               <div className="mt-8 space-y-4">
                 {/* My Podcasts */}
-                <NavLink to="/dashboard/my-playlist">
-                  <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
-                    <div className="flex items-center">
-                      <FaPodcast className="text-red-800   w-5 h-5" />
-                      <span className="ml-4 text-[#dededecc]">My Podcasts</span>
-                    </div>
-                    <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
+                <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
+                  <div className="flex items-center">
+                    <FaPodcast className="text-red-800   w-5 h-5" />
+                    <span className="ml-4 text-[#dededecc]">My Podcasts</span>
                   </div>
-                </NavLink>
+                  <FaArrowLeft className="text-gray-400 w-4 h-4 transform rotate-180" />
+                </div>
 
                 {/* Change Password */}
                 <div className="flex items-center justify-between px-6 py-4 bg-black rounded-lg shadow-sm">
@@ -247,18 +235,14 @@ const UserProfile: React.FC = () => {
                     <label className="block text-sm italic font-semibold text-blue-100 mb-1">
                       Phone number
                     </label>
-                    <div className="mt-1">
-                      <PhoneInput
-                        country={"bd"}
-                        value={phoneNumber}
-                        onChange={setPhoneNumber}
-                        inputStyle={{
-                          width: "100%",
-                          backgroundColor: "#D1D5DB",
-                        }}
-                        containerStyle={{ width: "100%" }}
-                      />
-                    </div>
+                    <PhoneInput
+                      country={"bd"}
+                      value={phoneNumber}
+                      onChange={setPhoneNumber}
+                      inputStyle={{ width: "100%", backgroundColor: "#D1D5DB" }}
+                      containerStyle={{ width: "100%" }}
+                      className="mt-1"
+                    />
                   </div>
 
                   {/* Username */}
