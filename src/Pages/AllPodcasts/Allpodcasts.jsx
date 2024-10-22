@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Podcast from "./Podcast";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
-import { NavLink } from "react-router-dom";
-const OurMusicCollections = () => {
+import Podcast from "../../components/Home/Podcast";
+
+const AllPodcasts = () => {
   const axiosPublic = useAxiosPublic();
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,10 +64,10 @@ const OurMusicCollections = () => {
           Start Listening Today
         </h2>
         <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
-          Our Music Collections
+          All Podcasts
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-          {podcasts?.slice(0, 6).map((podcast) => (
+          {podcasts?.map((podcast) => (
             <Podcast
               key={podcast._id}
               podcast={podcast}
@@ -78,18 +78,9 @@ const OurMusicCollections = () => {
             ></Podcast>
           ))}
         </div>
-
-        <div className="text-center mt-8">
-          <NavLink to="/all-podcasts">
-            {" "}
-            <button className="bg-red-800 text-white lg:px-6 px-3 lg:py-4 py-2 text-lg rounded-md">
-              Load More
-            </button>
-          </NavLink>
-        </div>
       </div>
     </div>
   );
 };
 
-export default OurMusicCollections;
+export default AllPodcasts;

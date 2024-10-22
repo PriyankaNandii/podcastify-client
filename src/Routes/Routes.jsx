@@ -20,6 +20,7 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
+import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
         path: "/podcast/:id",
         element: <OurMusicCollectionsDetailsPage />,
       },
+      {
+        path: "/all-podcasts",
+        element: <Allpodcasts></Allpodcasts>,
+      },
     ],
   },
   {
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
       {
         path: "my-music",
         element: <MyMusic />,

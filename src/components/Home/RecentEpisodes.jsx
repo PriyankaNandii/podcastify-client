@@ -16,7 +16,7 @@ const LatestEpisodes = () => {
         Start Listening Today
       </h2>
       <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
-        Popular Music's
+        Popular Music&apos;s
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
         <div className="bg-[#151515] p-6 rounded-lg shadow-lg lg:w-96 w-full">
@@ -45,7 +45,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           ">
+           "
+          >
             <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
@@ -107,7 +108,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           ">
+           "
+          >
             <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
@@ -169,7 +171,8 @@ const LatestEpisodes = () => {
           </div>
           <div
             className="mt-6 flex items-center lg:gap-6 gap-4  text-red-800
-           ">
+           "
+          >
             <div className="audio-timing lg:text-lg text-xs">
               <span id="current-time">0:00</span> /
               <span id="total-duration"> 0:00</span>
