@@ -12,6 +12,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { BiUpvote } from "react-icons/bi";
 import { TbPlaylist } from "react-icons/tb";
+import { MdOutlineFileUpload } from "react-icons/md";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -248,6 +249,14 @@ const AboutUs = () => {
             <div className="card-body items-center text-center">
               <h2 className="card-title"><TbPlaylist className="w-16 h-16" /></h2>
               <p className="font-semibold text-xl">User Playlist   
+              </p>
+            </div>
+          </div>
+          {/* feature 8 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineFileUpload className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Podcast Upload   
               </p>
             </div>
           </div>
