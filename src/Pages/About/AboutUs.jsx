@@ -11,6 +11,7 @@ import { ImSearch } from "react-icons/im";
 import { MdOutlineRateReview } from "react-icons/md";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { BiUpvote } from "react-icons/bi";
+import { TbPlaylist } from "react-icons/tb";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -239,6 +240,14 @@ const AboutUs = () => {
               <h2 className="card-title"><MdOutlineRateReview className="w-16 h-16" /></h2>
               <p className="font-semibold text-xl">Podcast Review  
               <br /> <span>& Rating</span> 
+              </p>
+            </div>
+          </div>
+          {/* feature 7 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><TbPlaylist className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">User Playlist   
               </p>
             </div>
           </div>
