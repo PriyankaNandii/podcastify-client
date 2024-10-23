@@ -25,7 +25,9 @@ const OurMusicCollectionsDetailsPage = () => {
   useEffect(() => {
     const fetchPodcast = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/podcast/${id}`);
+        const response = await fetch(
+          `https://podcastify-server-opal.vercel.app/podcast/${id}`
+        );
         const data = await response.json();
 
         if (response.ok) {

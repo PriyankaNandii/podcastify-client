@@ -53,8 +53,10 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const from = location.state?.from?.pathname || "/login";
+
   //   localhost sharing url
-  const shareUrl = `http://localhost:5000${audioFileUrl}`;
+  const shareUrl = `https://podcastify-server-opal.vercel.app${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,7 +71,8 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   // Vote handler
   const handleVoteCount = async (podcasts) => {
     if (!user) {
-      navigate("/login", { state: { from: location } });
+      navigate(from, { replace: true });
+
       return;
     }
 
