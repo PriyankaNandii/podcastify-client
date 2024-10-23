@@ -10,6 +10,7 @@ import { MdOutlineSubscriptions } from "react-icons/md";
 import { ImSearch } from "react-icons/im";
 import { MdOutlineRateReview } from "react-icons/md";
 import { FaRegShareFromSquare } from "react-icons/fa6";
+import { BiUpvote } from "react-icons/bi";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -219,8 +220,8 @@ const AboutUs = () => {
            {/* feature 4 */}
            <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><FaRegShareFromSquare className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Social Sharing</p>
+              <h2 className="card-title"><BiUpvote className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Upvote System</p>
             </div>
           </div>
           {/* feature 5 */}
