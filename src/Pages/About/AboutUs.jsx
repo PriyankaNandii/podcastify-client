@@ -177,6 +177,30 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      {/* feature section */}
+      <section className="bg-black py-10">
+      <div className="text-center">
+            <p className="font-medium text-lg text-red-800 dark:text-red-800">
+              Feature
+            </p>
+
+            <h1 className="mt-2 text-2xl font-semibold text-white md:text-5xl dark:text-white">
+             Some Awesome Features
+            </h1>
+          </div>
+          <div className="my-10">
+            {/* 1 */}
+          <div className="card bg-base-100 text-red-500 w-80 shadow-xl">
+  <div className="card-body">
+    <h2 className="card-title">Card title!</h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <button className="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>
+          </div>
+      </section>
     </div>
   );
 };
