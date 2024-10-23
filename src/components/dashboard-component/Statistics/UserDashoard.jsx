@@ -1,10 +1,4 @@
-import {
-  FaHeart,
-  FaListUl,
-  FaPause,
-  FaPlay,
-  FaPlayCircle,
-} from "react-icons/fa";
+import { FaHeart, FaListUl, FaPause, FaPlay } from "react-icons/fa";
 import { IoMdSkipBackward, IoMdSkipForward } from "react-icons/io";
 
 import { useEffect, useRef, useState } from "react";
@@ -137,9 +131,9 @@ const UserDashoard = () => {
                 <p className="text-gray-300">With Tom Kennedy</p>
               </div>
               <img
-                src="https://via.placeholder.com/100"
+                src={trackList[currentTrackIndex]?.coverImageUrl}
                 alt="The Beautiful Mind"
-                className="rounded-lg shadow-md"
+                className="rounded-lg shadow-md w-16"
               />
             </div>
           </section>
@@ -149,29 +143,33 @@ const UserDashoard = () => {
               Most Popular Podcast
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-              {/* Podcast Card 1 */}
-              <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-                <img
-                  src="https://via.placeholder.com/150"
-                  alt="The Habit Coach"
-                  className="w-full h-40 object-cover"
-                />
-                <div className="p-4">
-                  <h4 className="text-lg font-bold text-white mb-1">
-                    The Habit Coach
-                  </h4>
-                  <p className="text-gray-300">Ashdin Doctor</p>
+              {trackList.map((podcast, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+                >
+                  <img
+                    src={podcast.coverImageUrl}
+                    alt={podcast.title}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-4">
+                    <h4 className="text-lg font-bold text-white mb-1">
+                      {podcast.title}
+                    </h4>
+                    <p className="text-gray-300">{podcast.musician}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
 
             {/* Recently Played Section */}
-            <div>
+            {/*  <div>
               <h3 className="text-xl font-semibold mb-4 mt-10">
                 Recently Played
               </h3>
               <div className="bg-gray-700 p-4 rounded-lg space-y-4">
-                {/* Podcast 1 */}
+               
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <img
@@ -191,31 +189,8 @@ const UserDashoard = () => {
                     <FaPlayCircle className="text-blue-500 text-xl" />
                   </div>
                 </div>
-
-                {/* Podcast 2 */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src="https://via.placeholder.com/50"
-                      alt="We Study Billionaires"
-                      className="rounded-lg"
-                    />
-                    <div>
-                      <h4 className="text-lg font-semibold">
-                        We Study Billionaires
-                      </h4>
-                      <p className="text-gray-400">
-                        Stig Brodersen & Trey Lockerbie
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <span>20:15</span>
-                    <FaPlayCircle className="text-blue-500 text-xl" />
-                  </div>
-                </div>
               </div>
-            </div>
+            </div> */}
           </section>
         </div>
 

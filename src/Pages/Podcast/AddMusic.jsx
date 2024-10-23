@@ -93,7 +93,7 @@ const AddMusic = () => {
         <title>Podcastify | Add Music</title>
       </Helmet>
       <div className="max-w-2xl w-full p-8 bg-black shadow-4xl rounded-lg m-5 ">
-        <h2 class="text-xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500 text-center">
+        <h2 className="text-xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500 text-center">
           Upload New Music
         </h2>
 
@@ -104,7 +104,8 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="title"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Music Title
                 </label>
                 <input
@@ -120,7 +121,8 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="musician"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Musician Name
                 </label>
                 <input
@@ -136,7 +138,8 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="description"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Music Description
                 </label>
                 <textarea
@@ -145,13 +148,15 @@ const AddMusic = () => {
                   rows="4"
                   className="w-full p-3 bg-[#171717] text-white rounded-lg focus:ring focus:ring-red-800 border border-gray-700"
                   placeholder="Enter music description"
-                  required></textarea>
+                  required
+                ></textarea>
               </div>
 
               <div className="mb-5">
                 <label
                   htmlFor="coverImage"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Cover Image URL
                 </label>
                 <input
@@ -170,7 +175,8 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="audioFile"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Song URL
                 </label>
                 <input
@@ -186,7 +192,8 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="releaseDate"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Release Date
                 </label>
                 <input
@@ -201,14 +208,16 @@ const AddMusic = () => {
               <div className="mb-5">
                 <label
                   htmlFor="category"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Category
                 </label>
                 <select
                   id="category"
                   name="category"
                   className="w-full p-3 bg-[#171717] text-white rounded-lg focus:ring focus:ring-red-800 border border-gray-700"
-                  required>
+                  required
+                >
                   <option value="">Select category</option>
                   <option value="pop">Pop</option>
                   <option value="rock">Rock</option>
@@ -230,7 +239,8 @@ const AddMusic = () => {
               <div className="mb-5 ">
                 <label
                   htmlFor="tags"
-                  className="block text-lg font-medium text-white mb-1">
+                  className="block text-lg font-medium text-white mb-1"
+                >
                   Tags
                 </label>
                 <div className="bg-[#171717] border border-gray-700 rounded-lg p-1">
@@ -246,7 +256,8 @@ const AddMusic = () => {
                 <div className="mb-5">
                   <label
                     htmlFor="userEmail"
-                    className="block text-lg font-medium text-white mb-1">
+                    className="block text-lg font-medium text-white mb-1"
+                  >
                     User Email
                   </label>
                   <input
@@ -267,7 +278,8 @@ const AddMusic = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-full md:w-1/2 p-3 bg-gradient-to-r from-red-800 to-black text-white text-lg font-semibold rounded-lg hover:from-red-700 hover:to-gray-800 transition duration-300">
+              className="w-full md:w-1/2 p-3 bg-gradient-to-r from-red-800 to-black text-white text-lg font-semibold rounded-lg hover:from-red-700 hover:to-gray-800 transition duration-300"
+            >
               Upload Music
             </button>
           </div>

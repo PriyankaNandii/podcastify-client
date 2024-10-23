@@ -184,7 +184,7 @@ const Reviews = () => {
   }
 
   return (
-    <div className=" w-full bg-black py-24 lg:px-20 px-5">
+    <div className=" w-full bg-[#17191e] py-24 lg:px-20 px-5">
       <h2 className="text-center text-red-800 text-lg p-3">
         Start Listening Today
       </h2>
