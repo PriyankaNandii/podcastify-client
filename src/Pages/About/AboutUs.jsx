@@ -195,14 +195,15 @@ const AboutUs = () => {
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
-              <p className="font-semibold text-2xl">Live Streaming</p>
+              <p className="font-semibold text-xl">Live podcast
+                <br /> <span>Streaming</span></p>
             </div>
           </div>
           {/* 2 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" />Subscribe Podcasters</h2>
-              <p className="font-semibold text-2xl"></p>
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Subscribe favourite Podcasters</p>
             </div>
           </div>
         </div>
