@@ -26,7 +26,7 @@ const AboutUs = () => {
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg">
                 <h1 className="text-3xl font-semibold text-white dark:text-white lg:text-5xl">
-                  Welcome to Our{" "}
+                  Welcome to The {" "}
                   <span className="text-red-800 mt-2 ">Podcastify</span>
                 </h1>
 
