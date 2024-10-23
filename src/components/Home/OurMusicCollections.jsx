@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import { NavLink } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-
 const OurMusicCollections = () => {
   const axiosPublic = useAxiosPublic();
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPodcastId, setCurrentPodcastId] = useState(null);
 
-  // Get all podcast
-  const {
-    data = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["allPodcast"],
-    queryFn: async () => {
-      await axiosPublic.get("/podcast");
-    },
-  });
-  const podcasts = data;
-  console.log(podcasts);
+  // Fetch podcasts
+  useEffect(() => {
+    const fetchPodcasts = async () => {
+      try {
+        const response = await axiosPublic.get("/podcast");
+        setPodcasts(response.data);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  console.log("Refetch function:", refetch);
+    fetchPodcasts();
+  }, [axiosPublic]);
 
   const handlePlay = (id) => {
     if (currentPodcastId === id) {
@@ -53,6 +53,10 @@ const OurMusicCollections = () => {
     }
   };
 
+  if (loading) {
+    return <p>Loading podcasts...</p>;
+  }
+
   return (
     <div>
       <div className="bg-[#171717] text-white py-24">
@@ -71,8 +75,6 @@ const OurMusicCollections = () => {
               onPlay={() => handlePlay(podcast._id)}
               onPlayNext={() => handlePlayNext(podcast._id)}
               onPlayPrevious={() => handlePlayPrevious(podcast._id)}
-              isLoading={isLoading}
-              refetch={refetch}
             ></Podcast>
           ))}
         </div>

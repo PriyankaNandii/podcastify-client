@@ -25,18 +25,8 @@ import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import { useMutation } from "@tanstack/react-query";
 import { BiUpvote } from "react-icons/bi";
 import toast from "react-hot-toast";
-import Loader from "../../Layout/Loader";
 
-const Podcast = ({
-  podcast,
-  isPlay,
-  onPlay,
-  onPlayNext,
-  onPlayPrevious,
-  isLoading,
-  refetch = () => {},
-}) => {
-  console.log("Refetch in Podcast:", typeof refetch);
+const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const {
     _id,
     title,
@@ -96,11 +86,14 @@ const Podcast = ({
       toast.success("Woww! Vote done", { icon: "👏" });
 
       voters.push(user.email);
-      refetch();
     } catch (error) {
       console.error(error || "Error voting for podcast");
     }
   };
+  useEffect(() => {
+    // Perform any side effects or updates after vote count changes
+    console.log("Vote count updated:", UpVotee);
+  }, [UpVotee]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -215,14 +208,6 @@ const Podcast = ({
       navigate("/login");
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center mt-8">
-        <Loader />
-      </div>
-    );
-  }
 
   return (
     <div className="bg-[#1c171e] shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-6 w-full">

@@ -1,29 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import Podcast from "./Podcast";
 import { NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Layout/Loader";
 
 const TrendingPodcasts = () => {
   const axiosPublic = useAxiosPublic();
-  const [podcasts, setPodcasts] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [currentPodcastId, setCurrentPodcastId] = useState(null);
+  const [filter, setFilter] = useState("desc");
 
   // Fetch podcasts
-  useEffect(() => {
-    const fetchPodcasts = async () => {
-      try {
-        const response = await axiosPublic.get("/podcast");
-        setPodcasts(response.data);
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["trendingPodcasts"],
+    queryFn: async () =>
+      await axiosPublic.get(`/trendingPodcasts/?upVote=${filter}`),
+  });
 
-    fetchPodcasts();
-  }, [axiosPublic]);
+  const allTrendingPodcast = data?.data;
 
   const handlePlay = (id) => {
     if (currentPodcastId === id) {
@@ -35,27 +30,32 @@ const TrendingPodcasts = () => {
 
   const handlePlayNext = (currentId) => {
     if (currentPodcastId === currentId) {
-      const currentIndex = podcasts.findIndex(
+      const currentIndex = allTrendingPodcast.findIndex(
         (podcast) => podcast._id === currentId
       );
-      const nextIndex = (currentIndex + 1) % podcasts.length;
-      setCurrentPodcastId(podcasts[nextIndex]._id);
+      const nextIndex = (currentIndex + 1) % allTrendingPodcast.length;
+      setCurrentPodcastId(allTrendingPodcast[nextIndex]._id);
     }
   };
 
   const handlePlayPrevious = (currentId) => {
     if (currentPodcastId === currentId) {
-      const currentIndex = podcasts.findIndex(
+      const currentIndex = allTrendingPodcast.findIndex(
         (podcast) => podcast._id === currentId
       );
       const previousIndex =
-        (currentIndex - 1 + podcasts.length) % podcasts.length;
-      setCurrentPodcastId(podcasts[previousIndex]._id);
+        (currentIndex - 1 + allTrendingPodcast.length) %
+        allTrendingPodcast.length;
+      setCurrentPodcastId(allTrendingPodcast[previousIndex]._id);
     }
   };
 
-  if (loading) {
-    return <p>Loading podcasts...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-8">
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -68,7 +68,7 @@ const TrendingPodcasts = () => {
           Trending Podcast&apos;s
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-          {podcasts?.slice(0, 6).map((podcast) => (
+          {allTrendingPodcast?.slice(0, 6).map((podcast) => (
             <Podcast
               key={podcast._id}
               podcast={podcast}

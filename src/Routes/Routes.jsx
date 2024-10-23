@@ -21,6 +21,7 @@ import Notifications from "../components/dashboard-component/notifications/Notif
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
 import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
 import TrendingPodcasts from "../components/Home/TrendingPodcasts";
+import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 
 const router = createBrowserRouter([
   {
@@ -137,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: "live-stream",
         element: "Live stream",
+      },
+      {
+        path: "make-announcement",
+        element: <MakeAnnouncement></MakeAnnouncement>,
       },
       {
         path: "notification",
