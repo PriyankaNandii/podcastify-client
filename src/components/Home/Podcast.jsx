@@ -22,12 +22,21 @@ import {
 import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { BiUpvote } from "react-icons/bi";
 import toast from "react-hot-toast";
+import Loader from "../../Layout/Loader";
 
-const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
-  const { user } = useContext(AuthContext);
+const Podcast = ({
+  podcast,
+  isPlay,
+  onPlay,
+  onPlayNext,
+  onPlayPrevious,
+  isLoading,
+  refetch = () => {},
+}) => {
+  console.log("Refetch in Podcast:", typeof refetch);
   const {
     _id,
     title,
@@ -39,12 +48,14 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
     upVote,
   } = podcast;
 
+  const { user } = useContext(AuthContext);
+
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [totalDuration, setTotalDuration] = useState("0:00");
   const [isMuted, setIsMuted] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-  const queryClient = useQueryClient();
+  const [UpVotee, setUpVotee] = useState(upVote || 0);
 
   const dateObj = new Date(releaseDate);
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -56,7 +67,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const from = location.state?.from?.pathname || "/login";
 
   //   localhost sharing url
-  const shareUrl = `https://podcastify-server-opal.vercel.app${audioFileUrl}`;
+  const shareUrl = `http://localhost:5000${audioFileUrl}`;
 
   // Modal state for toggling modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,24 +76,33 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const { mutateAsync: voteIncrement } = useMutation({
     mutationFn: async ({ id }) =>
       await axiosPublic.put(`/voteCount/${id}`, { emailUser: user?.email }),
-    onSuccess: () => queryClient.invalidateQueries(["proSearch"]),
   });
 
   // Vote handler
   const handleVoteCount = async (podcasts) => {
+    // Check if the user is logged in
     if (!user) {
       navigate(from, { replace: true });
+      return;
+    }
 
+    // Check if the user has already voted
+    if (voters?.includes(user.email)) {
+      toast.error("You've already voted for this podcast");
       return;
     }
 
     try {
-      await voteIncrement({ id: podcasts._id, emailUser: user?.email });
-      toast("Woww! Vote done", {
-        icon: "👏",
-      });
+      // Proceed to vote
+      await voteIncrement({ id: podcasts._id, emailUser: user.email });
+      setUpVotee((prev) => prev + 1); // Update local vote count
+      toast.success("Woww! Vote done", { icon: "👏" });
+
+      // Optionally, update the local voters array if you want
+      voters.push(user.email); // This assumes you want to keep track of the voted status locally
+      refetch(); // Fetch updated data if necessary
     } catch (error) {
-      console.log(error || "Error voting for podcast");
+      console.error(error || "Error voting for podcast");
     }
   };
 
@@ -200,6 +220,14 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-8">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="bg-[#1c171e] shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-6 w-full">
       <div className="flex justify-end items-center text-red-800 gap-4 mr-2">
@@ -221,13 +249,10 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
           <MdOutlinePlaylistAdd />
         </button>
         {/* Vote Button */}
+
         <button
           onClick={() => {
-            if (voters?.includes(user?.email)) {
-              toast.error("You've already voted this podcast");
-            } else {
-              handleVoteCount(podcast);
-            }
+            handleVoteCount(podcast);
           }}
           disabled={user?.email === userEmail}
           className={`py-1 px-4 hover:text-purple-800 hover:scale-105 hover:shadow text-center border rounded-md border-gray-800 h-8 text-sm flex items-center gap-1 lg:gap-2 ${
@@ -238,7 +263,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
           title="Like this podcast"
         >
           <BiUpvote className="text-xl"></BiUpvote>
-          <span className="text-lg">{upVote || 0}</span>
+          <span className="text-lg">{UpVotee}</span>
         </button>
       </div>
       <div className="relative  py-4 md:px-2 px-2">
