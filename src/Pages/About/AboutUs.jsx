@@ -9,6 +9,7 @@ import { RiLiveLine } from "react-icons/ri";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { ImSearch } from "react-icons/im";
 import { MdOutlineRateReview } from "react-icons/md";
+import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -192,7 +193,7 @@ const AboutUs = () => {
             Some Awesome Features
           </h1>
         </div>
-        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2">
+        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 px-2">
           {/* feature 1 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
@@ -211,8 +212,8 @@ const AboutUs = () => {
            {/* feature 3 */}
            <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
+              <h2 className="card-title"><FaRegShareFromSquare className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Social Sharing</p>
             </div>
           </div>
           {/* feature 4 */}
