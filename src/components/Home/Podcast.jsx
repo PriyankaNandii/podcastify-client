@@ -85,11 +85,6 @@ const Podcast = ({
       return;
     }
 
-    if (voters?.includes(user.email)) {
-      toast.error("You've already voted for this podcast");
-      return;
-    }
-
     try {
       await voteIncrement({ id: podcasts._id, emailUser: user.email });
       setUpVotee((prev) => prev + 1);
