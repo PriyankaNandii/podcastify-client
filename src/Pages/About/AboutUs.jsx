@@ -17,27 +17,6 @@ const AboutUs = () => {
   }, []);
   return (
     <div>
-      {/* <div>
-			<div
-  className="hero relative min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
-  style={{
-    backgroundImage: "url(https://i.ibb.co.com/Gdg7NzG/64aa8350638ddb5709eee657-Blog-Cover-2023-06-Podcast-Guests-X-Ways-to-Find-People-Worth-Interviewing.webp)",
-	backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  }}>
-	<div className="absolute inset-0 bg-black opacity-50"></div>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-neutral-content text-center">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl text-red-500 font-bold">Hello there!!!</h1>
-      <p className="mb-5 text-3xl text-white">
-        Learn more about podcastify by exploring the whole website.
-      </p>
-      <p className="text-white text-3xl">About Us / Home</p>
-    </div>
-  </div>
-</div>
-			</div> */}
       <header className="bg-[#171717] dark:bg-gray-900">
         <Helmet>
           <title>Podcastify | About us</title>
@@ -94,11 +73,6 @@ const AboutUs = () => {
             <h1 className="text-4xl font-bold leading-none sm:text-3xl text-white mb-14">
               <span className="">Easy & Quick</span> Way To Listen podcast
             </h1>
-            {/* <p className="mt-6 mb-8 text-lg sm:mb-12">
-              Dictum aliquam porta in condimentum ac integer
-              <br className="hidden md:inline lg:hidden" />
-              turpis pulvinar, est scelerisque ligula sem
-            </p> */}
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
               <a
                 rel="noopener noreferrer"
