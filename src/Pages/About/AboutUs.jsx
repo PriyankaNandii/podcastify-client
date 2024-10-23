@@ -208,7 +208,14 @@ const AboutUs = () => {
               <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
             </div>
           </div>
-          {/* feature 3 */}
+           {/* feature 3 */}
+           <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
+            </div>
+          </div>
+          {/* feature 4 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
@@ -217,7 +224,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          {/* feature 4 */}
+          {/* feature 5 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><MdOutlineRateReview className="w-16 h-16" /></h2>
