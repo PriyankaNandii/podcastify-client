@@ -201,8 +201,8 @@ const AboutUs = () => {
           {/* 2 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
-              <p className="font-semibold text-2xl">Live Streaming</p>
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" />Subscribe Podcasters</h2>
+              <p className="font-semibold text-2xl"></p>
             </div>
           </div>
         </div>
