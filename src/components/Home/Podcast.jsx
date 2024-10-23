@@ -80,27 +80,18 @@ const Podcast = ({
 
   // Vote handler
   const handleVoteCount = async (podcasts) => {
-    // Check if the user is logged in
     if (!user) {
       navigate(from, { replace: true });
       return;
     }
 
-    // Check if the user has already voted
-    if (voters?.includes(user.email)) {
-      toast.error("You've already voted for this podcast");
-      return;
-    }
-
     try {
-      // Proceed to vote
       await voteIncrement({ id: podcasts._id, emailUser: user.email });
-      setUpVotee((prev) => prev + 1); // Update local vote count
+      setUpVotee((prev) => prev + 1);
       toast.success("Woww! Vote done", { icon: "👏" });
 
-      // Optionally, update the local voters array if you want
-      voters.push(user.email); // This assumes you want to keep track of the voted status locally
-      refetch(); // Fetch updated data if necessary
+      voters.push(user.email);
+      refetch();
     } catch (error) {
       console.error(error || "Error voting for podcast");
     }
