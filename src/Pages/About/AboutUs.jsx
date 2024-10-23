@@ -7,6 +7,7 @@ import { ImMobile } from "react-icons/im";
 import { MdOutlineNotInterested } from "react-icons/md";
 import { RiLiveLine } from "react-icons/ri";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import { ImSearch } from "react-icons/im";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -209,8 +210,10 @@ const AboutUs = () => {
           {/* feature 3 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Subscribe favourite Podcasters</p>
+              <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Advanced search & 
+               <br /> <span>Filter</span>
+              </p>
             </div>
           </div>
         </div>
