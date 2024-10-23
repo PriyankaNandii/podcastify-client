@@ -19,6 +19,8 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
+import AdminRoute from "./AdminRoute";
+import PodcasterRoute from "./PodcasterRoute";
 
 const router = createBrowserRouter([
   {
