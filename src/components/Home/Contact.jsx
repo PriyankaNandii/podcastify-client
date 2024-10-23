@@ -1,13 +1,40 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import { useForm } from "react-hook-form";
+import { Button, useToast } from "@chakra-ui/react";
 
 const Contact = () => {
+  const toast = useToast();
   const axiosPublic = useAxiosPublic();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm();
 
   const handleSendMessage = async (values) => {
-    console.log(values);
+    try {
+      const response = await axiosPublic.post("/contact-message", values);
+      if (response?.data?.insertedId) {
+        toast({
+          title: "Message send successfully",
+          status: "error",
+          duration: 2500,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Something wrong please try again",
+        status: "error",
+        duration: 2500,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
   };
   return (
     <div>
@@ -135,11 +162,13 @@ const Contact = () => {
                     placeholder="Message"></textarea>
                 </div>
 
-                <input
+                <Button
                   type="submit"
-                  value="Send message"
-                  className="btn bg-red-600 border-none accent mt-5 float-right"
-                />
+                  colorScheme="blue"
+                  isLoading={isSubmitting}
+                  mt={3}>
+                  Send message
+                </Button>
               </form>
             </div>
           </div>
