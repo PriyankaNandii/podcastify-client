@@ -260,7 +260,7 @@ const Registration = () => {
               />
             </button>
           </div>
-          <p className="text-white text-center text-sm mt-2">
+          <p className="text-white text-center text-base mt-2">
             Already have an account?{" "}
             <a href="/login" className="text-red-800">
               Sign In
