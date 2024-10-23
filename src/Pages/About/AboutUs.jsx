@@ -211,8 +211,17 @@ const AboutUs = () => {
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Advanced search & 
-               <br /> <span>Filter</span>
+              <p className="font-semibold text-xl">Advanced search  
+              <br /> <span>& Filter</span> 
+              </p>
+            </div>
+          </div>
+          {/* feature 4 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Advanced search  
+              <br /> <span>& Filter</span> 
               </p>
             </div>
           </div>
