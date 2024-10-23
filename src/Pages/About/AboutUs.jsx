@@ -191,7 +191,7 @@ const AboutUs = () => {
           </h1>
         </div>
         <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2">
-          {/* 1 */}
+          {/* feature 1 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
@@ -199,7 +199,14 @@ const AboutUs = () => {
                 <br /> <span>Streaming</span></p>
             </div>
           </div>
-          {/* 2 */}
+          {/* feature 2 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Subscribe favourite Podcasters</p>
+            </div>
+          </div>
+          {/* feature 3 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
