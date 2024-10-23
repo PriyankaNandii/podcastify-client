@@ -5,6 +5,8 @@ import { VscVerified } from "react-icons/vsc";
 import { CgSoftwareDownload } from "react-icons/cg";
 import { ImMobile } from "react-icons/im";
 import { MdOutlineNotInterested } from "react-icons/md";
+import { RiLiveLine } from "react-icons/ri";
+import { MdOutlineSubscriptions } from "react-icons/md";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -179,27 +181,31 @@ const AboutUs = () => {
       </section>
       {/* feature section */}
       <section className="bg-black py-10">
-      <div className="text-center">
-            <p className="font-medium text-lg text-red-800 dark:text-red-800">
-              Feature
-            </p>
+        <div className="text-center">
+          <p className="font-medium text-lg text-red-800 dark:text-red-800">
+            Feature
+          </p>
 
-            <h1 className="mt-2 text-2xl font-semibold text-white md:text-5xl dark:text-white">
-             Some Awesome Features
-            </h1>
+          <h1 className="mt-2 text-2xl font-semibold text-white md:text-5xl dark:text-white">
+            Some Awesome Features
+          </h1>
+        </div>
+        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2">
+          {/* 1 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
+              <p className="font-semibold text-2xl">Live Streaming</p>
+            </div>
           </div>
-          <div className="my-10">
-            {/* 1 */}
-          <div className="card bg-base-100 text-red-500 w-80 shadow-xl">
-  <div className="card-body">
-    <h2 className="card-title">Card title!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
+          {/* 2 */}
+          <div className="card bg-red-800 text-white w-80">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
+              <p className="font-semibold text-2xl">Live Streaming</p>
+            </div>
           </div>
+        </div>
       </section>
     </div>
   );
