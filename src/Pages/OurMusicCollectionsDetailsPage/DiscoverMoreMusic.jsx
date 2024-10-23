@@ -8,7 +8,8 @@ const DiscoverMoreMusic = ({ podcast }) => {
       <div>
         <Link
           to={`/podcast/${_id}`}
-          className="text-red-800 text-xl capitalize hover:text-blue-400">
+          className="text-red-800 text-xl capitalize hover:text-blue-400"
+        >
           {podcast.title}
         </Link>
 

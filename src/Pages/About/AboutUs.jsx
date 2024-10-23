@@ -77,7 +77,8 @@ const AboutUs = () => {
       <section className="bg-black dark:text-gray-100 md:px-20 px-5">
         <div
           className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between"
-          data-aos="fade-up">
+          data-aos="fade-up"
+        >
           <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
             <img
               src={whychooseus}
@@ -87,7 +88,8 @@ const AboutUs = () => {
           </div>
           <div
             className="flex flex-col justify-center text-center rounded-sm lg:max-w-4xl xl:max-w-4xl lg:text-left"
-            data-aos="fade-down">
+            data-aos="fade-down"
+          >
             <h1 className="text-lg font- text-red-800 pb-6">WHY CHOOSE US</h1>
             <h1 className="text-4xl font-bold leading-none sm:text-3xl text-white mb-14">
               <span className="">Easy & Quick</span> Way To Listen podcast
@@ -101,28 +103,32 @@ const AboutUs = () => {
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-8 py-3 text-lg font-semibold rounded flex flex-row items-center gap-3">
+                className="px-8 py-3 text-lg font-semibold rounded flex flex-row items-center gap-3"
+              >
                 <HiStatusOffline className="text-5xl text-red-800" />
                 <span className="text-white">Listen podcast on offline</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <GiOldMicrophone className="text-5xl text-red-800" />
                 <span className="text-white"> Live Podcast Streaming</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <AiOutlineSound className="text-5xl text-red-800" />
                 <span className="text-white">Best Sound Quality</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <VscVerified className="text-5xl text-red-800" />
                 <span className="text-white">All Types Of Podcasts</span>
               </a>
@@ -135,7 +141,8 @@ const AboutUs = () => {
         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
           <div
             className="flex flex-col justify-center text-center rounded-sm lg:max-w-4xl xl:max-w-4xl lg:text-left"
-            data-aos="zoom-in-right">
+            data-aos="zoom-in-right"
+          >
             <h1 className="text-lg font-semibold pb-2 text-red-800">
               WHY CHOOSE US
             </h1>
@@ -153,28 +160,32 @@ const AboutUs = () => {
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-4 py-3 text-lg font-semibold rounded flex flex-row items-center gap-3">
+                className="px-4 py-3 text-lg font-semibold rounded flex flex-row items-center gap-3"
+              >
                 <CgSoftwareDownload className="text-5xl text-red-800" />
                 <span className="text-white">Offline Downloads</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <ImMobile className="text-5xl text-red-800" />
                 <span className="text-white">Mobile-First Design</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <MdOutlineNotInterested className="text-5xl text-red-800" />
                 <span className="text-white">No Ads Disruptions</span>
               </a>
               <a
                 rel="noopener noreferrer"
                 href="#"
-                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3">
+                className="px-4 py-3 text-lg font-semibold border rounded dark:border-gray-800 flex flex-row items-center gap-3"
+              >
                 <VscVerified className="text-5xl text-red-800" />
                 <span className="text-white">Wide Variety of Content</span>
               </a>
@@ -182,7 +193,8 @@ const AboutUs = () => {
           </div>
           <div
             className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-            data-aos="zoom-in-right">
+            data-aos="zoom-in-right"
+          >
             <img
               src={whychooseus2}
               alt=""

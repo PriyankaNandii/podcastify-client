@@ -9,7 +9,6 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
 import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
-import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
@@ -20,6 +19,8 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
+import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
+import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 
 const router = createBrowserRouter([
   {
@@ -55,8 +56,8 @@ const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path: "/allrecentepisodes",
-        element: <AllRecentEpisodes />,
+        path: "/trending-podcasts",
+        element: <TrendingPodcasts></TrendingPodcasts>,
       },
 
       {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/podcast/:id",
         element: <OurMusicCollectionsDetailsPage />,
+      },
+      {
+        path: "/all-podcasts",
+        element: <Allpodcasts></Allpodcasts>,
       },
     ],
   },
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
       {
         path: "all-music",
         element: <AllPodCaster />,
-      },      
+      },
       {
         path: "my-music",
         element: <MyMusic />,
