@@ -232,7 +232,7 @@ const Registration = () => {
             )}
             <button
               type="submit"
-              className="w-full mt-4 bg-purple-700 text-white p-2 rounded-lg font-semibold"
+              className="w-full mt-4 bg-red-800 text-white p-2 rounded-lg font-semibold"
             >
               Create Account
             </button>
