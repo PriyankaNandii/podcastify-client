@@ -25,6 +25,7 @@ const OurPodcasters = () => {
   const { data, isLoading } = useDataFetcher("users");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [mySubs, setMySubs] = useState([]);
+  const [totalSubscriber, setTotalSubscriber] = useState([]);
 
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
@@ -34,6 +35,12 @@ const OurPodcasters = () => {
 
     const mySubscription = async () => {
       try {
+        const response = await axiosPublic.get("/totalSubscriber");
+        setTotalSubscriber(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+      try {
         const response = await axiosPublic.get(
           `/mySubscription/${user?.email}`
         );
@@ -42,12 +49,14 @@ const OurPodcasters = () => {
         console.log(error);
       }
     };
+
     mySubscription();
   }, [user?.email]);
   if (isLoading) {
     return <Loader />;
   }
   const podcasters = data.filter((podcast) => podcast.role === "podcaster");
+  const listOfMySubscriptionId = mySubs.map((a) => a.podcasterId);
 
   const handleSubscription = async (id, uid) => {
     const collectedData = {
@@ -75,7 +84,6 @@ const OurPodcasters = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(collectedData);
   };
   return (
     <div className="py-24 bg-black md:px-20 px-5">
@@ -141,15 +149,28 @@ const OurPodcasters = () => {
                   </svg>
                 </a>
               </div>
-              <div className="flex  justify-between items-center gap-1">
+              <div className="flex  justify-between items-center gap-1 ">
                 <button
                   onClick={() =>
                     handleSubscription(podcaster._id, podcaster.uid)
                   }
-                  className={`btn  text-white mt-5 bg-red-600`}>
-                  Subscribe
+                  className={`btn  text-white ${
+                    listOfMySubscriptionId.includes(podcaster._id)
+                      ? "bg-red-600"
+                      : "bg-green-500"
+                  }`}>
+                  {listOfMySubscriptionId.includes(podcaster._id)
+                    ? "Subscribed"
+                    : "Subscribe"}
                 </button>
-                <h1 className="text-white text-xs">0 subscribers</h1>
+                <h1 className="text-white text-xs">
+                  {
+                    totalSubscriber.filter(
+                      (subscriber) => subscriber.podcasterId === podcaster._id
+                    ).length
+                  }{" "}
+                  subscribers
+                </h1>
                 <button className="  text-white mt-5 text-3xl">
                   <IoIosNotifications />
                 </button>

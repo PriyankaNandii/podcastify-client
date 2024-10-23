@@ -43,13 +43,13 @@ export default function AddVideo() {
     }
   };
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800 p-4 brightness-75">
+    <section className="dark:bg-gray-100 dark:text-gray-800 p-4 min-h-screen h-full brightness-75">
       <img src={logo} alt="" className="h-9 rounded-lg" />
       <div className="container mx-auto flex flex-col items-center px-4 py-5 text-center md:py-10 md:px-10 lg:px-32 xl:max-w-3xl">
         <h1 className="text-4xl font-bold leading-none sm:text-5xl">
-          Quisquam necessita vel
-          <span className="dark:text-violet-600">laborum doloribus</span>
-          delectus
+          Welcome to podcastify{" "}
+          <span className="dark:text-violet-600">Upload video</span> to present
+          your creativity
         </h1>
         <p className="px-8 mt-8 mb-12 text-lg">
           Cupiditate minima voluptate temporibus quia? Architecto beatae esse ab
@@ -65,9 +65,6 @@ export default function AddVideo() {
             Add video
           </button>
         </div>
-        <video controls>
-          <source src="http://localhost:5000/video/cartoon.mp4" />
-        </video>
       </div>
       <>
         <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>

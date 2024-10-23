@@ -14,11 +14,7 @@ export default function Dashboard() {
       <Helmet>
         <title>Podcastify | Dashboard</title>
       </Helmet>
-      {role === "user" && (
-        <div>
-          <UserDashoard></UserDashoard>
-        </div>
-      )}
+
       <div
         className="z-10 w-full p-3 block fixed left-0 top-0 lg:hidden bg-[#18181F] border-b border-blue-950"
         onClick={() => isOpen(!open)}
@@ -63,6 +59,7 @@ export default function Dashboard() {
       >
         <LeftNavbar />
       </div>
+
       <div className={`ml-0 lg:ml-64`}>
         <Outlet></Outlet>
       </div>
