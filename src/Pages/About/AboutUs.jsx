@@ -8,6 +8,7 @@ import { MdOutlineNotInterested } from "react-icons/md";
 import { RiLiveLine } from "react-icons/ri";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { ImSearch } from "react-icons/im";
+import { MdOutlineRateReview } from "react-icons/md";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -196,7 +197,7 @@ const AboutUs = () => {
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Live podcast
+              <p className="font-semibold text-xl">Live Podcast
                 <br /> <span>Streaming</span></p>
             </div>
           </div>
@@ -204,14 +205,14 @@ const AboutUs = () => {
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Subscribe favourite Podcasters</p>
+              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
             </div>
           </div>
           {/* feature 3 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Advanced search  
+              <p className="font-semibold text-xl">Advanced Search  
               <br /> <span>& Filter</span> 
               </p>
             </div>
@@ -219,9 +220,9 @@ const AboutUs = () => {
           {/* feature 4 */}
           <div className="card bg-red-800 text-white w-80">
             <div className="card-body items-center text-center">
-              <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Advanced search  
-              <br /> <span>& Filter</span> 
+              <h2 className="card-title"><MdOutlineRateReview className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Podcast Review  
+              <br /> <span>& Rating</span> 
               </p>
             </div>
           </div>
