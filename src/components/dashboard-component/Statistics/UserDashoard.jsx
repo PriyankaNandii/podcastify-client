@@ -7,6 +7,9 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPulic";
 import { TiArrowShuffle } from "react-icons/ti";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
+import { LuVote } from "react-icons/lu";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const UserDashoard = () => {
   const [userData, setUserData] = useState(null);
@@ -19,12 +22,44 @@ const UserDashoard = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Function to format the ISO date (releaseDate)
+  const formatReleaseDate = (isoDate) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(isoDate);
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  const addToPlaylist = async (music_id, title) => {
+    const user_email = user?.email;
+    if (user_email) {
+      try {
+        const response = await axiosSecure.post("/playlist", {
+          music_id,
+          title,
+          user_email,
+        });
+
+        if (response.data.insertedId !== null) {
+          toast.success("Added to playlist successfully!");
+        } else {
+          toast.error("Already exists in playlist.");
+        }
+      } catch (error) {
+        console.error("Error adding to playlist:", error);
+        toast.error("An error occurred while adding to the playlist.");
+      }
+    } else {
+      navigate("/login");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axiosPublic.get("/podcast");
+        const response = await axiosPublic.get("/trendingPodcasts");
         setTrackList(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -94,113 +129,99 @@ const UserDashoard = () => {
 
   return (
     <>
-      <div className="flex  bg-gray-900 text-white">
+      <div className="flex flex-col lg:flex-row bg-gray-900 text-white">
         {/* Main Content */}
-
         <div className="flex-1 flex flex-col p-6">
           <header className="flex justify-between mb-8">
-            <h2 className="text-3xl font-bold">Discover</h2>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1">
               <img
                 src={
                   user?.photoURL ||
-                  "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                  "https://i.ibb.co/com/C09dnMY/default-Img-removebg-preview.png"
                 }
                 alt="Profile"
-                className="rounded-full w-12 h-12"
+                className={
+                  user?.photoURL
+                    ? `rounded-full w-12 h-12`
+                    : `rounded-full w-12 h-12 mr-2`
+                }
               />
-              <p> {userData?.name}</p>
+              <p className="text-base font-medium">{userData?.name}</p>
             </div>
           </header>
-          {/* Trending Podcasts */}
+          {/* Banner */}
           <section className="mb-12">
-            <h3 className="text-xl font-semibold mb-4">Trending Podcasts</h3>
             <div
-              className="bg-cover bg-center rounded-lg p-6 flex items-center justify-between"
+              className="bg-cover bg-center rounded-lg p-6 h-44 flex items-center justify-between"
               style={{
                 backgroundImage:
-                  "url('https://grupos2mkt.com/wp-content/uploads/2022/05/GS2-Podcast-entenda-por-que-utilizar-nas-suas-estrategias-Autores-GS2-Marketing-Freepik.jpg')",
+                  "url('https://stories.purdue.edu/app/uploads/2024/03/cropped-ThisIsPurduePodcast-2023_RM24282-1920x1080-1.jpg')",
                 backgroundBlendMode: "overlay",
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-              }} // Change the URL to your desired image
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+              }}
             >
               <div>
-                <h4 className="text-2xl font-bold text-white">
-                  The Beautiful Mind
+                <h4 className="md:text-2xl text-lg font-bold text-white">
+                  {trackList[currentTrackIndex]?.title}
                 </h4>
-                <p className="text-gray-300">With Tom Kennedy</p>
+                <p className="text-gray-300 mt-4">
+                  With {trackList[currentTrackIndex]?.musician}
+                </p>
               </div>
               <img
                 src={trackList[currentTrackIndex]?.coverImageUrl}
                 alt="The Beautiful Mind"
-                className="rounded-lg shadow-md w-16"
+                className="rounded-lg shadow-md md:w-20 md:h-20 w-14 h-14"
               />
             </div>
           </section>
-          {/* Most Popular Podcasts */}
-          <section className="mb-10">
+          {/* Trending Podcasts */}
+          <section className="mb-10 lg:block hidden">
             <h3 className="text-2xl font-semibold mb-6 text-white">
-              Most Popular Podcast
+              Trending Podcasts
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-              {trackList.map((podcast, index) => (
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-6 w-11/12">
+              {trackList?.slice(0, 6).map((podcast, index) => (
                 <div
                   key={index}
-                  className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+                  className="relative bg-gradient-to-r from-gray-800 via-gray-900 to-black overflow-hidden shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
                 >
-                  <img
-                    src={podcast.coverImageUrl}
-                    alt={podcast.title}
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-4">
-                    <h4 className="text-lg font-bold text-white mb-1">
+                  {/* Image */}
+                  <div className="relative">
+                    <img
+                      src={podcast.coverImageUrl}
+                      alt={podcast.title}
+                      className="w-full h-48 object-cover rounded-t-xl"
+                    />
+                    {/* UpVote Badge */}
+                    <div className="absolute top-4 right-4 bg-red-800 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md flex items-center space-x-1">
+                      <span className="">{podcast.upVote}</span>
+                      <LuVote className="text-base" />
+                    </div>
+                  </div>
+                  {/* Content */}
+                  <div className="p-6 space-y-3">
+                    <h4 className="text-lg font-bold text-white truncate">
                       {podcast.title}
                     </h4>
-                    <p className="text-gray-300">{podcast.musician}</p>
+                    <p className="text-gray-400 text-sm">{podcast.musician}</p>
+                    <p className="text-gray-500 text-xs">
+                      {formatReleaseDate(podcast.releaseDate)}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Recently Played Section */}
-            {/*  <div>
-              <h3 className="text-xl font-semibold mb-4 mt-10">
-                Recently Played
-              </h3>
-              <div className="bg-gray-700 p-4 rounded-lg space-y-4">
-               
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src="https://via.placeholder.com/50"
-                      alt="The Mindset Mentor"
-                      className="rounded-lg"
-                    />
-                    <div>
-                      <h4 className="text-lg font-semibold">
-                        The Mindset Mentor
-                      </h4>
-                      <p className="text-gray-400">Rob Dial</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <span>30:31</span>
-                    <FaPlayCircle className="text-blue-500 text-xl" />
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </section>
         </div>
 
         {/* Now Playing Section */}
-        <div className="w-full max-w-sm bg-gray-800 shadow-lg rounded-lg p-6">
+        <div className="lg:w-2/5 w-full bg-gray-900 shadow-lg rounded-lg p-6">
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
             Now Playing
           </h3>
 
-          <div className="bg-gray-700 rounded-lg p-4">
+          <div className="bg-gray-800 rounded-lg p-4">
             {/* Now Playing Info */}
             <h1 className="text-white text-xl text-center font-semibold mb-4">
               {trackList[currentTrackIndex]?.title}
@@ -209,7 +230,7 @@ const UserDashoard = () => {
             <img
               src={trackList[currentTrackIndex]?.coverImageUrl}
               alt="Now Playing"
-              className="rounded-lg mb-4 w-full h-48 object-cover"
+              className="rounded-lg mb-4 w-full h-56 object-cover"
             />
 
             <p className="text-gray-300 text-center mb-2">
@@ -221,7 +242,15 @@ const UserDashoard = () => {
               <button className="text-red-400 text-2xl hover:text-red-500">
                 <FaHeart />
               </button>
-              <button className="text-blue-400 text-2xl hover:text-blue-500">
+              <button
+                onClick={() =>
+                  addToPlaylist(
+                    trackList[currentTrackIndex]?._id,
+                    trackList[currentTrackIndex]?.title
+                  )
+                }
+                className="text-blue-400 text-2xl hover:text-blue-500"
+              >
                 <FaListUl />
               </button>
             </div>
@@ -277,6 +306,44 @@ const UserDashoard = () => {
             </ul>
           </div>
         </div>
+        {/* Trending Podcasts */}
+        <section className="mt-10 text-center lg:hidden">
+          <h3 className="text-2xl font-semibold mb-6 text-white">
+            Trending Podcasts
+          </h3>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6 md:w-11/12 w-10/12 mx-auto">
+            {trackList?.slice(0, 6).map((podcast, index) => (
+              <div
+                key={index}
+                className="relative bg-gradient-to-r from-gray-800 via-gray-900 to-black overflow-hidden shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+              >
+                {/* Image */}
+                <div className="relative">
+                  <img
+                    src={podcast.coverImageUrl}
+                    alt={podcast.title}
+                    className="w-full h-48 object-cover rounded-t-xl"
+                  />
+                  {/* UpVote Badge */}
+                  <div className="absolute top-4 right-4 bg-red-800 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md flex items-center space-x-1">
+                    <span className="">{podcast.upVote}</span>
+                    <LuVote className="text-base" />
+                  </div>
+                </div>
+                {/* Content */}
+                <div className="p-6 space-y-3">
+                  <h4 className="text-lg font-bold text-white truncate">
+                    {podcast.title}
+                  </h4>
+                  <p className="text-gray-400 text-sm">{podcast.musician}</p>
+                  <p className="text-gray-500 text-xs">
+                    {formatReleaseDate(podcast.releaseDate)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

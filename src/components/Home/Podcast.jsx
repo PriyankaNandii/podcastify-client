@@ -91,7 +91,6 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
     }
   };
   useEffect(() => {
-    // Perform any side effects or updates after vote count changes
     console.log("Vote count updated:", UpVotee);
   }, [UpVotee]);
 
@@ -103,7 +102,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const response = await fetch(audioFileUrl); // Consider updating this URL if CORS is an issue
+      const response = await fetch(audioFileUrl);
       if (!response.ok) throw new Error("Network response was not ok");
       const blob = await response.blob();
       const link = document.createElement("a");
@@ -115,7 +114,7 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
       URL.revokeObjectURL(link.href);
     } catch (error) {
       console.error("Download failed:", error);
-      toast.error("Download failed. Please try again."); // Improved error handling
+      toast.error("Download failed. Please try again.");
     } finally {
       setIsDownloading(false);
     }
@@ -196,9 +195,9 @@ const Podcast = ({ podcast, isPlay, onPlay, onPlayNext, onPlayPrevious }) => {
         .post("/playlist", playlistData)
         .then((response) => {
           if (response.data.insertedId !== null) {
-            toast.success("Playlist added successfully!");
+            toast.success("Added to playlist successfully!");
           } else {
-            toast.error("Podcast already exists in playlist.");
+            toast.error("Already exists in playlist.");
           }
         })
         .catch((error) => {

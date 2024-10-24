@@ -72,10 +72,14 @@ function Navbar() {
             <img
               src={
                 user?.photoURL ||
-                "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
               }
               alt="User Profile"
-              className="w-10 ml-16 lg:ml-0 h-10 rounded-full cursor-pointer"
+              className={
+                user?.photoURL
+                  ? `lg:w-12 w-11 h-11 ml-16 lg:ml-0 lg:h-12 rounded-full cursor-pointer`
+                  : `lg:w-16 w-14 h-14 ml-16 lg:ml-0 lg:h-16 rounded-full cursor-pointer`
+              }
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             />
             {isDropdownOpen && (

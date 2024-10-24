@@ -4,8 +4,26 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
+import Loader from "../Layout/Loader";
 
 const Root = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 2000);
+  }, []);
+
+  if (!loaded) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Loader></Loader>
+      </div>
+    );
+  }
+
   return (
     <div className="">
       <Navbar></Navbar>
