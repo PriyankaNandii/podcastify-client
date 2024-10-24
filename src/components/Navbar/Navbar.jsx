@@ -79,16 +79,16 @@ function Navbar() {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             />
             {isDropdownOpen && (
-              <div className="absolute mt-2 w-36 bg-white rounded-lg shadow-lg py-2 lg:-left-20 z-50">
+              <div className="absolute mt-2 w-36 bg-gradient-to-r from-red-500 to-red-300 hover:from-red-600 hover:to-red-300 rounded-lg shadow-lg py-2 lg:-left-20 z-50">
                 <NavLink
                   to="/user-profile"
-                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300"
                 >
                   <FaUserCircle className="mr-2" /> Profile
                 </NavLink>
                 <NavLink
                   to="dashboard"
-                  className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300"
                 >
                   <MdDashboardCustomize className="mr-2 text-base" />
                   Dashboard
@@ -96,7 +96,7 @@ function Navbar() {
                 <hr className="my-1" />
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  className="flex items-center w-full px-4 py-2 text-base text-gray-700 hover:bg-red-300"
                 >
                   <FaSignOutAlt className="mr-2" /> Log Out
                 </button>

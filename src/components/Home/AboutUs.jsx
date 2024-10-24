@@ -25,7 +25,7 @@ const AboutUs = () => {
             helped me plan and create this award-winning podcast.
           </p>
           <button className="bg-red-800 text-white font-semibold lg:px-6 px-3 lg:py-4 py-2 rounded-md mt-6">
-            More About Me
+            More About Us
           </button>
         </div>
       </div>
