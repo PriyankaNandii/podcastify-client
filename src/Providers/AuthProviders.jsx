@@ -23,6 +23,7 @@ const AuthProviders = ({ children }) => {
   const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isListening, setIsListening] = useState(false);
 
   //   Create a new user
   const createUser = (email, password) => {
@@ -107,6 +108,8 @@ const AuthProviders = ({ children }) => {
     signInWithGithub,
     logOut,
     updateUserProfile,
+    isListening,
+    setIsListening
   };
 
   return (
