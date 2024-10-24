@@ -19,18 +19,19 @@ const Contact = () => {
       if (response?.data?.insertedId) {
         toast({
           title: "Message send successfully",
-          status: "error",
-          duration: 2500,
+          status: "success",
+          duration: 3000,
           isClosable: true,
           position: "top-right",
         });
+        reset();
       }
     } catch (error) {
       console.log(error);
       toast({
         title: "Something wrong please try again",
         status: "error",
-        duration: 2500,
+        duration: 3000,
         isClosable: true,
         position: "top-right",
       });
@@ -164,9 +165,10 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  colorScheme="blue"
+                  colorScheme="red"
                   isLoading={isSubmitting}
-                  mt={3}>
+                  float="right"
+                  mt={5}>
                   Send message
                 </Button>
               </form>

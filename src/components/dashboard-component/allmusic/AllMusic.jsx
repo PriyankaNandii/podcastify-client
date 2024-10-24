@@ -31,7 +31,8 @@ const AllMusic = () => {
           <div className="flex justify-center items-center h-64">
             <div
               className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-900"
-              role="status">
+              role="status"
+            >
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>
@@ -55,7 +56,8 @@ const AllMusic = () => {
                 {podcasts.map((podcast, index) => (
                   <tr
                     key={podcast._id}
-                    className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black">
+                    className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black"
+                  >
                     <td className="p-4">{index + 1}</td>
                     {/* SL# (Serial Number) */}
                     <td className="p-4">{podcast.title}</td>
