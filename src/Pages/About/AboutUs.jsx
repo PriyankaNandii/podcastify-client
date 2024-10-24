@@ -5,6 +5,14 @@ import { VscVerified } from "react-icons/vsc";
 import { CgSoftwareDownload } from "react-icons/cg";
 import { ImMobile } from "react-icons/im";
 import { MdOutlineNotInterested } from "react-icons/md";
+import { RiLiveLine } from "react-icons/ri";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { ImSearch } from "react-icons/im";
+import { MdOutlineRateReview } from "react-icons/md";
+import { FaRegShareFromSquare } from "react-icons/fa6";
+import { BiUpvote } from "react-icons/bi";
+import { TbPlaylist } from "react-icons/tb";
+import { MdOutlineFileUpload } from "react-icons/md";
 import { useEffect } from "react";
 import Aos from "aos";
 import pic from "../../assets/images/aboutuspageimage.webp";
@@ -17,27 +25,6 @@ const AboutUs = () => {
   }, []);
   return (
     <div>
-      {/* <div>
-			<div
-  className="hero relative min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
-  style={{
-    backgroundImage: "url(https://i.ibb.co.com/Gdg7NzG/64aa8350638ddb5709eee657-Blog-Cover-2023-06-Podcast-Guests-X-Ways-to-Find-People-Worth-Interviewing.webp)",
-	backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  }}>
-	<div className="absolute inset-0 bg-black opacity-50"></div>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-neutral-content text-center">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl text-red-500 font-bold">Hello there!!!</h1>
-      <p className="mb-5 text-3xl text-white">
-        Learn more about podcastify by exploring the whole website.
-      </p>
-      <p className="text-white text-3xl">About Us / Home</p>
-    </div>
-  </div>
-</div>
-			</div> */}
       <header className="bg-[#171717] dark:bg-gray-900">
         <Helmet>
           <title>Podcastify | About us</title>
@@ -47,7 +34,7 @@ const AboutUs = () => {
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg">
                 <h1 className="text-3xl font-semibold text-white dark:text-white lg:text-5xl">
-                  Welcome to Our{" "}
+                  Welcome to The {" "}
                   <span className="text-red-800 mt-2 ">Podcastify</span>
                 </h1>
 
@@ -94,11 +81,6 @@ const AboutUs = () => {
             <h1 className="text-4xl font-bold leading-none sm:text-3xl text-white mb-14">
               <span className="">Easy & Quick</span> Way To Listen podcast
             </h1>
-            {/* <p className="mt-6 mb-8 text-lg sm:mb-12">
-              Dictum aliquam porta in condimentum ac integer
-              <br className="hidden md:inline lg:hidden" />
-              turpis pulvinar, est scelerisque ligula sem
-            </p> */}
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
               <a
                 rel="noopener noreferrer"
@@ -203,8 +185,159 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      {/* feature section */}
+      <section className="bg-black py-10 px-4 sm:px-6 md:px-20 lg:px-28">
+  <div className="text-center">
+    <p className="font-medium text-base md:text-lg lg:text-xl text-red-800">
+      Feature
+    </p>
+
+    <h1 className="mt-2 text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
+      Some Awesome Features
+    </h1>
+  </div>
+
+  <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+    {/* Feature 1 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+      <div className="card-body items-center text-center">
+        <h2 className="card-title"><RiLiveLine className="w-14 h-14" /></h2>
+        <p className="font-semibold text-lg md:text-xl lg:text-2xl">Live Podcast
+          <br /> <span>Streaming</span></p>
+      </div>
+    </div>
+    {/* Feature 2 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
+            </div>
+          </div>
+    {/* Feature 3 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><FaRegShareFromSquare className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Social Sharing</p>
+            </div>
+    </div>
+    {/* Feature 4 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><BiUpvote className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Upvote System</p>
+            </div>
+    </div>
+    {/* Feature 5 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><ImSearch className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Advanced Search  
+              <br /> <span>& Filter</span> 
+              </p>
+            </div>
+    </div>
+    {/* Feature 6 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineRateReview className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Podcast Review  
+              <br /> <span>& Rating</span> 
+              </p>
+            </div>
+    </div>
+    {/* Feature 7 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><TbPlaylist className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">User Playlist   
+              </p>
+            </div>
+    </div>
+    {/* Feature 8 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineFileUpload className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Podcast Upload   
+              </p>
+            </div>
+    </div>
+
+   
+  </div>
+</section>
     </div>
   );
 };
 
 export default AboutUs;
+{/* <section className="bg-black py-10 md:px-28">
+        <div className="text-center">
+          <p className="font-medium text-lg text-red-800 dark:text-red-800">
+            Feature
+          </p>
+
+          <h1 className="mt-2 text-2xl font-semibold text-white md:text-5xl dark:text-white">
+            Some Awesome Features
+          </h1>
+        </div>
+        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 md:text-center sm:grid-cols-1 gap-6 px-2">
+          
+          <div className="card bg-red-800 text-white sm:w-96 md:w-96 lg:w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Live Podcast
+                <br /> <span>Streaming</span></p>
+            </div>
+          </div>
+         
+          
+           
+           <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><FaRegShareFromSquare className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Social Sharing</p>
+            </div>
+          </div>
+          
+           <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><BiUpvote className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Upvote System</p>
+            </div>
+          </div>
+          
+          <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Advanced Search  
+              <br /> <span>& Filter</span> 
+              </p>
+            </div>
+          </div>
+         
+          <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineRateReview className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Podcast Review  
+              <br /> <span>& Rating</span> 
+              </p>
+            </div>
+          </div>
+          
+          <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><TbPlaylist className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">User Playlist   
+              </p>
+            </div>
+          </div>
+          
+          <div className="card bg-red-800 text-white w-72">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineFileUpload className="w-16 h-16" /></h2>
+              <p className="font-semibold text-xl">Podcast Upload   
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> */}

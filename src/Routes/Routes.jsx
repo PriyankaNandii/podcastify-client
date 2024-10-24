@@ -8,7 +8,7 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
-import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
+
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
@@ -24,6 +24,10 @@ import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 import Redirect from "../components/Home/Redirect";
 import AllReviews from "../components/Home/AllReviews";
+import AdminRoute from "./AdminRoute";
+import PodcasterRoute from "./PodcasterRoute";
+import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
+import MySubscribers from "../Pages/Dashboard/Podcaster/MySubscribers";
 
 const router = createBrowserRouter([
   {
@@ -115,7 +119,19 @@ const router = createBrowserRouter([
       },
       {
         path: "all-podcasters",
-        element: <AddPublisher />,
+        element: (
+          <AdminRoute>
+            <AllPodCaster />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users-message",
+        element: (
+          <AdminRoute>
+            <UsersMessage />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-music",
@@ -138,8 +154,12 @@ const router = createBrowserRouter([
         element: <EditPodcast />,
       },
       {
-        path: "release-new-music",
-        element: <AddMusic />,
+        path: "add-music",
+        element: (
+          <PodcasterRoute>
+            <AddMusic />
+          </PodcasterRoute>
+        ),
       },
       {
         path: "release-new-video",
@@ -148,6 +168,14 @@ const router = createBrowserRouter([
       {
         path: "live-stream",
         element: "Live stream",
+      },
+      {
+        path: "my-subscribers",
+        element: (
+          <PodcasterRoute>
+            <MySubscribers />
+          </PodcasterRoute>
+        ),
       },
       {
         path: "make-announcement",

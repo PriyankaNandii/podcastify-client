@@ -173,9 +173,9 @@ const Login = () => {
             </button>
           </div>
 
-          <p className="text-white text-center text-sm mt-2">
+          <p className="text-white text-center text-base mt-2">
             Don’t have an account?{" "}
-            <Link to="/registration" className="text-purple-400">
+            <Link to="/registration" className="text-red-800">
               Create one
             </Link>
           </p>
