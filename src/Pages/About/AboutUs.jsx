@@ -186,7 +186,91 @@ const AboutUs = () => {
         </div>
       </section>
       {/* feature section */}
-      <section className="bg-black py-10">
+      <section className="bg-black py-10 px-4 sm:px-6 md:px-20 lg:px-28">
+  <div className="text-center">
+    <p className="font-medium text-base md:text-lg lg:text-xl text-red-800">
+      Feature
+    </p>
+
+    <h1 className="mt-2 text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
+      Some Awesome Features
+    </h1>
+  </div>
+
+  <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+    {/* Feature 1 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+      <div className="card-body items-center text-center">
+        <h2 className="card-title"><RiLiveLine className="w-14 h-14" /></h2>
+        <p className="font-semibold text-lg md:text-xl lg:text-2xl">Live Podcast
+          <br /> <span>Streaming</span></p>
+      </div>
+    </div>
+    {/* Feature 2 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineSubscriptions className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
+            </div>
+          </div>
+    {/* Feature 3 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><FaRegShareFromSquare className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Social Sharing</p>
+            </div>
+    </div>
+    {/* Feature 4 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><BiUpvote className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Upvote System</p>
+            </div>
+    </div>
+    {/* Feature 5 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><ImSearch className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Advanced Search  
+              <br /> <span>& Filter</span> 
+              </p>
+            </div>
+    </div>
+    {/* Feature 6 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineRateReview className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Podcast Review  
+              <br /> <span>& Rating</span> 
+              </p>
+            </div>
+    </div>
+    {/* Feature 7 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><TbPlaylist className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">User Playlist   
+              </p>
+            </div>
+    </div>
+    {/* Feature 8 */}
+    <div className="card bg-red-800 text-white w-full sm:w-full md:w-72 lg:w-80 xl:w-72 mx-auto">
+    <div className="card-body items-center text-center">
+              <h2 className="card-title"><MdOutlineFileUpload className="w-14 h-14" /></h2>
+              <p className="font-semibold text-xl">Podcast Upload   
+              </p>
+            </div>
+    </div>
+
+   
+  </div>
+</section>
+    </div>
+  );
+};
+
+export default AboutUs;
+{/* <section className="bg-black py-10 md:px-28">
         <div className="text-center">
           <p className="font-medium text-lg text-red-800 dark:text-red-800">
             Feature
@@ -196,37 +280,32 @@ const AboutUs = () => {
             Some Awesome Features
           </h1>
         </div>
-        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 md:items-center sm:grid-cols-1 gap-6 px-2">
-          {/* feature 1 */}
-          <div className="card bg-red-800 text-white w-72">
+        <div className="my-10 grid lg:grid-cols-4 md:grid-cols-2 md:text-center sm:grid-cols-1 gap-6 px-2">
+          
+          <div className="card bg-red-800 text-white sm:w-96 md:w-96 lg:w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><RiLiveLine className="w-16 h-16" /></h2>
               <p className="font-semibold text-xl">Live Podcast
                 <br /> <span>Streaming</span></p>
             </div>
           </div>
-          {/* feature 2 */}
-          <div className="card bg-red-800 text-white w-72">
-            <div className="card-body items-center text-center">
-              <h2 className="card-title"><MdOutlineSubscriptions className="w-16 h-16" /></h2>
-              <p className="font-semibold text-xl">Subscribe Favourite Podcasters</p>
-            </div>
-          </div>
-           {/* feature 3 */}
+         
+          
+           
            <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><FaRegShareFromSquare className="w-16 h-16" /></h2>
               <p className="font-semibold text-xl">Social Sharing</p>
             </div>
           </div>
-           {/* feature 4 */}
+          
            <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><BiUpvote className="w-16 h-16" /></h2>
               <p className="font-semibold text-xl">Upvote System</p>
             </div>
           </div>
-          {/* feature 5 */}
+          
           <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><ImSearch className="w-16 h-16" /></h2>
@@ -235,7 +314,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          {/* feature 6 */}
+         
           <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><MdOutlineRateReview className="w-16 h-16" /></h2>
@@ -244,7 +323,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          {/* feature 7 */}
+          
           <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><TbPlaylist className="w-16 h-16" /></h2>
@@ -252,7 +331,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          {/* feature 8 */}
+          
           <div className="card bg-red-800 text-white w-72">
             <div className="card-body items-center text-center">
               <h2 className="card-title"><MdOutlineFileUpload className="w-16 h-16" /></h2>
@@ -261,9 +340,4 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
-
-export default AboutUs;
+      </section> */}
