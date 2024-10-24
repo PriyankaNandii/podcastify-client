@@ -1,110 +1,76 @@
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../../Hooks/useAxiosPulic";
-import { MdDeleteForever } from "react-icons/md";
-import { toast } from "react-toastify";
+import useDataFetcher from "../../../Hooks/useDataFetcher";
+import Loader from "../../../Layout/Loader";
+import { FaTrashAlt } from "react-icons/fa";
 
 const AllPodCaster = () => {
-  const [podcasts, setPodcasts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data, isLoading } = useDataFetcher("users");
 
-  const axiosPublic = useAxiosPublic();
+  const podcasters = data?.filter(
+    (podcaster) => podcaster?.role === "podcaster"
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axiosPublic.get("/podcast");
-        setPodcasts(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const deleteItem = async (id) => {
-    console.log("Music Id:", id);
-    try {
-      await axiosPublic.delete(`/podcast/${id}`);
-      setPodcasts(podcasts.filter((item) => item._id !== id));
-      toast.success("Delete music successfully");
-    } catch (error) {
-      console.error("Error deleting item:", error);
-    }
-  };
-  const handleRefresh = () => {
-    window.location.reload();
-  };
-  return (
-    <div className="container mx-auto p-6 bg-[#171717] rounded-xl shadow-lg min-h-screen">
-      <div className="bg-gradient-to-r from-[hsl(0,95%,22%)] to-[hsl(7,81%,4%)] p-6 rounded-lg shadow-md mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">All Podcast</h1>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={handleRefresh}
-            className="bg-white text-[#FF6B6B] font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-200 transition duration-300"
-          >
-            Refresh
-          </button>
-        </div>
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-8">
+        <Loader />
       </div>
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div
-            className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-900"
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
+    );
+  }
+
+  return (
+    <>
+      <div
+        className="min-h-screen bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://cdn-gcpap.nitrocdn.com/JTfyFksfXBELKzRNrLoDthpJRsbOZfCt/assets/images/optimized/rev-f01517a/wiredclip.com/wp-content/uploads/2023/07/Before-and-After-Podcast-Background-Ideas-1024x585.jpg')",
+        }}
+      >
+        <div className="container mx-auto py-10">
+          <div className="overflow-x-auto bg-gray-800 shadow-md rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-blue-950">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                    Role
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-gray-900 divide-y divide-gray-700">
+                {podcasters.map((podcasterr) => (
+                  <tr key={podcasterr._id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-300 font-bold">
+                      {podcasterr.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
+                      {podcasterr.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-400">
+                      {podcasterr.role}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <button className="ml-2 px-3 py-2 text-base text-red-600 hover:text-red-500 focus:outline-none">
+                        <FaTrashAlt className="inline-block mr-1 text-base" />{" "}
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      ) : (
-        <div className="bg-black rounded-xl shadow-lg p-6">
-          <h2 className="text-2xl text-center font-semibold text-red-900 mb-4">
-            Podcast Music List
-          </h2>
-          <table className="table-auto w-full bg-black rounded-lg shadow-md">
-            <thead>
-              <tr className="bg-red-800 text-white">
-                <th className="p-4 text-left">SL#</th>
-                <th className="p-4 text-left">Title</th>
-                <th className="p-4 text-left">Musician</th>
-                <th className="p-4 text-left">Category</th>
-                <th className="p-4 text-left">Release Date</th>
-                <th className="p-4 text-left">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {podcasts.map((podcast, index) => (
-                <tr
-                  key={podcast._id}
-                  className="border-b text-[#dededecc] hover:bg-blue-50 hover:text-black"
-                >
-                  <td className="p-4">{index + 1}</td>{" "}
-                  {/* SL# (Serial Number) */}
-                  <td className="p-4">{podcast.title}</td>
-                  <td className="p-4">{podcast.musician}</td>
-                  <td className="p-4">{podcast.category}</td>
-                  <td className="p-4">
-                    {new Date(podcast.releaseDate).toLocaleDateString()}
-                  </td>
-                  <td className="p-4">
-                    <button
-                      onClick={() => deleteItem(podcast._id)}
-                      className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105"
-                    >
-                      <MdDeleteForever />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 

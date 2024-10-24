@@ -66,9 +66,9 @@ export default function LeftNavbar() {
               {/* Admin routes only */}
               {role === "admin" && (
                 <>
-                  <div className="pl-5 pt-2 font-black">
+                  <div className="pl-5 font-black">
                     {" "}
-                    <div className="flex items-center justify-center p-5 rounded-full flex-col gap-y-2">
+                    <div className="flex items-center justify-center p-2 rounded-full flex-col gap-y-2">
                       <img
                         src={
                           user?.photoURL ||
@@ -90,49 +90,56 @@ export default function LeftNavbar() {
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaHome />
                         <h1>Home</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/all-users"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FcStatistics />
                         <h1>All users</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/all-podcasters"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaAddressBook />
                         <h1>All podcasters</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
-                        to="/dashboard/all-music"
-                        className={`flex items-center justify-start gap-3`}>
+                        to="/dashboard/all-podcast"
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaLayerGroup />
                         <h1>All Podcast</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/new-request"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <MdGroups2 />
                         <h1>Podcasters request</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/make-announcement"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <AiOutlineNotification />
                         <h1>Make announcement</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/users-message"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaMessage />
                         <h1>Show users message</h1>
                       </NavLink>
@@ -168,41 +175,40 @@ export default function LeftNavbar() {
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaHome />
                         <h1>Home</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="my-music"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaLayerGroup />
                         <h1>Manage Podcasts</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="my-playlist"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <FaLayerGroup />
                         <h1>My Playlist</h1>
                       </NavLink>
                       <NavLink
                         to="add-music"
-                        className="flex items-center justify-start gap-3">
+                        className="flex items-center justify-start gap-3"
+                      >
                         <FaLayerGroup />
                         <h1>Release new podcast</h1>
                       </NavLink>
-                      <NavLink
-                        style={activeRouteStyle}
-                        to="release-new-video"
-                        className={`flex items-center justify-start gap-3`}>
-                        <FaLayerGroup />
-                        <h1>Release new video</h1>
-                      </NavLink>
+
                       <NavLink
                         style={activeRouteStyle}
                         to="my-subscribers"
-                        className={`flex items-center justify-start gap-3`}>
+                        className={`flex items-center justify-start gap-3`}
+                      >
                         <SiGooglepubsub />
                         <h1>My subscriber</h1>
                       </NavLink>
@@ -224,7 +230,8 @@ export default function LeftNavbar() {
                             <RiCompassDiscoverLine size={24} />
                             <NavLink
                               to="/dashboard"
-                              className="hover:text-blue-500">
+                              className="hover:text-blue-500"
+                            >
                               Discover
                             </NavLink>
                           </li>
@@ -232,7 +239,8 @@ export default function LeftNavbar() {
                             <MdPlaylistPlay size={24} />
                             <NavLink
                               to="my-playlist"
-                              className="hover:text-blue-500">
+                              className="hover:text-blue-500"
+                            >
                               Playlist
                             </NavLink>
                           </li>
@@ -240,22 +248,11 @@ export default function LeftNavbar() {
                             <MdFavorite size={23} />
                             <a
                               href="/favorites"
-                              className="hover:text-blue-500">
+                              className="hover:text-blue-500"
+                            >
                               Favorites
                             </a>
                           </li>
-                          {/* <li className="flex items-center space-x-3">
-                            <MdTrendingUp size={24} />
-                            <a href="/trending" className="hover:text-blue-500">
-                              Trending
-                            </a>
-                          </li> */}
-                          {/*    <li className="flex items-center space-x-3">
-                            <FaTimes size={24} />
-                            <a href="/recent" className="hover:text-blue-500">
-                              Recent
-                            </a>
-                          </li> */}
                         </ul>
                       </nav>
                     </div>
@@ -265,15 +262,7 @@ export default function LeftNavbar() {
                           <h1 className="text-white font-bold text-lg">
                             General
                           </h1>
-                          {/*   <li className="flex items-center space-x-3">
-                            <IoMdNotificationsOutline size={24} />
-                            <a
-                              href="/notifications"
-                              className="hover:text-blue-500"
-                            >
-                              Notification
-                            </a> 
-                          </li> */}
+
                           <li className="flex items-center space-x-3">
                             <SiWebtrees size={24} />
                             <NavLink to="/" className="hover:text-blue-500">
@@ -284,7 +273,8 @@ export default function LeftNavbar() {
                             <MdSettings size={24} />
                             <NavLink
                               to="/dashboard/settings"
-                              className="hover:text-blue-500">
+                              className="hover:text-blue-500"
+                            >
                               Settings
                             </NavLink>
                           </li>
@@ -292,7 +282,8 @@ export default function LeftNavbar() {
                             onClick={() => {
                               handleSignOut();
                             }}
-                            className="flex items-center space-x-3 cursor-pointer">
+                            className="flex items-center space-x-3 cursor-pointer"
+                          >
                             <IoLogOut size={24} />
                             <p className="hover:text-blue-500">Log out</p>
                           </li>
@@ -304,13 +295,14 @@ export default function LeftNavbar() {
               )}
 
               {role !== "user" && (
-                <div className="pl-5 py-4 font-black mt-6 flex-grow">
+                <div className="pl-5 py-2 font-black mt-6 flex-grow">
                   <h1 className="text-white">General</h1>
                   <aside className="mt-3 space-y-4 hover:*:text-white">
                     <NavLink
                       style={activeRouteStyle}
                       to="/dashboard/notification"
-                      className={`flex items-center justify-start gap-3`}>
+                      className={`flex items-center justify-start gap-3`}
+                    >
                       <IoMdNotificationsOutline />
                       <h1>Notice</h1>
                     </NavLink>
@@ -328,7 +320,8 @@ export default function LeftNavbar() {
                     </div>
                     <div
                       onClick={() => logOut()}
-                      className="flex items-center justify-start gap-3 cursor-pointer">
+                      className="flex items-center justify-start gap-3 cursor-pointer"
+                    >
                       <MdLogout />
                       <h1>Logout</h1>
                     </div>
