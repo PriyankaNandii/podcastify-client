@@ -24,6 +24,7 @@ import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 import AdminRoute from "./AdminRoute";
 import PodcasterRoute from "./PodcasterRoute";
+import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllPodCaster />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users-message",
+        element: (
+          <AdminRoute>
+            <UsersMessage />
           </AdminRoute>
         ),
       },

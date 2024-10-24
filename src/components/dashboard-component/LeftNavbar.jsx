@@ -18,6 +18,7 @@ import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { RiCompassDiscoverLine } from "react-icons/ri";
+import { FaMessage } from "react-icons/fa6";
 
 export default function LeftNavbar() {
   const { user, logOut } = useAuth();
@@ -122,6 +123,13 @@ export default function LeftNavbar() {
                         className={`flex items-center justify-start gap-3`}>
                         <AiOutlineNotification />
                         <h1>Make announcement</h1>
+                      </NavLink>
+                      <NavLink
+                        style={activeRouteStyle}
+                        to="/dashboard/users-message"
+                        className={`flex items-center justify-start gap-3`}>
+                        <FaMessage />
+                        <h1>Show users message</h1>
                       </NavLink>
                     </div>
                   </div>

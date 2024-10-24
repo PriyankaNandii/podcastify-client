@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
 import { useForm } from "react-hook-form";
 import { Button, useToast } from "@chakra-ui/react";

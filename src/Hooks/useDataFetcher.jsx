@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../Layout/Loader";
 import useAxiosPublic from "./useAxiosPulic";
 
 export default function useDataFetcher(url) {
