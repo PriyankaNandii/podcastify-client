@@ -8,7 +8,7 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
-import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
+
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
@@ -22,6 +22,9 @@ import NotificationDetails from "../components/dashboard-component/notifications
 import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
 import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
+import AdminRoute from "./AdminRoute";
+import PodcasterRoute from "./PodcasterRoute";
+import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
 
 const router = createBrowserRouter([
   {
@@ -105,7 +108,19 @@ const router = createBrowserRouter([
       },
       {
         path: "all-podcasters",
-        element: <AddPublisher />,
+        element: (
+          <AdminRoute>
+            <AllPodCaster />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users-message",
+        element: (
+          <AdminRoute>
+            <UsersMessage />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-music",
@@ -128,8 +143,12 @@ const router = createBrowserRouter([
         element: <EditPodcast />,
       },
       {
-        path: "release-new-music",
-        element: <AddMusic />,
+        path: "add-music",
+        element: (
+          <PodcasterRoute>
+            <AddMusic />
+          </PodcasterRoute>
+        ),
       },
       {
         path: "release-new-video",
