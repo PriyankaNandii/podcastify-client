@@ -1,4 +1,4 @@
-import { FaHome, FaLayerGroup, FaTimes } from "react-icons/fa";
+import { FaHome, FaLayerGroup } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineNotification } from "react-icons/ai";
 import useAuth from "../../Hooks/useAuth";
@@ -6,19 +6,20 @@ import { SiWebtrees } from "react-icons/si";
 import { IoLogOut, IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
+import { SiGooglepubsub } from "react-icons/si";
 import {
   MdFavorite,
   MdGroups2,
   MdLogout,
   MdPlaylistPlay,
   MdSettings,
-  MdTrendingUp,
 } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { RiCompassDiscoverLine } from "react-icons/ri";
+import { FaMessage } from "react-icons/fa6";
 
 export default function LeftNavbar() {
   const { user, logOut } = useAuth();
@@ -71,10 +72,14 @@ export default function LeftNavbar() {
                       <img
                         src={
                           user?.photoURL ||
-                          "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                          "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                         }
                         alt=""
-                        className="w-20 h-20 rounded-full"
+                        className={
+                          user?.photoURL
+                            ? `w-20 h-20 rounded-full`
+                            : `w-20 h-20 rounded-full`
+                        }
                       />
                       <h1 className="text-xl font-bold">
                         Hi, {userData?.name}
@@ -85,50 +90,51 @@ export default function LeftNavbar() {
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaHome />
                         <h1>Home</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/all-users"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FcStatistics />
                         <h1>All users</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/all-podcasters"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaAddressBook />
                         <h1>All podcasters</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/all-music"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaLayerGroup />
                         <h1>All Podcast</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/new-request"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <MdGroups2 />
                         <h1>Podcasters request</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard/make-announcement"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <AiOutlineNotification />
                         <h1>Make announcement</h1>
+                      </NavLink>
+                      <NavLink
+                        style={activeRouteStyle}
+                        to="/dashboard/users-message"
+                        className={`flex items-center justify-start gap-3`}>
+                        <FaMessage />
+                        <h1>Show users message</h1>
                       </NavLink>
                     </div>
                   </div>
@@ -144,10 +150,14 @@ export default function LeftNavbar() {
                       <img
                         src={
                           user?.photoURL ||
-                          "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                          "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                         }
                         alt=""
-                        className="w-20 h-20 rounded-full"
+                        className={
+                          user?.photoURL
+                            ? `w-20 h-20 rounded-full`
+                            : `w-20 h-20 rounded-full`
+                        }
                       />
                       <h1 className="text-xl font-bold">
                         Hi, {userData?.name}
@@ -158,49 +168,43 @@ export default function LeftNavbar() {
                       <NavLink
                         style={activeRouteStyle}
                         to="/dashboard"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaHome />
                         <h1>Home</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="my-music"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaLayerGroup />
-                        <h1>Manage Music</h1>
+                        <h1>Manage Podcasts</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="my-playlist"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaLayerGroup />
                         <h1>My Playlist</h1>
                       </NavLink>
                       <NavLink
-                        to="release-new-music"
-                        className="flex items-center justify-start gap-3"
-                      >
+                        to="add-music"
+                        className="flex items-center justify-start gap-3">
                         <FaLayerGroup />
-                        <h1>Release new music</h1>
+                        <h1>Release new podcast</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
                         to="release-new-video"
-                        className={`flex items-center justify-start gap-3`}
-                      >
+                        className={`flex items-center justify-start gap-3`}>
                         <FaLayerGroup />
                         <h1>Release new video</h1>
                       </NavLink>
                       <NavLink
                         style={activeRouteStyle}
-                        to="live-stream"
-                        className={`flex items-center justify-start gap-3`}
-                      >
-                        <FaLayerGroup />
-                        <h1>Make live</h1>
+                        to="my-subscribers"
+                        className={`flex items-center justify-start gap-3`}>
+                        <SiGooglepubsub />
+                        <h1>My subscriber</h1>
                       </NavLink>
                     </div>
                   </div>
@@ -220,8 +224,7 @@ export default function LeftNavbar() {
                             <RiCompassDiscoverLine size={24} />
                             <NavLink
                               to="/dashboard"
-                              className="hover:text-blue-500"
-                            >
+                              className="hover:text-blue-500">
                               Discover
                             </NavLink>
                           </li>
@@ -229,17 +232,15 @@ export default function LeftNavbar() {
                             <MdPlaylistPlay size={24} />
                             <NavLink
                               to="my-playlist"
-                              className="hover:text-blue-500"
-                            >
+                              className="hover:text-blue-500">
                               Playlist
                             </NavLink>
                           </li>
                           <li className="flex items-center space-x-3">
-                            <MdFavorite size={24} />
+                            <MdFavorite size={23} />
                             <a
                               href="/favorites"
-                              className="hover:text-blue-500"
-                            >
+                              className="hover:text-blue-500">
                               Favorites
                             </a>
                           </li>
@@ -283,8 +284,7 @@ export default function LeftNavbar() {
                             <MdSettings size={24} />
                             <NavLink
                               to="/dashboard/settings"
-                              className="hover:text-blue-500"
-                            >
+                              className="hover:text-blue-500">
                               Settings
                             </NavLink>
                           </li>
@@ -292,8 +292,7 @@ export default function LeftNavbar() {
                             onClick={() => {
                               handleSignOut();
                             }}
-                            className="flex items-center space-x-3 cursor-pointer"
-                          >
+                            className="flex items-center space-x-3 cursor-pointer">
                             <IoLogOut size={24} />
                             <p className="hover:text-blue-500">Log out</p>
                           </li>
@@ -311,8 +310,7 @@ export default function LeftNavbar() {
                     <NavLink
                       style={activeRouteStyle}
                       to="/dashboard/notification"
-                      className={`flex items-center justify-start gap-3`}
-                    >
+                      className={`flex items-center justify-start gap-3`}>
                       <IoMdNotificationsOutline />
                       <h1>Notice</h1>
                     </NavLink>
@@ -330,8 +328,7 @@ export default function LeftNavbar() {
                     </div>
                     <div
                       onClick={() => logOut()}
-                      className="flex items-center justify-start gap-3 cursor-pointer"
-                    >
+                      className="flex items-center justify-start gap-3 cursor-pointer">
                       <MdLogout />
                       <h1>Logout</h1>
                     </div>

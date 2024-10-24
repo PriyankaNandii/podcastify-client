@@ -23,8 +23,8 @@ const Registration = () => {
     const email = form?.email?.value;
     const password = form?.password?.value;
     const confirmPassword = form?.confirmPassword?.value;
-    const flag = form?.be_a_podcaster?.checked;  
-    console.log('Flag:',flag);   
+    const flag = form?.be_a_podcaster?.checked;
+    console.log("Flag:", flag);
 
     console.log(name, email, password, confirmPassword);
 
@@ -215,7 +215,10 @@ const Registration = () => {
                 name="be_a_podcaster"
                 className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
               />
-              <label htmlFor="Be a Podcaster" className="ml-2 text-sm text-red-900">
+              <label
+                htmlFor="Be a Podcaster"
+                className="ml-2 text-sm text-red-900"
+              >
                 Do you send requests to become a podcaster?
               </label>
             </div>
@@ -229,7 +232,7 @@ const Registration = () => {
             )}
             <button
               type="submit"
-              className="w-full mt-4 bg-purple-700 text-white p-2 rounded-lg font-semibold"
+              className="w-full mt-4 bg-red-800 text-white p-2 rounded-lg font-semibold"
             >
               Create Account
             </button>
@@ -257,7 +260,7 @@ const Registration = () => {
               />
             </button>
           </div>
-          <p className="text-white text-center text-sm mt-2">
+          <p className="text-white text-center text-base mt-2">
             Already have an account?{" "}
             <a href="/login" className="text-red-800">
               Sign In

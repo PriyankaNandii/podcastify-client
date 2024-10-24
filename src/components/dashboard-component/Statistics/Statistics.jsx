@@ -49,8 +49,7 @@ export default function Statistics() {
               innerRadius={100}
               outerRadius={150}
               paddingAngle={2}
-              dataKey="value"
-            >
+              dataKey="value">
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
@@ -69,8 +68,7 @@ export default function Statistics() {
           <div className="flex items-center mb-2 md:mb-0">
             <div
               className="w-4 h-4 mr-2"
-              style={{ backgroundColor: "#1E3A8A" }}
-            ></div>
+              style={{ backgroundColor: "#1E3A8A" }}></div>
             <span>
               <span className="text-[#1E3A8A]">70%</span> Total Users
             </span>
@@ -78,8 +76,7 @@ export default function Statistics() {
           <div className="flex items-center mb-2 md:mb-0">
             <div
               className="w-4 h-4 mr-2"
-              style={{ backgroundColor: "#6B7299" }}
-            ></div>
+              style={{ backgroundColor: "#6B7299" }}></div>
             <span>
               <span className="text-[#6B7299]">60%</span> Active Podcasters
             </span>
@@ -87,8 +84,7 @@ export default function Statistics() {
           <div className="flex items-center">
             <div
               className="w-4 h-4 mr-2"
-              style={{ backgroundColor: "#FF0000" }}
-            ></div>
+              style={{ backgroundColor: "#FF0000" }}></div>
             <span>
               <span className="text-[#FF0000]">50%</span> Episodes uploaded
             </span>

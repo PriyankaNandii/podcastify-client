@@ -54,7 +54,7 @@ const PostReview = ({ podcastId }) => {
       email: userData?.email,
       photoURL:
         user?.photoURL ||
-        "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg",
+        "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png",
     };
 
     try {
@@ -104,9 +104,13 @@ const PostReview = ({ podcastId }) => {
               <img
                 src={
                   user?.photoURL ||
-                  "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                  "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                 }
-                className="w-9 h-9 rounded-full mr-3"
+                className={
+                  user?.photoURL
+                    ? `w-14 h-14 rounded-full mr-3`
+                    : `w-16 h-16 rounded-full mr-3`
+                }
               />
               <span className="text-lg font-semibold text-gray-700">
                 {userData?.name}
@@ -133,6 +137,7 @@ const PostReview = ({ podcastId }) => {
                 name="feedback"
                 rows={5}
                 placeholder="Enter your feedback"
+                required
               />
             </div>
 

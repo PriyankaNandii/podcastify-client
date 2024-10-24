@@ -8,8 +8,7 @@ import About from "../Pages/About/About";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MiddleNavbar from "../components/dashboard-component/MiddleNavbar";
 import AllUsers from "../components/dashboard-component/allUsers/AllUsers";
-import AddPublisher from "../components/dashboard-component/addPublisher/AddPublisher";
-import AllRecentEpisodes from "../components/Home/AllRecentEpisodes";
+
 import UserProfile from "./../Pages/UserProfile/UserProfile";
 import AddMusic from "../Pages/Podcast/AddMusic";
 import OurMusicCollectionsDetailsPage from "../Pages/OurMusicCollectionsDetailsPage/OurMusicCollectionsDetailsPage";
@@ -20,8 +19,6 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
-import LivePodcaster from "../Pages/Streaming/LivePodcaster";
-import LiveListener from "../Pages/Streaming/LiveListener";
 
 const router = createBrowserRouter([
   {
@@ -65,8 +62,16 @@ const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path: "/allrecentepisodes",
-        element: <AllRecentEpisodes />,
+        path: "/categories/:category",
+        element: <Redirect></Redirect>,
+      },
+      {
+        path: "/allReviews",
+        element: <AllReviews></AllReviews>,
+      },
+      {
+        path: "/trending-podcasts",
+        element: <TrendingPodcasts></TrendingPodcasts>,
       },
 
       {
@@ -80,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/podcast/:id",
         element: <OurMusicCollectionsDetailsPage />,
+      },
+      {
+        path: "/all-podcasts",
+        element: <Allpodcasts></Allpodcasts>,
       },
     ],
   },
@@ -109,7 +118,19 @@ const router = createBrowserRouter([
       },
       {
         path: "all-podcasters",
-        element: <AddPublisher />,
+        element: (
+          <AdminRoute>
+            <AllPodCaster />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users-message",
+        element: (
+          <AdminRoute>
+            <UsersMessage />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-music",
@@ -132,8 +153,12 @@ const router = createBrowserRouter([
         element: <EditPodcast />,
       },
       {
-        path: "release-new-music",
-        element: <AddMusic />,
+        path: "add-music",
+        element: (
+          <PodcasterRoute>
+            <AddMusic />
+          </PodcasterRoute>
+        ),
       },
       {
         path: "release-new-video",
@@ -142,6 +167,22 @@ const router = createBrowserRouter([
       {
         path: "live-stream",
         element: "Live stream",
+      },
+      {
+        path: "my-subscribers",
+        element: (
+          <PodcasterRoute>
+            <MySubscribers />
+          </PodcasterRoute>
+        ),
+      },
+      {
+        path: "make-announcement",
+        element: <MakeAnnouncement></MakeAnnouncement>,
+      },
+      {
+        path: "settings",
+        element: <UserProfile></UserProfile>,
       },
       {
         path: "notification",

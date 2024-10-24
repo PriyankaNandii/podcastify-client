@@ -3,7 +3,6 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaTrashAlt } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
-import useCheckUserRole from "../../../Hooks/useCheckUserRole";
 
 export default function AllUsers() {
   const axiosSecure = useAxiosSecure();
@@ -69,7 +68,6 @@ export default function AllUsers() {
 
   return (
     <>
-
       <div
         className="min-h-screen bg-cover bg-center"
         style={{
@@ -125,7 +123,6 @@ export default function AllUsers() {
                 </tbody>
               </table>
             )}
-
           </div>
         </div>
       </div>

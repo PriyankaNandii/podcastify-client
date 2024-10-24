@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import Podcast from "./Podcast";
+import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPulic";
+import Podcast from "./Podcast";
 import { NavLink } from "react-router-dom";
-const OurMusicCollections = () => {
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Layout/Loader";
+
+const TrendingPodcasts = () => {
   const axiosPublic = useAxiosPublic();
-  const [podcasts, setPodcasts] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [currentPodcastId, setCurrentPodcastId] = useState(null);
+  const [filter, setFilter] = useState("desc");
 
   // Fetch podcasts
-  useEffect(() => {
-    const fetchPodcasts = async () => {
-      try {
-        const response = await axiosPublic.get("/podcast");
-        setPodcasts(response.data);
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["trendingPodcasts"],
+    queryFn: async () =>
+      await axiosPublic.get(`/trendingPodcasts/?upVote=${filter}`),
+  });
 
-    fetchPodcasts();
-  }, [axiosPublic]);
+  const allTrendingPodcast = data?.data;
 
   const handlePlay = (id) => {
     if (currentPodcastId === id) {
@@ -34,27 +30,32 @@ const OurMusicCollections = () => {
 
   const handlePlayNext = (currentId) => {
     if (currentPodcastId === currentId) {
-      const currentIndex = podcasts.findIndex(
+      const currentIndex = allTrendingPodcast.findIndex(
         (podcast) => podcast._id === currentId
       );
-      const nextIndex = (currentIndex + 1) % podcasts.length;
-      setCurrentPodcastId(podcasts[nextIndex]._id);
+      const nextIndex = (currentIndex + 1) % allTrendingPodcast.length;
+      setCurrentPodcastId(allTrendingPodcast[nextIndex]._id);
     }
   };
 
   const handlePlayPrevious = (currentId) => {
     if (currentPodcastId === currentId) {
-      const currentIndex = podcasts.findIndex(
+      const currentIndex = allTrendingPodcast.findIndex(
         (podcast) => podcast._id === currentId
       );
       const previousIndex =
-        (currentIndex - 1 + podcasts.length) % podcasts.length;
-      setCurrentPodcastId(podcasts[previousIndex]._id);
+        (currentIndex - 1 + allTrendingPodcast.length) %
+        allTrendingPodcast.length;
+      setCurrentPodcastId(allTrendingPodcast[previousIndex]._id);
     }
   };
 
-  if (loading) {
-    return <p>Loading podcasts...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-8">
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -64,10 +65,10 @@ const OurMusicCollections = () => {
           Start Listening Today
         </h2>
         <h1 className="text-center text-2xl lg:text-5xl font-bold mb-10">
-          Our Podcast&apos;s Collections
+          Trending Podcast&apos;s
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 md:px-20 px-5">
-          {podcasts?.slice(0, 6).map((podcast) => (
+          {allTrendingPodcast?.slice(0, 6).map((podcast) => (
             <Podcast
               key={podcast._id}
               podcast={podcast}
@@ -86,7 +87,7 @@ const OurMusicCollections = () => {
               type="button"
               className="text-white bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-500 dark:focus:ring-red-800 shadow-lg shadow-red-400/50 dark:shadow-lg dark:shadow-red-800/80 font- rounded-lg px-5 py-2.5 text-center me-2 mb-2 text-lg italic"
             >
-              Listen & Explore More Podcasts
+              Explore All Podcasts
             </button>
           </NavLink>
         </div>
@@ -95,4 +96,4 @@ const OurMusicCollections = () => {
   );
 };
 
-export default OurMusicCollections;
+export default TrendingPodcasts;

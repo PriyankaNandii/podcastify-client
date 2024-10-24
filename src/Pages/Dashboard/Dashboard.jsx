@@ -2,8 +2,10 @@ import { Outlet } from "react-router-dom";
 import LeftNavbar from "../../components/dashboard-component/LeftNavbar";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import UserDashoard from "../../components/dashboard-component/Statistics/UserDashoard";
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
+import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Dashboard() {
   const [open, isOpen] = useState(false);
@@ -62,6 +64,11 @@ export default function Dashboard() {
 
       <div className={`ml-0 lg:ml-64`}>
         <Outlet></Outlet>
+      </div>
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+        <ToastContainer position="top-right" autoClose={2000} />
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     </div>
   );
