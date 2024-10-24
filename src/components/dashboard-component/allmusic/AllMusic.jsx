@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPulic";
+import toast from "react-hot-toast";
 
 const AllMusic = () => {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +26,17 @@ const AllMusic = () => {
 
     fetchData();
   }, []);
+
+  const deleteItem = async (id) => {
+    console.log("Music Id:", id);
+    try {
+      await axiosPublic.delete(`/podcast/${id}`);
+      setPodcasts(podcasts.filter((item) => item._id !== id));
+      toast.success("Delete music successfully");
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
 
   return (
     <>
@@ -70,7 +84,10 @@ const AllMusic = () => {
                       <button className="bg-green-500 text-white px-4 py-2 rounded-lg shadow mr-2 transition-transform hover:scale-105">
                         <FaEdit />
                       </button>
-                      <button className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105">
+                      <button
+                        onClick={() => deleteItem(podcast._id)}
+                        className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105"
+                      >
                         <MdDeleteForever />
                       </button>
                     </td>

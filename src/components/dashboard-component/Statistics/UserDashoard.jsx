@@ -10,14 +10,19 @@ import { HiArrowPathRoundedSquare } from "react-icons/hi2";
 import { LuVote } from "react-icons/lu";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useDataFetcher from "../../../Hooks/useDataFetcher";
+import Loader from "../../../Layout/Loader";
 
 const UserDashoard = () => {
   const [userData, setUserData] = useState(null);
+  const { data, isLoading } = useDataFetcher("users");
+  const [totalSubscriber, setTotalSubscriber] = useState([]);
+
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
   const [trackList, setTrackList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingg, setLoadingg] = useState(true);
   const axiosPublic = useAxiosPublic();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -29,6 +34,23 @@ const UserDashoard = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const date = new Date(isoDate);
     return date.toLocaleDateString("en-US", options);
+  };
+
+  const handlePodcasterRequest = async () => {
+    try {
+      const response = await axiosPublic.post("/request-podcaster", {
+        email: user?.email,
+      });
+      if (response.data.success) {
+        toast.success("Your request has been submitted!");
+      } else {
+        toast.error(
+          response.data.message || "There was an issue with your request."
+        );
+      }
+    } catch (error) {
+      toast.log("Failed to submit the request.", error);
+    }
   };
 
   const addToPlaylist = async (music_id, title) => {
@@ -58,13 +80,13 @@ const UserDashoard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
+        setLoadingg(true);
         const response = await axiosPublic.get("/trendingPodcasts");
         setTrackList(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setLoadingg(false);
       }
     };
     fetchData();
@@ -123,8 +145,32 @@ const UserDashoard = () => {
     }
   }, [user?.email]);
 
-  if (loading) {
-    return <h1 className="text-center text-sm">Please wait...</h1>;
+  useEffect(() => {
+    const mySubscription = async () => {
+      try {
+        const response = await axiosPublic.get("/totalSubscriber");
+        setTotalSubscriber(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    mySubscription();
+  }, [user?.email]);
+
+  const podcasters = data?.filter((podcast) => podcast?.role === "podcaster");
+
+  const sortedPodcasters = podcasters
+    ?.map((podcaster) => {
+      const subscribersCount = totalSubscriber.filter(
+        (subscriber) => subscriber.podcasterUid === podcaster.uid
+      ).length;
+      return { ...podcaster, subscribersCount };
+    })
+    .sort((a, b) => b.subscribersCount - a.subscribersCount);
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
@@ -220,7 +266,6 @@ const UserDashoard = () => {
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
             Now Playing
           </h3>
-
           <div className="bg-gray-800 rounded-lg p-4">
             {/* Now Playing Info */}
             <h1 className="text-white text-xl text-center font-semibold mb-4">
@@ -292,18 +337,44 @@ const UserDashoard = () => {
               </button>
             </div>
           </div>
-
-          {/* Top Podcaster Section */}
-          <div className="mt-8">
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Top Podcaster
-            </h3>
-            <ul className="space-y-2 text-gray-400">
-              <li>01. Tom Kennedy</li>
-              <li>02. Julian Wise</li>
-              <li>03. Jhonaton Hope</li>
-              <li>04. Tony Smart</li>
-            </ul>
+          {/* Podcaster reqest */}
+          <div>
+            <h2 className="text-xl mt-4">Do you want to be a Podcaster?</h2>
+            <button
+              className="text-xl mt-4 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-700"
+              onClick={handlePodcasterRequest}
+            >
+              Click here to request to be a Podcaster
+            </button>
+          </div>
+          {/* Top Podcasters Section */}
+          <div className="mt-12">
+            <h3 className="text-lg font-semibold mb-4">Top Podcasters</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {sortedPodcasters?.map((podcaster, index) => (
+                <div key={index} className="flex items-center space-x-4">
+                  <img
+                    src={
+                      podcaster.photoURL ||
+                      "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
+                    }
+                    alt={podcaster.name}
+                    className="rounded-full w-20 h-20 object-cover shadow-lg"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-lg">{podcaster.name}</h4>
+                    <p className="text-gray-400 text-base">{podcaster.role}</p>
+                    {
+                      totalSubscriber.filter(
+                        (subscriber) =>
+                          subscriber.podcasterUid === podcaster.uid
+                      ).length
+                    }{" "}
+                    subscribers
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         {/* Trending Podcasts */}

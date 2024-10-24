@@ -47,6 +47,7 @@ const Login = () => {
           name: result?.user?.displayName,
           role: "user",
           uid,
+          userPhotoUrl: user?.photoURL,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -71,6 +72,7 @@ const Login = () => {
           name: result.user?.displayName,
           role: "user",
           uid,
+          userPhotoUrl: user?.photoURL,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);

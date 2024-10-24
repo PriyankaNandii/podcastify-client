@@ -23,8 +23,6 @@ const Registration = () => {
     const email = form?.email?.value;
     const password = form?.password?.value;
     const confirmPassword = form?.confirmPassword?.value;
-    const flag = form?.be_a_podcaster?.checked;
-    console.log("Flag:", flag);
 
     console.log(name, email, password, confirmPassword);
 
@@ -53,7 +51,7 @@ const Registration = () => {
         return updateUserProfile(user, { displayName: name }).then(() => uid);
       })
       .then((uid) => {
-        const userInfo = { name, email, role: "user", uid, flag };
+        const userInfo = { name, email, role: "user", uid };
         return axiosPublic.post("/users", userInfo);
       })
       .then((res) => {
@@ -88,6 +86,7 @@ const Registration = () => {
           name: result?.user?.displayName,
           role: "user",
           uid,
+          userPhotoUrl: user?.photoURL,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -112,6 +111,7 @@ const Registration = () => {
           name: result.user?.displayName,
           role: "user",
           uid,
+          userPhotoUrl: user?.photoURL,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -206,21 +206,6 @@ const Registration = () => {
                   )}
                 </span>
               </div>
-            </div>
-
-            <div className="flex items-center mt-4">
-              <input
-                type="checkbox"
-                id="be_a_podcaster"
-                name="be_a_podcaster"
-                className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
-              />
-              <label
-                htmlFor="Be a Podcaster"
-                className="ml-2 text-sm text-red-900"
-              >
-                Do you send requests to become a podcaster?
-              </label>
             </div>
 
             {registerError && (

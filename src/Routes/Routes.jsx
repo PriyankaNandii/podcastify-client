@@ -28,6 +28,7 @@ import AdminRoute from "./AdminRoute";
 import PodcasterRoute from "./PodcasterRoute";
 import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
 import MySubscribers from "../Pages/Dashboard/Podcaster/MySubscribers";
+import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
 
 const router = createBrowserRouter([
   {
@@ -115,13 +116,18 @@ const router = createBrowserRouter([
       // Admin route only
       {
         path: "all-users",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-podcasters",
         element: (
           <AdminRoute>
-            <AllPodCaster />
+            <AllPodCaster></AllPodCaster>
           </AdminRoute>
         ),
       },
@@ -134,8 +140,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "all-music",
-        element: <AllPodCaster />,
+        path: "all-podcast",
+        element: <AllMusic></AllMusic>,
       },
       {
         path: "my-music",
