@@ -19,6 +19,7 @@ import PodcasterRequest from "../Pages/Dashboard/Admin/PodcasterRequest";
 import MyPlaylist from "../Pages/Dashboard/Podcaster/MyPlaylist";
 import Notifications from "../components/dashboard-component/notifications/Notifications";
 import NotificationDetails from "../components/dashboard-component/notifications/NotificationDetails";
+
 import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
 import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/livepodcasting",
+        element: <LivePodcaster />,
+      },
+      {
+        path:'/livepodcast',
+        element:<LiveListener/>
       },
       {
         path: "/user-profile",
