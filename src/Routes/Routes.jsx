@@ -22,6 +22,8 @@ import NotificationDetails from "../components/dashboard-component/notifications
 import Allpodcasts from "../Pages/AllPodcasts/Allpodcasts";
 import TrendingPodcasts from "../components/Home/TrendingPodcasts";
 import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
+import Redirect from "../components/Home/Redirect";
+import AllReviews from "../components/Home/AllReviews";
 import AdminRoute from "./AdminRoute";
 import PodcasterRoute from "./PodcasterRoute";
 import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <About></About>,
+      },
+      {
+        path: "/categories/:category",
+        element: <Redirect></Redirect>,
+      },
+      {
+        path: "/allReviews",
+        element: <AllReviews></AllReviews>,
       },
       {
         path: "/trending-podcasts",
@@ -170,6 +180,10 @@ const router = createBrowserRouter([
       {
         path: "make-announcement",
         element: <MakeAnnouncement></MakeAnnouncement>,
+      },
+      {
+        path: "settings",
+        element: <UserProfile></UserProfile>,
       },
       {
         path: "notification",

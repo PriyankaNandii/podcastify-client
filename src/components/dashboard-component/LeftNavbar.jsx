@@ -72,10 +72,14 @@ export default function LeftNavbar() {
                       <img
                         src={
                           user?.photoURL ||
-                          "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                          "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                         }
                         alt=""
-                        className="w-20 h-20 rounded-full"
+                        className={
+                          user?.photoURL
+                            ? `w-20 h-20 rounded-full`
+                            : `w-20 h-20 rounded-full`
+                        }
                       />
                       <h1 className="text-xl font-bold">
                         Hi, {userData?.name}
@@ -146,10 +150,14 @@ export default function LeftNavbar() {
                       <img
                         src={
                           user?.photoURL ||
-                          "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                          "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                         }
                         alt=""
-                        className="w-20 h-20 rounded-full"
+                        className={
+                          user?.photoURL
+                            ? `w-20 h-20 rounded-full`
+                            : `w-20 h-20 rounded-full`
+                        }
                       />
                       <h1 className="text-xl font-bold">
                         Hi, {userData?.name}

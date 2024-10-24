@@ -9,22 +9,23 @@ import {
 import useAuth from "../../Hooks/useAuth";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import "../UserProfile/user.css";
 import { FaRegEdit } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPulic";
 
 const UserProfile = () => {
   const { user, loading, logOut } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+
   const [userData, setUserData] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(userData?.phoneNumber || "");
 
   // Fetch user data by
   const fetchUserData = async () => {
     try {
-      const response = await axiosSecure.get(`/users/email/${user?.email}`);
+      const response = await axiosPublic.get(`/users/email/${user?.email}`);
       setUserData(response.data);
       setPhoneNumber(response.data.phoneNumber || "");
     } catch (error) {
@@ -50,9 +51,9 @@ const UserProfile = () => {
       username: form?.username?.value,
       phoneNumber: phoneNumber,
     };
-
+    console.log("Updated Data: ", updatedData);
     try {
-      const response = await axiosSecure.put(
+      const response = await axiosPublic.put(
         `/users/email/${user?.email}`,
         updatedData
       );
@@ -62,7 +63,7 @@ const UserProfile = () => {
           text: "You're all set! Your profile looks great 👏",
           imageUrl:
             user?.photoURL ||
-            "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg",
+            "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png",
           imageWidth: 80,
           imageHeight: 80,
           confirmButtonText: "Yay! 🤩",
@@ -116,10 +117,16 @@ const UserProfile = () => {
                 </button>
 
                 <img
-                  className="w-36 h-36 rounded-full border-4 border-red-800 shadow-md"
+                  className={
+                    user?.photoURL
+                      ? `w-28 h-28 rounded-full border-4
+                   border-red-800 shadow-md`
+                      : `w-32 h-32 rounded-full border-4
+                   border-red-800 shadow-md`
+                  }
                   src={
                     user?.photoURL ||
-                    "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                    "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                   }
                   alt="Profile"
                 />
@@ -197,10 +204,16 @@ const UserProfile = () => {
               {/* Profile Picture and Username */}
               <div className="flex flex-col items-center">
                 <img
-                  className="w-36 h-36 rounded-full border-4 border-red-800 shadow-md"
+                  className={
+                    user?.photoURL
+                      ? `w-32 h-32 rounded-full border-4
+                   border-red-800 shadow-md`
+                      : `w-32 h-32 rounded-full border-4
+                   border-red-800 shadow-md`
+                  }
                   src={
                     user?.photoURL ||
-                    "https://marketplace.canva.com/EAFKBYNjwjk/1/0/1600w/canva-dark-blue-and-purple-neon-podcast-nnl4QxKxhsk.jpg"
+                    "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                   }
                   alt="Profile"
                 />
