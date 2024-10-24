@@ -25,6 +25,7 @@ import MakeAnnouncement from "../Pages/Dashboard/Admin/MakeAnnouncement";
 import AdminRoute from "./AdminRoute";
 import PodcasterRoute from "./PodcasterRoute";
 import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
+import MySubscribers from "../Pages/Dashboard/Podcaster/MySubscribers";
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,14 @@ const router = createBrowserRouter([
       {
         path: "live-stream",
         element: "Live stream",
+      },
+      {
+        path: "my-subscribers",
+        element: (
+          <PodcasterRoute>
+            <MySubscribers />
+          </PodcasterRoute>
+        ),
       },
       {
         path: "make-announcement",

@@ -6,6 +6,7 @@ import { SiWebtrees } from "react-icons/si";
 import { IoLogOut, IoSettings } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
 import { FaAddressBook } from "react-icons/fa";
+import { SiGooglepubsub } from "react-icons/si";
 import {
   MdFavorite,
   MdGroups2,
@@ -189,6 +190,13 @@ export default function LeftNavbar() {
                         className={`flex items-center justify-start gap-3`}>
                         <FaLayerGroup />
                         <h1>Release new video</h1>
+                      </NavLink>
+                      <NavLink
+                        style={activeRouteStyle}
+                        to="my-subscribers"
+                        className={`flex items-center justify-start gap-3`}>
+                        <SiGooglepubsub />
+                        <h1>My subscriber</h1>
                       </NavLink>
                     </div>
                   </div>
