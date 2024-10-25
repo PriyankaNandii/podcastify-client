@@ -6,6 +6,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false); // State for modal
+  const [showFullText, setShowFullText] = useState({});
   const axiosPublic = useAxiosPublic();
 
   // Fetch podcasts
@@ -23,6 +24,13 @@ const Reviews = () => {
 
     fetchPodcasts();
   }, [axiosPublic]);
+
+  const toggleFullText = (index) => {
+    setShowFullText((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
 
   if (loading) {
     return <p>Loading podcasts...</p>;
@@ -43,7 +51,7 @@ const Reviews = () => {
             <div className="relative group">
               <div className="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
 
-              <div className="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+              <div className="relative p-4 space-y-4 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5 h-52 flex flex-col">
                 <div className="flex items-center space-x-4">
                   <img
                     src={
@@ -63,8 +71,23 @@ const Reviews = () => {
                   </div>
                 </div>
                 <p className="leading-normal text-gray-300 text-md">
-                  {review?.feedback || "No feedback text provided!"}
+                  {showFullText[index]
+                    ? review?.feedback || "No feedback text provided!"
+                    : review?.feedback
+                    ? review.feedback.slice(0, 150) + "..."
+                    : "No feedback text provided!"}
                 </p>
+
+                <div className="flex justify-end">
+                  {review?.feedback && review.feedback.length > 150 && (
+                    <button
+                      className="text-blue-400 text-sm focus:outline-none hover:underline"
+                      onClick={() => toggleFullText(index)}
+                    >
+                      {showFullText[index] ? "See less" : "See more"}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </li>

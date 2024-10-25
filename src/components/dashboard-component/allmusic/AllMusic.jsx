@@ -81,9 +81,6 @@ const AllMusic = () => {
                       {new Date(podcast.releaseDate).toLocaleDateString()}
                     </td>
                     <td className="p-4">
-                      <button className="bg-green-500 text-white px-4 py-2 rounded-lg shadow mr-2 transition-transform hover:scale-105">
-                        <FaEdit />
-                      </button>
                       <button
                         onClick={() => deleteItem(podcast._id)}
                         className="bg-red-800 text-white px-4 py-2 rounded-lg shadow transition-transform hover:scale-105"

@@ -6,20 +6,29 @@ export default function UsersMessage() {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-t from-[#1C144C] from-5% via-[#18171E] via-30% to-[#1b1f24] to-90% bg-gray-800 p-2">
-      <h1 className="text-xl text-white font-black">Messages from users</h1>
-      {data.map((msg) => (
-        <div
-          key={msg._id}
-          className="p-4 mb-4 bg-slate-400 w-full md:w-1/2 *:font-semibold">
-          <h1>
-            Sender's full name: {msg.firstName} {msg.lastName}
-          </h1>
-          <h1>Sender's email: {msg.email}</h1>
-          <h1 className="mt-4">Sender's message</h1>
-          <div className="py-2 bg-slate-50">{msg.message}</div>
-        </div>
-      ))}
+    <div className="min-h-screen bg-gradient-to-t from-[#2A1D6B] via-[#1B1B1B] to-[#2A2A2A] p-6">
+      <h1 className="text-3xl text-white font-extrabold mb-8 text-center shadow-md">
+        Messages from Users
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {data.map((msg) => (
+          <div
+            key={msg._id}
+            className="p-6 bg-gradient-to-br from-[#3B3A56] to-[#5C5C78] text-white rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+          >
+            <h2 className="text-lg font-bold mb-2">Sender's Name:</h2>
+            <p className="text-md mb-4">
+              {msg.firstName} {msg.lastName}
+            </p>
+            <h2 className="text-lg font-bold mb-2">Sender's Email:</h2>
+            <p className="text-md mb-4">{msg.email}</p>
+            <h2 className="text-lg font-bold mb-2">Message:</h2>
+            <div className="py-2 px-4 bg-slate-200 text-black rounded-md border-l-4 border-blue-500">
+              {msg.message}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -355,11 +355,15 @@ const UserDashoard = () => {
                 <div key={index} className="flex items-center space-x-4">
                   <img
                     src={
-                      podcaster.photoURL ||
+                      podcaster.userPhotoUrl ||
                       "https://i.ibb.co.com/C09dnMY/default-Img-removebg-preview.png"
                     }
                     alt={podcaster.name}
-                    className="rounded-full w-20 h-20 object-cover shadow-lg"
+                    className={
+                      podcaster.userPhotoUrl
+                        ? `rounded-full w-20 h-20 object-cover shadow-lg`
+                        : `rounded-full w-24 h-24 object-cover shadow-lg`
+                    }
                   />
                   <div>
                     <h4 className="font-semibold text-lg">{podcaster.name}</h4>

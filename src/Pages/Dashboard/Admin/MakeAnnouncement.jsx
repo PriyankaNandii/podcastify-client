@@ -52,7 +52,8 @@ export default function MakeAnnouncement() {
       <Heading>Make announcement</Heading>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full md:w-1/2 p-2 space-y-5">
+        className="w-full md:w-1/2 p-2 space-y-5"
+      >
         <FormControl isInvalid={errors.title}>
           <FormLabel htmlFor="title">Title</FormLabel>
           <Input
@@ -71,7 +72,7 @@ export default function MakeAnnouncement() {
           <FormLabel htmlFor="email">Targeted Email</FormLabel>
           <Input
             id="email"
-            placeholder="If you want to mentioned someone specifically"
+            placeholder="Mention someone specifically"
             {...register("email")}
           />
         </FormControl>
@@ -87,7 +88,8 @@ export default function MakeAnnouncement() {
           mt={4}
           colorScheme="teal"
           isLoading={isSubmitting}
-          type="submit">
+          type="submit"
+        >
           Submit
         </Button>
       </form>
