@@ -4,15 +4,14 @@ import useAuth from "../../Hooks/useAuth";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import useDataFetcher from "../../Hooks/useDataFetcher";
+
 import useCheckUserRole from "../../Hooks/useCheckUserRole";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { logOut, user } = useAuth();
-  // const { data, isLoading } = useDataFetcher("users");
-  const { role, isLoading } = useCheckUserRole();
+  const { role } = useCheckUserRole();
 
   const handleSignOut = () => {
     logOut().then().catch();
@@ -20,8 +19,6 @@ function Navbar() {
   if (!user && isDropdownOpen) {
     setIsDropdownOpen(false);
   }
-
-  console.log(isLoading, role);
 
   return (
     <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
@@ -165,89 +162,62 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden pb-6">
-          {user ? (
-            <>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/addmusic"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                Add Music
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                Home
-              </NavLink>
-              <NavLink
-                to="/about-us"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                About Us
-              </NavLink>
-              <NavLink
-                to="dashboard"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
-                    : "block px-4 py-2  text-white text-[15px] font-medium"
-                }>
-                Dashboard
-              </NavLink>
-
-              <NavLink
-                to="/login"
-                className="block px-5 lg:ml-0 md:ml-4 py-2 hover:text-red-500 text-white text-[17px] font-semibold">
-                <hr className="my-4 border-gray-600" />
-                Log in
-              </NavLink>
-              <NavLink
-                to="/registration"
-                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md">
-                Sign up free
-              </NavLink>
-            </>
-          )}
+        <div className="lg:hidden p-5">
+          <div className="flex flex-col gap-4 *:text-xs">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }>
+              Home
+            </NavLink>
+            <NavLink
+              to="/about-us"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }>
+              About Us
+            </NavLink>
+            {user && (
+              <>
+                <NavLink
+                  to="dashboard"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                      : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                  }>
+                  Dashboard
+                </NavLink>
+                {role === "podcaster" && (
+                  <NavLink
+                    to="livepodcasting"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                        : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                    }>
+                    Make live
+                  </NavLink>
+                )}
+                {role === "podcaster" || (
+                  <NavLink
+                    to="livepodcast"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                        : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                    }>
+                    See live
+                  </NavLink>
+                )}
+              </>
+            )}
+          </div>
         </div>
       )}
     </nav>
