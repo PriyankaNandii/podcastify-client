@@ -4,11 +4,15 @@ import useAuth from "../../Hooks/useAuth";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useDataFetcher from "../../Hooks/useDataFetcher";
+import useCheckUserRole from "../../Hooks/useCheckUserRole";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { logOut, user } = useAuth();
+  // const { data, isLoading } = useDataFetcher("users");
+  const { role, isLoading } = useCheckUserRole();
 
   const handleSignOut = () => {
     logOut().then().catch();
@@ -16,6 +20,8 @@ function Navbar() {
   if (!user && isDropdownOpen) {
     setIsDropdownOpen(false);
   }
+
+  console.log(isLoading, role);
 
   return (
     <nav className="bg-black opacity-9 shadow-md sticky top-0 z-50">
@@ -36,8 +42,7 @@ function Navbar() {
                 isActive
                   ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
                   : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
-              }
-            >
+              }>
               Home
             </NavLink>
             <NavLink
@@ -46,8 +51,7 @@ function Navbar() {
                 isActive
                   ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
                   : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
-              }
-            >
+              }>
               About Us
             </NavLink>
             {user && (
@@ -58,10 +62,31 @@ function Navbar() {
                     isActive
                       ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
                       : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
-                  }
-                >
+                  }>
                   Dashboard
                 </NavLink>
+                {role === "podcaster" && (
+                  <NavLink
+                    to="livepodcasting"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                        : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                    }>
+                    Make live
+                  </NavLink>
+                )}
+                {role === "podcaster" || (
+                  <NavLink
+                    to="livepodcast"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                        : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+                    }>
+                    See live
+                  </NavLink>
+                )}
               </>
             )}
           </>
@@ -86,22 +111,19 @@ function Navbar() {
               <div className="absolute mt-2 w-36 bg-gradient-to-r from-red-500 to-red-300 hover:from-red-600 hover:to-red-300 rounded-lg shadow-lg py-2 lg:-left-20 z-50">
                 <NavLink
                   to="/user-profile"
-                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300"
-                >
+                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300">
                   <FaUserCircle className="mr-2" /> Profile
                 </NavLink>
                 <NavLink
                   to="dashboard"
-                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300"
-                >
+                  className="flex items-center px-4 py-2 text-base text-gray-700 hover:bg-red-300">
                   <MdDashboardCustomize className="mr-2 text-base" />
                   Dashboard
                 </NavLink>
                 <hr className="my-1" />
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center w-full px-4 py-2 text-base text-gray-700 hover:bg-red-300"
-                >
+                  className="flex items-center w-full px-4 py-2 text-base text-gray-700 hover:bg-red-300">
                   <FaSignOutAlt className="mr-2" /> Log Out
                 </button>
               </div>
@@ -111,14 +133,12 @@ function Navbar() {
           <div className="hidden lg:block gap-4">
             <NavLink
               to="/registration"
-              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
-            >
+              className="bg-red-700 text-base mr-3 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200">
               Sign up free
             </NavLink>
             <NavLink
               to="/login"
-              className="bg-gray-600 text-base text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200 font-semibold"
-            >
+              className="bg-gray-600 text-base text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-200 font-semibold">
               Log in
             </NavLink>
           </div>
@@ -128,20 +148,17 @@ function Navbar() {
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="focus:outline-none"
-          >
+            className="focus:outline-none">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
+                d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
           </button>
         </div>
@@ -157,8 +174,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 Home
               </NavLink>
               <NavLink
@@ -167,8 +183,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 About Us
               </NavLink>
               <NavLink
@@ -177,8 +192,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 Dashboard
               </NavLink>
               <NavLink
@@ -187,8 +201,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 Add Music
               </NavLink>
             </>
@@ -200,8 +213,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 Home
               </NavLink>
               <NavLink
@@ -210,8 +222,7 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 About Us
               </NavLink>
               <NavLink
@@ -220,22 +231,19 @@ function Navbar() {
                   isActive
                     ? "block px-4 py-2 text-red-500  text-[15px] font-medium"
                     : "block px-4 py-2  text-white text-[15px] font-medium"
-                }
-              >
+                }>
                 Dashboard
               </NavLink>
 
               <NavLink
                 to="/login"
-                className="block px-5 lg:ml-0 md:ml-4 py-2 hover:text-red-500 text-white text-[17px] font-semibold"
-              >
+                className="block px-5 lg:ml-0 md:ml-4 py-2 hover:text-red-500 text-white text-[17px] font-semibold">
                 <hr className="my-4 border-gray-600" />
                 Log in
               </NavLink>
               <NavLink
                 to="/registration"
-                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md"
-              >
+                className="block px-4 py-2 mt-3 w-11/12 mx-auto bg-red-800 text-base text-white rounded-md">
                 Sign up free
               </NavLink>
             </>
