@@ -43,6 +43,24 @@ function Navbar() {
               Home
             </NavLink>
             <NavLink
+              to="/make-video-live"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }>
+              Make video live
+            </NavLink>
+            <NavLink
+              to="/see-video-live"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300 underline underline-offset-8 decoration-gray-400 decoration-2"
+                  : "bg-gradient-to-r from-red-500 to-white text-transparent bg-clip-text text-lg font-bold transition-colors duration-200 hover:from-red-600 hover:to-red-300"
+              }>
+              See video live
+            </NavLink>
+            <NavLink
               to="/about-us"
               className={({ isActive }) =>
                 isActive

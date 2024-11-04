@@ -30,8 +30,6 @@ import PodcasterRoute from "./PodcasterRoute";
 import UsersMessage from "../Pages/Dashboard/Admin/UsersMessage";
 import MySubscribers from "../Pages/Dashboard/Podcaster/MySubscribers";
 import AllMusic from "../components/dashboard-component/allmusic/AllMusic";
-import LivePodcaster from "../Pages/Streaming/LivePodcaster";
-import LiveListener from "../Pages/Streaming/LiveListener";
 
 const router = createBrowserRouter([
   {
@@ -53,14 +51,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      {
-        path: "/livepodcasting",
-        element: <LivePodcaster />,
-      },
-      {
-        path: "/livepodcast",
-        element: <LiveListener />,
-      },
+
       {
         path: "/user-profile",
         element: (

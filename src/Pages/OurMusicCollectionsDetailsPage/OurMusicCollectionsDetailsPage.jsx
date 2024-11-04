@@ -180,8 +180,9 @@ const OurMusicCollectionsDetailsPage = () => {
                     isPlay={currentPodcastId === podcast._id}
                     onPlay={() => handlePlay(podcast._id)}
                     onPlayNext={() => handlePlayNext(podcast._id)}
-                    onPlayPrevious={() => handlePlayPrevious(podcast._id)}
-                  ></DiscoverMoreMusic>
+                    onPlayPrevious={() =>
+                      handlePlayPrevious(podcast._id)
+                    }></DiscoverMoreMusic>
                 ))}
               </div>
             </div>

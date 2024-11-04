@@ -164,8 +164,7 @@ export default function NotificationDetails() {
               className={`${
                 checkReactedBefore?.react === ele.action ? "bg-red-500" : ""
               } text-2xl cursor-pointer p-1 rounded-lg`}
-              onClick={() => reactions(ele.action)}
-            >
+              onClick={() => reactions(ele.action)}>
               {ele.icon}
             </div>
           ))}

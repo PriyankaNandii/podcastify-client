@@ -27,7 +27,7 @@ const Reviews = () => {
   if (loading) {
     return <p>Loading podcasts...</p>;
   }
-
+  console.log(reviews);
   return (
     <div className="w-full bg-[#17191e] py-24 lg:px-20 px-5">
       <h2 className="text-center text-red-800 text-lg p-3">
@@ -73,8 +73,7 @@ const Reviews = () => {
 
       <button
         className="mt-5 ml-1 text-xl font-bold italic text-red-800 hover:underline focus:outline-none"
-        onClick={() => setShowModal(true)}
-      >
+        onClick={() => setShowModal(true)}>
         See All Reviews
       </button>
 
@@ -86,8 +85,7 @@ const Reviews = () => {
               {reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="bg-slate-900 p-4 rounded-lg shadow-md"
-                >
+                  className="bg-slate-900 p-4 rounded-lg shadow-md">
                   <p className="text-gray-200 mb-2">
                     {review?.feedback || "No feedback text provided!"}
                   </p>
@@ -115,8 +113,7 @@ const Reviews = () => {
             <div className="flex justify-end">
               <button
                 className="mt-4 italic text-lg font-bold text-gray-400 hover:underline focus:outline-none"
-                onClick={() => setShowModal(false)}
-              >
+                onClick={() => setShowModal(false)}>
                 Close
               </button>
             </div>
