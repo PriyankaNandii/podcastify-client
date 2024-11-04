@@ -41,10 +41,6 @@ const Podcaster = ({ channelName, photoURL }) => {
       await client.publish([localTrack]);
 
       setIsBroadcasting(true);
-      console.log("Broadcasting started");
-      console.log("Start Client:", client);
-
-      console.log("Start Channel:", channelName, uid);
 
       await fetch(`${BASE_URL}/start-broadcast`, {
         method: "POST",
@@ -54,7 +50,6 @@ const Podcaster = ({ channelName, photoURL }) => {
         body: JSON.stringify({ channelName, uid }),
       });
     } catch (error) {
-      console.error("Error starting broadcast:", error);
       alert("Failed to start the broadcast. Please try again.");
     }
   };
@@ -69,8 +64,6 @@ const Podcaster = ({ channelName, photoURL }) => {
     }
     await client.leave();
     setIsBroadcasting(false);
-    console.log("Broadcasting stopped");
-    console.log("FFF:", channelName, uid);
 
     await fetch(`${BASE_URL}/stop-broadcast`, {
       method: "POST",

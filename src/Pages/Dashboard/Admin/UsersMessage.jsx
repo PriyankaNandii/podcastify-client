@@ -5,6 +5,8 @@ export default function UsersMessage() {
   const { data, isLoading } = useDataFetcher("contact-message");
   if (isLoading) return <Loader />;
 
+  const latestMsg = data.toReversed();
+
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#2A1D6B] via-[#1B1B1B] to-[#2A2A2A] p-6">
       <h1 className="text-3xl text-white font-extrabold mb-8 text-center shadow-md">

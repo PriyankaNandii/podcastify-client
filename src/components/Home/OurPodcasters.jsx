@@ -119,7 +119,7 @@ const OurPodcasters = () => {
               className={
                 podcaster.userPhotoUrl
                   ? `w-26 h-26 mx-auto rounded-full dark:bg-gray-500`
-                  : `w-32 h-32 mx-auto rounded-full dark:bg-gray-500`
+                  : `w-28 h-28 mx-auto rounded-full dark:bg-gray-500`
               }
             />
             <div className="text-center mt-4">
